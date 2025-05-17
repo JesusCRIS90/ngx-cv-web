@@ -9,5 +9,5 @@ import { ModalWindowHostComponent } from "@beexy/ngx-modals"
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'ngx-template';
+  title = 'ngx-cv-web';
 }
