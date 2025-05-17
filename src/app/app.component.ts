@@ -65,6 +65,7 @@ export class AppComponent {
 
     if (this.StorageDataApp(response.originalData)) {
       this.loadingDataState.set(DataLoadingState.SUCCES);
+      this.router.navigate(['/']);
       return;
     }
 
