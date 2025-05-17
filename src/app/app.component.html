@@ -1,3 +1,6 @@
-<router-outlet />
+@if( loadingDataState() === DataLoadingState.LOADING ){
+  <view-loading />
+}
 
+<view-app />
 <bee-modal-window-host />
