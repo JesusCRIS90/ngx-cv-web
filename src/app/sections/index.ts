@@ -1,0 +1,5 @@
+export * from "./contact-section/contact-section.component"
+export * from "./experience-section/experience-section.component"
+export * from "./home-section/home-section.component"
+export * from "./project-section/project-section.component"
+export * from "./skills-section/skills-section.component"
