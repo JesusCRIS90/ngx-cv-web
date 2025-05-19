@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { ScrollTrackerComponent, ScrollYEventInfo } from '../../components'
+import { SectionTrackerDirective } from "../../directives"
 
 import {
   ContactSectionComponent,
@@ -12,21 +13,27 @@ import {
 
 @Component({
   selector: 'app-home-page',
+  standalone: true,
   imports: [
     ScrollTrackerComponent,
     ContactSectionComponent,
     ExperienceSectionComponent,
     HomeSectionComponent,
     ProjectsSectionComponent,
-    SkillsSectionComponent
+    SkillsSectionComponent,
+    SectionTrackerDirective
   ],
   templateUrl: './home-page.component.html',
 })
 export default class HomePageComponent {
-  // TODO: Get Data from StorageManager
-  // TODO: Management Methods to pass info to differents sections
+  yScrollEventData = signal<ScrollYEventInfo>({ direction: 'up', yPosPercentage: 0, yPosPixel: 0, yMaxScrollSizePixel: 0 })
 
-  getYScrollEvent( scrollEvent: ScrollYEventInfo ){
-    console.log( scrollEvent );
+  getYScrollEvent(scrollEvent: ScrollYEventInfo) {
+    // console.log(scrollEvent);
+    this.yScrollEventData.set( scrollEvent );
+  }
+
+  onSectionActive( sectionID: string ){
+    console.log( sectionID );
   }
 }
