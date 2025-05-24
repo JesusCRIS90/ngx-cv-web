@@ -3,15 +3,15 @@ import { Directive, ElementRef, EventEmitter, input, OnInit, Output, effect, Des
 import { ScrollYEventInfo } from '../components'
 
 @Directive({
-  selector: '[sectionYscrollTracker]',
+  selector: '[dirSectionYscrollTracker]',
   standalone: true,
 })
 export class SectionTrackerDirective {
 
-  sectionId = input.required<string>();
-  yScrollEvent = input.required<ScrollYEventInfo>();
+  dirProp_sectionId = input.required<string>();
+  dirProp_yScrollEvent = input.required<ScrollYEventInfo>();
 
-  @Output() sectionVisible = new EventEmitter<string>();
+  @Output() dirEvt_sectionVisible = new EventEmitter<string>();
 
   // private destroyRef = inject(DestroyRef); // needed for cleanup
 
@@ -20,7 +20,7 @@ export class SectionTrackerDirective {
     effect((onCleanup) => {
 
       if (this.checkYScrollEnterOnSection()) {
-        this.sectionVisible.emit(this.sectionId());
+        this.dirEvt_sectionVisible.emit(this.dirProp_sectionId());
       }
 
       // ✅ Cleanup logic runs before the effect re-runs or when directive is destroyed
@@ -35,7 +35,7 @@ export class SectionTrackerDirective {
 
 
   protected getYScrollPos(): number {
-    return this.yScrollEvent().yPosPixel;
+    return this.dirProp_yScrollEvent().yPosPixel;
   }
 
   private checkYScrollEnterOnSection(): boolean {
