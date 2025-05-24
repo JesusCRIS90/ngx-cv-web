@@ -1,41 +1,41 @@
 <sec-home
   id="home"
-  sectionYscrollTracker
-  [sectionId]="'home'"
-  [yScrollEvent]="yScrollEventData()"
-  (sectionVisible)="onSectionActive($event)"
+  dirSectionYscrollTracker
+  [dirProp_sectionId]="'home'"
+  [dirProp_yScrollEvent]="yScrollEventData()"
+  (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
 <sec-projects
   id="projects"
-  sectionYscrollTracker
-  [sectionId]="'projects'"
-  [yScrollEvent]="yScrollEventData()"
-  (sectionVisible)="onSectionActive($event)"
+  dirSectionYscrollTracker
+  [dirProp_sectionId]="'projects'"
+  [dirProp_yScrollEvent]="yScrollEventData()"
+  (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
 <sec-experience
   id="experience"
-  sectionYscrollTracker
-  [sectionId]="'experience'"
-  [yScrollEvent]="yScrollEventData()"
-  (sectionVisible)="onSectionActive($event)"
+  dirSectionYscrollTracker
+  [dirProp_sectionId]="'experience'"
+  [dirProp_yScrollEvent]="yScrollEventData()"
+  (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
 <sec-skills
   id="skills"
-  sectionYscrollTracker
-  [sectionId]="'skills'"
-  [yScrollEvent]="yScrollEventData()"
-  (sectionVisible)="onSectionActive($event)"
+  dirSectionYscrollTracker
+  [dirProp_sectionId]="'skills'"
+  [dirProp_yScrollEvent]="yScrollEventData()"
+  (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
 <sec-contact
   id="contact"
-  sectionYscrollTracker
-  [sectionId]="'contact'"
-  [yScrollEvent]="yScrollEventData()"
-  (sectionVisible)="onSectionActive($event)"
+  dirSectionYscrollTracker
+  [dirProp_sectionId]="'contact'"
+  [dirProp_yScrollEvent]="yScrollEventData()"
+  (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
 <scroll-tracker (scrollYEventEmitted)="getYScrollEvent($event)" />
