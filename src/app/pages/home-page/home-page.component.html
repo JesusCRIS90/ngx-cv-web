@@ -38,4 +38,6 @@
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
+<nav-sec-menu class="nav-menu" (navItemClicked)="onClickNavMenu($event)" [activeId]="activeSecId()" [navItems]="temNavItems"></nav-sec-menu>
+
 <scroll-tracker (scrollYEventEmitted)="getYScrollEvent($event)" />
