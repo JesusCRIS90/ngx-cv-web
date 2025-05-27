@@ -3,3 +3,41 @@
 section{
   height: 1500px;
 }
+
+body{
+  background-color: rgb(145, 145, 145);
+}
+
+/* NavSectionMenu Styles */
+.nav-menu{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 95%;
+  transform: translate( -50%, -50% );
+
+  .nav-icon-container{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    margin-bottom: 10px;
+
+    background-color: rgb(116, 88, 168);
+    border-radius: 50px;
+
+    bee-svg-icon{
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .nav-item-active{
+    background-color: rgb(196, 163, 235);
+  }
+}
