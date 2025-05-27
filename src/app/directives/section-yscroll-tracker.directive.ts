@@ -16,7 +16,7 @@ export class SectionTrackerDirective {
   // private destroyRef = inject(DestroyRef); // needed for cleanup
 
 
-  constructor(private el: ElementRef) {
+  constructor(public el: ElementRef) {
     effect((onCleanup) => {
 
       if (this.checkYScrollEnterOnSection()) {
@@ -31,6 +31,10 @@ export class SectionTrackerDirective {
 
     });
 
+  }
+
+  getSectionId(): string {
+    return this.dirProp_sectionId();
   }
 
 
