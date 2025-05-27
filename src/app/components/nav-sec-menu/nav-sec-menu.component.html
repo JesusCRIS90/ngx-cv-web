@@ -1,0 +1,3 @@
+@for (item of navItems(); track $index) {
+  <nav-item class="nav-item" [navItem]="item" [activeId]="activeId()" (clicked)="navItemOnClick($event)"/>
+}
