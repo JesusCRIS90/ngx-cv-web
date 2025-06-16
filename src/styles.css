@@ -44,8 +44,9 @@ body {
 
 .vert-nav-button {
   position: fixed;
-  top: 2%;
-  left: 92%;
+  top: 0%;
+  right: 2%;
+  margin-top: 10px;
 
   div {
     background-color: #7458a8;
