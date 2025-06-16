@@ -2,28 +2,28 @@ import { NavItem } from "../components"
 
 export const NavMenuItems: NavItem[] = [
   {
-    icon: 'icon-monitor',
+    icon: 'icon-home',
     id: 'home',
     navAction: null,
     title: null,
     subtitle: null
   },
   {
-    icon: 'icon-monitor',
+    icon: 'icon-trending-up',
     id: 'projects',
     navAction: null,
     title: null,
     subtitle: null
   },
   {
-    icon: 'icon-monitor',
+    icon: 'icon-credit-card',
     id: 'experience',
     navAction: null,
     title: null,
     subtitle: null
   },
   {
-    icon: 'icon-monitor',
+    icon: 'icon-upload',
     id: 'skills',
     navAction: null,
     title: null,
