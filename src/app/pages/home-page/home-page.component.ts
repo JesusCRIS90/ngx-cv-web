@@ -1,5 +1,8 @@
 import { AfterViewInit, Component, ElementRef, QueryList, signal, ViewChildren } from '@angular/core';
 
+import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layouts'
+import { ClickableIconComponent } from '@beexy/ngx-components'
+
 import { ScrollTrackerComponent, ScrollYEventInfo, NavSecMenuComponent, NavItem } from '../../components'
 import { SectionTrackerDirective } from "../../directives"
 
@@ -8,7 +11,7 @@ import {
   ExperienceSectionComponent,
   HomeSectionComponent,
   ProjectsSectionComponent,
-  SkillsSectionComponent
+  SkillsSectionComponent,
 } from "../../sections"
 
 // Delete after
@@ -26,6 +29,8 @@ import { NavMenuItems } from "../../data/temporal.data"
     SkillsSectionComponent,
     SectionTrackerDirective,
     NavSecMenuComponent,
+    ResponsiveLayout,
+    ClickableIconComponent,
   ],
   templateUrl: './home-page.component.html',
 })
@@ -38,7 +43,7 @@ export default class HomePageComponent implements AfterViewInit {
 
   yScrollEventData = signal<ScrollYEventInfo>({ direction: 'up', yPosPercentage: 0, yPosPixel: 0, yMaxScrollSizePixel: 0 })
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void { }
 
   getYScrollEvent(scrollEvent: ScrollYEventInfo) {
     this.yScrollEventData.set(scrollEvent);
@@ -55,10 +60,24 @@ export default class HomePageComponent implements AfterViewInit {
 
     this.sections.forEach((section, index) => {
       console.log(`Section ${index}:`, section.getSectionId());
-      if (section.getSectionId() === secId ) {
+      if (section.getSectionId() === secId) {
         section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+  }
+
+  protected getRefIconBaseOnSectionId(): string {
+    switch (this.activeSecId()) {
+
+      case 'home': return 'icon-home';
+      case 'projects': return 'icon-trending-up';
+      case 'experience': return 'icon-credit-card';
+      case 'skills': return 'icon-upload';
+      case 'contact': return 'icon-monitor';
+
+      default:
+        return 'default-icon'
+    }
   }
 
 }
