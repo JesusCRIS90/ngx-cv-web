@@ -2,9 +2,13 @@ import { AfterViewInit, Component, ElementRef, QueryList, signal, ViewChildren }
 
 import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layouts'
 import { ClickableIconComponent } from '@beexy/ngx-components'
+import { SideBarPopupService } from '@beexy/ngx-popups'
 
 import { ScrollTrackerComponent, ScrollYEventInfo, NavSecMenuComponent, NavItem } from '../../components'
 import { SectionTrackerDirective } from "../../directives"
+
+// Delete this line
+import { TestingComponentComponent } from '../../components'
 
 import {
   ContactSectionComponent,
@@ -43,6 +47,10 @@ export default class HomePageComponent implements AfterViewInit {
 
   yScrollEventData = signal<ScrollYEventInfo>({ direction: 'up', yPosPercentage: 0, yPosPixel: 0, yMaxScrollSizePixel: 0 })
 
+  constructor(
+    protected sidebarPopupService: SideBarPopupService,
+  ){}
+
   ngAfterViewInit(): void { }
 
   getYScrollEvent(scrollEvent: ScrollYEventInfo) {
@@ -78,6 +86,13 @@ export default class HomePageComponent implements AfterViewInit {
       default:
         return 'default-icon'
     }
+  }
+
+  protected onClickSidebarNavMenu(): void{
+    this.sidebarPopupService.open({
+      component: TestingComponentComponent,
+      position: 'right'
+    })
   }
 
 }

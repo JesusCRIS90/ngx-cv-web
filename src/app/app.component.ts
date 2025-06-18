@@ -8,6 +8,7 @@ import {
 } from "@beexy/tools"
 
 import { ModalWindowHostComponent } from "@beexy/ngx-modals"
+import { SideBarPopUpHostComponent } from '@beexy/ngx-popups'
 
 import { AppViewComponent, LoadingViewComponent } from "./views"
 
@@ -28,7 +29,7 @@ import { AppData } from './interfaces'
 
 @Component({
   selector: 'app-root',
-  imports: [ModalWindowHostComponent, AppViewComponent, LoadingViewComponent],
+  imports: [ModalWindowHostComponent, SideBarPopUpHostComponent, AppViewComponent, LoadingViewComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
