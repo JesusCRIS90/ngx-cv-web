@@ -47,6 +47,7 @@ body {
   top: 0%;
   right: 2%;
   margin-top: 10px;
+  z-index: 1100;
 
   div {
     background-color: #7458a8;
@@ -66,4 +67,42 @@ body {
     height: 24px;
     width: 24px;
   }
+}
+
+
+.custom-sidebar {
+
+  .bee-sidebar-popup-container{
+    background-color: #414141;
+  }
+
+  .bee-sidebar-popup-close-button {
+    color: #ffffff;
+    left: 5%;
+    right: auto;
+  }
+
+  .bee-sidebar-popup-content  {
+    margin-top: 50px;
+  }
+}
+
+
+.nav-container.active{
+  .title{
+    color: #c4a3eb
+  }
+  svg{
+    fill: #c4a3eb;
+  }
+}
+
+.nav-text-container .title {
+  margin: 10px 20px 10px 0px;
+  padding: 0;
+}
+
+.nav-text-container .subtitle {
+  margin: 0;
+  padding: 0;
 }

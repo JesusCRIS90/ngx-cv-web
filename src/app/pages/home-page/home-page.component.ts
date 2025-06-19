@@ -4,8 +4,16 @@ import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layout
 import { ClickableIconComponent } from '@beexy/ngx-components'
 import { SideBarPopupService } from '@beexy/ngx-popups'
 
-import { ScrollTrackerComponent, ScrollYEventInfo, NavSecMenuComponent, NavItem } from '../../components'
-import { SectionTrackerDirective } from "../../directives"
+import {
+  ScrollTrackerComponent,
+  ScrollYEventInfo,
+  NavSecMenuComponent,
+  NavItem,
+  NavCaller,
+  VertNavSecMenuComponent
+} from '../../components'
+
+  import { SectionTrackerDirective } from "../../directives"
 
 // Delete this line
 import { TestingComponentComponent } from '../../components'
@@ -19,7 +27,7 @@ import {
 } from "../../sections"
 
 // Delete after
-import { NavMenuItems } from "../../data/temporal.data"
+import { NavMenuItems, VertNavMenuItems } from "../../data/temporal.data"
 
 @Component({
   selector: 'app-home-page',
@@ -49,50 +57,81 @@ export default class HomePageComponent implements AfterViewInit {
 
   constructor(
     protected sidebarPopupService: SideBarPopupService,
-  ){}
+  ) { }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this.injectNavActions( this.temNavItems );
+  }
 
   getYScrollEvent(scrollEvent: ScrollYEventInfo) {
     this.yScrollEventData.set(scrollEvent);
   }
 
   onSectionActive(sectionID: string) {
-    console.log(sectionID);
     this.activeSecId.set(sectionID);
   }
 
   protected onClickNavMenu(secId: string) {
 
-    console.log(secId);
-
-    this.sections.forEach((section, index) => {
-      console.log(`Section ${index}:`, section.getSectionId());
-      if (section.getSectionId() === secId) {
-        section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+    // this.sections.forEach((section, index) => {
+    //   console.log(`Section ${index}:`, section.getSectionId());
+    //   if (section.getSectionId() === secId) {
+    //     section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    //   }
+    // });
   }
 
   protected getRefIconBaseOnSectionId(): string {
-    switch (this.activeSecId()) {
-
-      case 'home': return 'icon-home';
-      case 'projects': return 'icon-trending-up';
-      case 'experience': return 'icon-credit-card';
-      case 'skills': return 'icon-upload';
-      case 'contact': return 'icon-monitor';
-
-      default:
-        return 'default-icon'
-    }
+    return getRefIconId(this.activeSecId());
   }
 
-  protected onClickSidebarNavMenu(): void{
+  protected onClickSidebarNavMenu(): void {
+    this.sidebarPopupService.close()
     this.sidebarPopupService.open({
-      component: TestingComponentComponent,
-      position: 'right'
+      component: VertNavSecMenuComponent,
+      position: 'right',
+      data: {
+        receivedActiveSecId: this.activeSecId(),
+        navItems: this.prepareVertNavItems( VertNavMenuItems )
+      }
     })
   }
 
+  protected injectNavActions( navItems: NavItem[] ) {
+
+    this.sections.forEach((section, index) => {
+      const secId = section.getSectionId();
+
+      navItems.forEach((value: NavItem, index) => {
+        if (value.id === secId) {
+          const newNavAction: NavCaller = {
+            action: () => section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+            link: ''
+          }
+          value.navAction = newNavAction;
+        }
+      })
+
+    });
+  }
+
+  private prepareVertNavItems( navItems: NavItem[] ): NavItem[]{
+    this.injectNavActions( navItems );
+    return navItems;
+  }
+}
+
+
+function getRefIconId(secId: string): string {
+  switch (secId) {
+
+    case 'home': return 'icon-home';
+    case 'projects': return 'icon-trending-up';
+    case 'experience': return 'icon-credit-card';
+    case 'skills': return 'icon-upload';
+    case 'contact': return 'icon-monitor';
+
+    default:
+      return 'default-icon'
+  }
 }

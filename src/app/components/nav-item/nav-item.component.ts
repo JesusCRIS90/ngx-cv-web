@@ -30,11 +30,10 @@ export class NavItemComponent {
   onClick(): void {
 
     if (this.navItem().navAction !== null) {
-      const link = this.navItem().navAction!.link;
-      this.navItem().navAction!.action(link);
+      this.navItem().navAction!.action( null );
     }
 
-    // console.log( this.navItem().id )
+    // Emitted but not need it
     this.clicked.emit(this.navItem());
   }
 

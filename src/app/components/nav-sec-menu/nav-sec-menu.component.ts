@@ -16,7 +16,7 @@ export class NavSecMenuComponent {
   navItemClicked = new EventEmitter<string>();
 
   protected navItemOnClick(navItem: NavItem) {
-    // console.log( 'NavMenu', navItem.id )
+    // emitted but not need it
     this.navItemClicked.emit(navItem.id);
   }
 }

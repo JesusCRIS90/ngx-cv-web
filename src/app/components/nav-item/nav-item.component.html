@@ -2,8 +2,8 @@
 
   @if( navItem().title !== null ) {
     <!-- Component with Icon + Ttitle -->
-     <bee-pair-layout [pairDistribution]="PAIR_POLICY.GLUED">
-      <div [ngClass]="{'active': isActive()}" class="nav-icon-container">
+     <bee-pair-layout [ngClass]="{'active': isActive()}" class="nav-container"  [pairDistribution]="PAIR_POLICY.GLUED" [spaceDistribution]="'1fr 2fr'" [gap]="5">
+      <div class="nav-icon-container">
         <bee-svg-icon [refName]="getIconRef()"/>
       </div>
       <div class="nav-text-container">
