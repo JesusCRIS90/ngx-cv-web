@@ -1,6 +1,6 @@
-import { Directive, ElementRef, EventEmitter, input, OnInit, Output, effect, DestroyRef, inject } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, input, Output, effect } from '@angular/core';
 
-import { ScrollYEventInfo } from '../components'
+import { ScrollYEventInfo } from '../navMenu'
 
 @Directive({
   selector: '[dirSectionYscrollTracker]',
@@ -12,8 +12,6 @@ export class SectionTrackerDirective {
   dirProp_yScrollEvent = input.required<ScrollYEventInfo>();
 
   @Output() dirEvt_sectionVisible = new EventEmitter<string>();
-
-  // private destroyRef = inject(DestroyRef); // needed for cleanup
 
 
   constructor(public el: ElementRef) {
@@ -47,8 +45,6 @@ export class SectionTrackerDirective {
     const top = this.el.nativeElement.offsetTop;
     const height = this.el.nativeElement.offsetHeight;
     const bottom = top + height;
-
-    // console.log({ top, height, bottom });
 
     if (this.getYScrollPos() >= top && this.getYScrollPos() < bottom) {
       return true;

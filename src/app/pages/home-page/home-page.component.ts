@@ -7,16 +7,14 @@ import { SideBarPopupService } from '@beexy/ngx-popups'
 import {
   ScrollTrackerComponent,
   ScrollYEventInfo,
-  NavSecMenuComponent,
-  NavItem,
-  NavCaller,
+  HoriNavSecMenuComponent,
   VertNavSecMenuComponent
-} from '../../components'
+} from '../../navMenu/components'
 
-  import { SectionTrackerDirective } from "../../directives"
+import { NavCaller, NavItem } from '../../navMenu/interfaces'
 
-// Delete this line
-import { TestingComponentComponent } from '../../components'
+import { SectionTrackerDirective } from "../../directives"
+
 
 import {
   ContactSectionComponent,
@@ -26,7 +24,7 @@ import {
   SkillsSectionComponent,
 } from "../../sections"
 
-// Delete after
+// TODO: Refatorize this?
 import { NavMenuItems, VertNavMenuItems } from "../../data/temporal.data"
 
 @Component({
@@ -40,7 +38,7 @@ import { NavMenuItems, VertNavMenuItems } from "../../data/temporal.data"
     ProjectsSectionComponent,
     SkillsSectionComponent,
     SectionTrackerDirective,
-    NavSecMenuComponent,
+    HoriNavSecMenuComponent,
     ResponsiveLayout,
     ClickableIconComponent,
   ],

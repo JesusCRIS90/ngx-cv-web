@@ -37,6 +37,7 @@ export class ScrollTrackerComponent {
     this.scrollSubject.next(scrollY);
   }
 
+  // TODO: Dispensable?
   ngOnDestroy(): void {
     this.scrollSubject.complete(); // Clean up on component destroy
   }

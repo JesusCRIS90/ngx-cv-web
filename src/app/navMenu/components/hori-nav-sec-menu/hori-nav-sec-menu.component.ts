@@ -1,13 +1,14 @@
 import { Component, EventEmitter, input, Output } from '@angular/core';
 
-import { NavItem, NavItemComponent } from "../../components"
+import { NavItemComponent } from "../../components"
+import { NavItem } from '../../interfaces'
 
 @Component({
-  selector: 'nav-sec-menu',
+  selector: 'hori-nav-sec-menu',
   imports: [NavItemComponent],
-  templateUrl: './nav-sec-menu.component.html',
+  templateUrl: './hori-nav-sec-menu.component.html',
 })
-export class NavSecMenuComponent {
+export class HoriNavSecMenuComponent {
 
   navItems = input.required<NavItem[]>();
   activeId = input.required<string>();

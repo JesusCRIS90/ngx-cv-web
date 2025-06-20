@@ -10,7 +10,7 @@ import {
   SVGIconComponent as SVGIcon,
 } from "@beexy/ngx-components"
 
-import { NavItem } from "./nav-item.interface"
+import { NavItem } from "../../interfaces"
 
 @Component({
   selector: 'nav-item',

@@ -1,4 +1,4 @@
-import { NavItem } from "../components"
+import { NavItem } from "../navMenu/interfaces"
 
 export const NavMenuItems: NavItem[] = [
   {
