@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, input, QueryList, ViewChildren } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, effect, Input, input, OnChanges, QueryList, signal, SimpleChanges, ViewChildren } from '@angular/core';
 
 import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layouts'
 import { ClickableIconComponent } from '@beexy/ngx-components'
@@ -7,7 +7,6 @@ import { SideBarPopupService } from '@beexy/ngx-popups'
 import { SectionTrackerDirective } from "../../../directives"
 
 import {
-  ScrollYEventInfo,
   HoriNavSecMenuComponent,
   VertNavSecMenuComponent
 } from '../../components'
@@ -32,25 +31,24 @@ import { NavMenuItems, VertNavMenuItems } from "../../../data/temporal.data"
     }
   `,
 })
-export class NavMenuComponent implements AfterViewInit {
+export class NavMenuComponent {
 
-  // @ViewChildren(SectionTrackerDirective) sections!: QueryList<SectionTrackerDirective>;
+  private sections!: QueryList<SectionTrackerDirective>;
 
   activeSecId = input.required<string>();
-  sections = input.required<QueryList<SectionTrackerDirective>>();
 
   constructor(
     protected sidebarPopupService: SideBarPopupService,
   ) { }
 
-  ngAfterViewInit(): void {
-    console.log( this.sections() );
-    this.injectNavActions(this.getHoriNavItems());
-  }
-
   getHoriNavItems(): NavItem[] {
     // NavMenuItems are Imported
     return NavMenuItems;
+  }
+
+  setSections(sections: QueryList<SectionTrackerDirective>) {
+    this.sections = sections;
+    this.injectNavActions(this.getHoriNavItems());
   }
 
   protected getRefIconBaseOnSectionId(): string {
@@ -71,7 +69,7 @@ export class NavMenuComponent implements AfterViewInit {
 
   protected injectNavActions(navItems: NavItem[]) {
 
-    this.sections().forEach((section, index) => {
+    this.sections.forEach((section, index) => {
       const secId = section.getSectionId();
 
       navItems.forEach((value: NavItem, index) => {

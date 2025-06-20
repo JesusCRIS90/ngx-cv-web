@@ -38,25 +38,6 @@
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
-<!-- <bee-responsive-layout [TriggerFactorVert2Hori]="0.85">
-  <ng-template #screenVertical>
-    <bee-clickable-icon
-      (clicked)="onClickSidebarNavMenu()"
-      [refName]="getRefIconBaseOnSectionId()"
-      class="vert-nav-button"
-    />
-  </ng-template>
-
-  <ng-template #screenHorizontal>
-    <hori-nav-sec-menu
-      class="nav-menu"
-      [activeId]="activeSecId()"
-      [navItems]="temNavItems"
-      (navItemClicked)="onClickNavMenu($event)"
-    />
-  </ng-template>
-</bee-responsive-layout> -->
-
-<nav-menu [activeSecId]="activeSecId()" [sections]="getSections()"/>
+<nav-menu [activeSecId]="activeSecId()"/>
 
 <scroll-tracker (scrollYEventEmitted)="getYScrollEvent($event)" />
