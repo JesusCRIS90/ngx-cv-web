@@ -47,7 +47,7 @@ body {
   top: 0%;
   right: 2%;
   margin-top: 10px;
-  z-index: 1100;
+  /* z-index: 1100; */
 
   div {
     background-color: #7458a8;

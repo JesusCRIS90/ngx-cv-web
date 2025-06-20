@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, HostListener, OnInit, signal, WritableSignal } from '@angular/core';
 
 import { NavItem, NavItemComponent } from "../../components"
 
@@ -10,23 +10,25 @@ import { NavItem, NavItemComponent } from "../../components"
 })
 export class VertNavSecMenuComponent implements OnInit {
 
-  navItems: NavItem[] = [];
-  receivedActiveSecId: string = '';
   close!: () => void;
+  navItems: NavItem[] = [];
 
-  activeId = signal<string>( this.receivedActiveSecId );
+  receivedActiveSecId: WritableSignal<string> = signal('');
 
-  constructor(){}
+  // activeId = signal<string>( this.receivedActiveSecId );
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.activeId.set( this.receivedActiveSecId );
+    console.log(`VERT-NAV - ${this.receivedActiveSecId()}`)
   }
 
-  getNavItems(): NavItem[]{
+  getNavItems(): NavItem[] {
     return this.navItems;
   }
 
-  onClickNav(navItem: NavItem){
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: UIEvent) {
     this.close();
   }
 }
