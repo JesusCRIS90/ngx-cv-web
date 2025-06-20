@@ -34,15 +34,17 @@ import { NavMenuItems, VertNavMenuItems } from "../../../data/temporal.data"
 })
 export class NavMenuComponent implements AfterViewInit {
 
-  @ViewChildren(SectionTrackerDirective) sections!: QueryList<SectionTrackerDirective>;
+  // @ViewChildren(SectionTrackerDirective) sections!: QueryList<SectionTrackerDirective>;
 
   activeSecId = input.required<string>();
+  sections = input.required<QueryList<SectionTrackerDirective>>();
 
   constructor(
     protected sidebarPopupService: SideBarPopupService,
   ) { }
 
   ngAfterViewInit(): void {
+    console.log( this.sections() );
     this.injectNavActions(this.getHoriNavItems());
   }
 
@@ -69,7 +71,7 @@ export class NavMenuComponent implements AfterViewInit {
 
   protected injectNavActions(navItems: NavItem[]) {
 
-    this.sections.forEach((section, index) => {
+    this.sections().forEach((section, index) => {
       const secId = section.getSectionId();
 
       navItems.forEach((value: NavItem, index) => {

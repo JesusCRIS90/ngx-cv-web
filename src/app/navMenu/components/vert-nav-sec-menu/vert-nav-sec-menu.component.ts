@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, HostListener, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
 
 import { NavItemComponent } from "../../components"
 import { NavItem } from '../../interfaces'
@@ -14,7 +14,9 @@ export class VertNavSecMenuComponent implements OnInit {
   close!: () => void;
   navItems: NavItem[] = [];
 
-  receivedActiveSecId: WritableSignal<string> = signal('');
+  // receivedActiveSecId: WritableSignal<string> = signal('');
+  receivedActiveSecId: InputSignal<string> = input('');
+
 
   // activeId = signal<string>( this.receivedActiveSecId );
 

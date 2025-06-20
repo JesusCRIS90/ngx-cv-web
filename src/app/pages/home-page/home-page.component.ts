@@ -8,7 +8,8 @@ import {
   ScrollTrackerComponent,
   ScrollYEventInfo,
   HoriNavSecMenuComponent,
-  VertNavSecMenuComponent
+  VertNavSecMenuComponent,
+  NavMenuComponent
 } from '../../navMenu/components'
 
 import { NavCaller, NavItem } from '../../navMenu/interfaces'
@@ -41,24 +42,29 @@ import { NavMenuItems, VertNavMenuItems } from "../../data/temporal.data"
     HoriNavSecMenuComponent,
     ResponsiveLayout,
     ClickableIconComponent,
+    NavMenuComponent,
   ],
   templateUrl: './home-page.component.html',
 })
-export default class HomePageComponent implements AfterViewInit {
+export default class HomePageComponent {
 
-  temNavItems: NavItem[] = NavMenuItems;
+  // temNavItems: NavItem[] = NavMenuItems;
   activeSecId = signal<string>('home');
 
   @ViewChildren(SectionTrackerDirective) sections!: QueryList<SectionTrackerDirective>;
 
   yScrollEventData = signal<ScrollYEventInfo>({ direction: 'up', yPosPercentage: 0, yPosPixel: 0, yMaxScrollSizePixel: 0 })
 
-  constructor(
-    protected sidebarPopupService: SideBarPopupService,
-  ) { }
+  // constructor(
+  //   protected sidebarPopupService: SideBarPopupService,
+  // ) { }
 
-  ngAfterViewInit(): void {
-    this.injectNavActions( this.temNavItems );
+  // ngAfterViewInit(): void {
+  //   this.injectNavActions( this.temNavItems );
+  // }
+
+  getSections(): QueryList<SectionTrackerDirective> {
+    return this.sections;
   }
 
   getYScrollEvent(scrollEvent: ScrollYEventInfo) {
@@ -69,54 +75,54 @@ export default class HomePageComponent implements AfterViewInit {
     this.activeSecId.set(sectionID);
   }
 
-  protected onClickNavMenu(secId: string) {
+  // protected onClickNavMenu(secId: string) {
 
-    // this.sections.forEach((section, index) => {
-    //   console.log(`Section ${index}:`, section.getSectionId());
-    //   if (section.getSectionId() === secId) {
-    //     section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    //   }
-    // });
-  }
+  //   // this.sections.forEach((section, index) => {
+  //   //   console.log(`Section ${index}:`, section.getSectionId());
+  //   //   if (section.getSectionId() === secId) {
+  //   //     section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //   //   }
+  //   // });
+  // }
 
-  protected getRefIconBaseOnSectionId(): string {
-    return getRefIconId(this.activeSecId());
-  }
+  // protected getRefIconBaseOnSectionId(): string {
+  //   return getRefIconId(this.activeSecId());
+  // }
 
-  protected onClickSidebarNavMenu(): void {
-    this.sidebarPopupService.close();
-    this.sidebarPopupService.open({
-      component: VertNavSecMenuComponent,
-      position: 'right',
-      data: {
-        receivedActiveSecId: this.activeSecId,
-        navItems: this.prepareVertNavItems( VertNavMenuItems )
-      }
-    });
-  }
+  // protected onClickSidebarNavMenu(): void {
+  //   this.sidebarPopupService.close();
+  //   this.sidebarPopupService.open({
+  //     component: VertNavSecMenuComponent,
+  //     position: 'right',
+  //     data: {
+  //       receivedActiveSecId: this.activeSecId,
+  //       navItems: this.prepareVertNavItems( VertNavMenuItems )
+  //     }
+  //   });
+  // }
 
-  protected injectNavActions( navItems: NavItem[] ) {
+  // protected injectNavActions( navItems: NavItem[] ) {
 
-    this.sections.forEach((section, index) => {
-      const secId = section.getSectionId();
+  //   this.sections.forEach((section, index) => {
+  //     const secId = section.getSectionId();
 
-      navItems.forEach((value: NavItem, index) => {
-        if (value.id === secId) {
-          const newNavAction: NavCaller = {
-            action: () => section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' }),
-            link: ''
-          }
-          value.navAction = newNavAction;
-        }
-      })
+  //     navItems.forEach((value: NavItem, index) => {
+  //       if (value.id === secId) {
+  //         const newNavAction: NavCaller = {
+  //           action: () => section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+  //           link: ''
+  //         }
+  //         value.navAction = newNavAction;
+  //       }
+  //     })
 
-    });
-  }
+  //   });
+  // }
 
-  private prepareVertNavItems( navItems: NavItem[] ): NavItem[]{
-    this.injectNavActions( navItems );
-    return navItems;
-  }
+  // private prepareVertNavItems( navItems: NavItem[] ): NavItem[]{
+  //   this.injectNavActions( navItems );
+  //   return navItems;
+  // }
 }
 
 
