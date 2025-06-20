@@ -1,0 +1,17 @@
+<bee-responsive-layout [TriggerFactorVert2Hori]="0.85">
+  <ng-template #screenVertical>
+    <bee-clickable-icon
+      (clicked)="onClickSidebarNavMenu()"
+      [refName]="getRefIconBaseOnSectionId()"
+      class="vert-nav-button"
+    />
+  </ng-template>
+
+  <ng-template #screenHorizontal>
+    <hori-nav-sec-menu
+      class="nav-menu"
+      [activeId]="activeSecId()"
+      [navItems]="getHoriNavItems()"
+    />
+  </ng-template>
+</bee-responsive-layout>
