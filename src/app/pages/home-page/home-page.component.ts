@@ -86,15 +86,15 @@ export default class HomePageComponent implements AfterViewInit {
   }
 
   protected onClickSidebarNavMenu(): void {
-    this.sidebarPopupService.close()
+    this.sidebarPopupService.close();
     this.sidebarPopupService.open({
       component: VertNavSecMenuComponent,
       position: 'right',
       data: {
-        receivedActiveSecId: this.activeSecId(),
+        receivedActiveSecId: this.activeSecId,
         navItems: this.prepareVertNavItems( VertNavMenuItems )
       }
-    })
+    });
   }
 
   protected injectNavActions( navItems: NavItem[] ) {
