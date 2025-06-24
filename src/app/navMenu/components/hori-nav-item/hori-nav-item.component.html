@@ -1,0 +1,5 @@
+<bee-nav-item [activeId]="activeId()" [navItem]="navItem()" (clicked)="navItemOnClick($event)">
+  <div class="nav-icon-container">
+    <bee-svg-icon [refName]="getIcon() ?? 'default-icon'" />
+  </div>
+</bee-nav-item>

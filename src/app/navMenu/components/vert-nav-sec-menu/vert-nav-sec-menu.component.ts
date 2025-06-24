@@ -1,11 +1,14 @@
-import { Component, HostListener, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, input, InputSignal, OnInit, Output } from '@angular/core';
 
-import { NavItemComponent } from "../../components"
-import { NavItem } from '../../interfaces'
+import {
+  NavItem,
+} from '@beexy/ngx-components'
+
+import { VertNavItemComponent } from '../vert-nav-item/vert-nav-item.component'
 
 @Component({
   selector: 'vert-nav-sec-menu',
-  imports: [NavItemComponent],
+  imports: [VertNavItemComponent],
   templateUrl: './vert-nav-sec-menu.component.html',
   styleUrls: ['./vert-nav-sec-menu.component.css']
 })
@@ -14,11 +17,10 @@ export class VertNavSecMenuComponent implements OnInit {
   close!: () => void;
   navItems: NavItem[] = [];
 
-  // receivedActiveSecId: WritableSignal<string> = signal('');
   receivedActiveSecId: InputSignal<string> = input('');
 
-
-  // activeId = signal<string>( this.receivedActiveSecId );
+  @Output()
+  navItemClicked = new EventEmitter<string>();
 
   constructor() { }
 
@@ -30,9 +32,15 @@ export class VertNavSecMenuComponent implements OnInit {
     return this.navItems;
   }
 
-  @HostListener('window:resize', ['$event'])
-  // TODO: event?: UIEvent --> Dispensable?
-  onResize(event?: UIEvent) {
+  @HostListener('window:resize')
+  onResize() {
     this.close();
+  }
+
+ @HostBinding('class.ver-nav-menu') addClass = true;
+
+  protected navItemOnClick(id: string) {
+    // emitted but not need it
+    this.navItemClicked.emit(id);
   }
 }

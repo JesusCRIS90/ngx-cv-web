@@ -42,6 +42,12 @@ body {
   }
 }
 
+.hori-nav-item {
+  .bee-nav-item-container.active div {
+    background-color: #c4a3eb;
+  }
+}
+
 .vert-nav-button {
   position: fixed;
   top: 0%;
@@ -69,10 +75,8 @@ body {
   }
 }
 
-
 .custom-sidebar {
-
-  .bee-sidebar-popup-container{
+  .bee-sidebar-popup-container {
     background-color: #414141;
   }
 
@@ -82,17 +86,28 @@ body {
     right: auto;
   }
 
-  .bee-sidebar-popup-content  {
+  .bee-sidebar-popup-content {
     margin-top: 50px;
   }
 }
 
+.vert-nav-item {
+  .bee-nav-item-container.active {
+    .nav-icon-container svg {
+      fill: #c4a3eb;
+    }
 
-.nav-container.active{
-  .title{
-    color: #c4a3eb
+    .nav-text-container p {
+      color: #c4a3eb;
+    }
   }
-  svg{
+}
+
+.nav-container.active {
+  .title {
+    color: #c4a3eb;
+  }
+  svg {
     fill: #c4a3eb;
   }
 }

@@ -1,3 +1,8 @@
 @for (item of navItems(); track $index) {
-  <nav-item class="nav-item" [navItem]="item" [activeId]="activeId()" (clicked)="navItemOnClick($event)"/>
+<hori-nav-item
+  [activeId]="activeId()"
+  [navItem]="item"
+  class="hori-nav-item"
+  (navItemClicked)="navItemOnClick($event)"
+/>
 }

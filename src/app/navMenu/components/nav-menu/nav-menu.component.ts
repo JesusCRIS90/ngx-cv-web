@@ -1,8 +1,8 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, effect, Input, input, OnChanges, QueryList, signal, SimpleChanges, ViewChildren } from '@angular/core';
+import { Component, input, QueryList } from '@angular/core';
 
 import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layouts'
-import { ClickableIconComponent } from '@beexy/ngx-components'
 import { SideBarPopupService } from '@beexy/ngx-popups'
+import { ClickableIconComponent, NavItem } from '@beexy/ngx-components'
 
 import { SectionTrackerDirective } from "../../../directives"
 
@@ -11,10 +11,8 @@ import {
   VertNavSecMenuComponent
 } from '../../components'
 
-import { NavCaller, NavItem } from '../../interfaces'
-
 // TODO: Refatorize this?
-import { NavMenuItems, VertNavMenuItems } from "../../../data/temporal.data"
+import { NavMenuItems } from "../../../data/temporal.data"
 
 @Component({
   selector: 'nav-menu',
@@ -41,14 +39,14 @@ export class NavMenuComponent {
     protected sidebarPopupService: SideBarPopupService,
   ) { }
 
-  getHoriNavItems(): NavItem[] {
+  getNavItems(): NavItem[] {
     // NavMenuItems are Imported
     return NavMenuItems;
   }
 
   setSections(sections: QueryList<SectionTrackerDirective>) {
     this.sections = sections;
-    this.injectNavActions(this.getHoriNavItems());
+    this.injectNavActions(this.getNavItems());
   }
 
   protected getRefIconBaseOnSectionId(): string {
@@ -56,13 +54,12 @@ export class NavMenuComponent {
   }
 
   protected onClickSidebarNavMenu(): void {
-    this.sidebarPopupService.close();
     this.sidebarPopupService.open({
       component: VertNavSecMenuComponent,
       position: 'right',
       data: {
         receivedActiveSecId: this.activeSecId,
-        navItems: this.prepareVertNavItems(VertNavMenuItems)
+        navItems: this.prepareVertNavItems(this.getNavItems())
       }
     });
   }
@@ -74,11 +71,7 @@ export class NavMenuComponent {
 
       navItems.forEach((value: NavItem, index) => {
         if (value.id === secId) {
-          const newNavAction: NavCaller = {
-            action: () => section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' }),
-            link: ''
-          }
-          value.navAction = newNavAction;
+          value.navAction = () => section.el.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       })
 

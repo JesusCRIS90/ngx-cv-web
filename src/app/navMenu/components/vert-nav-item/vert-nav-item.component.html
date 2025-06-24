@@ -1,0 +1,10 @@
+<bee-nav-item [activeId]="activeId()" [navItem]="navItem()" (clicked)="navItemOnClick($event)">
+  <bee-pair-layout class="nav-container" [pairDistribution]="PAIR_POLICY.GLUED" [spaceDistribution]="'1fr 2fr'" [gap]="5">
+    <div class="nav-icon-container">
+      <bee-svg-icon [refName]="getIcon() ?? 'default-icon'"/>
+    </div>
+    <div class="nav-text-container">
+      <p class="title"> {{ getTitle() }} </p>
+    </div>
+  </bee-pair-layout>
+</bee-nav-item>

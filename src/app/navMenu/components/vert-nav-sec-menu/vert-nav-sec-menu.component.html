@@ -1,5 +1,8 @@
 @for (item of getNavItems(); track $index) {
-  <nav-item class="vert-nav-item" [navItem]="item" [activeId]="receivedActiveSecId()"/>
+<vert-nav-item
+  [activeId]="receivedActiveSecId()"
+  [navItem]="item"
+  class="vert-nav-item"
+  (navItemClicked)="navItemOnClick($event)"
+/>
 }
-
-<!-- (clicked)="onClickNav($event)" -->

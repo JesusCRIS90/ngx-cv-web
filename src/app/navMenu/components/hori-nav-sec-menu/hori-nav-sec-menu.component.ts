@@ -1,11 +1,14 @@
 import { Component, EventEmitter, input, Output } from '@angular/core';
 
-import { NavItemComponent } from "../../components"
-import { NavItem } from '../../interfaces'
+import {
+  NavItem,
+} from '@beexy/ngx-components'
+
+import { HoriNavItemComponent } from '../hori-nav-item/hori-nav-item.component'
 
 @Component({
   selector: 'hori-nav-sec-menu',
-  imports: [NavItemComponent],
+  imports: [HoriNavItemComponent],
   templateUrl: './hori-nav-sec-menu.component.html',
 })
 export class HoriNavSecMenuComponent {
@@ -16,8 +19,8 @@ export class HoriNavSecMenuComponent {
   @Output()
   navItemClicked = new EventEmitter<string>();
 
-  protected navItemOnClick(navItem: NavItem) {
+  protected navItemOnClick(id: string) {
     // emitted but not need it
-    this.navItemClicked.emit(navItem.id);
+    this.navItemClicked.emit(id);
   }
 }
