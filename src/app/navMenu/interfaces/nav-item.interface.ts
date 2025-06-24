@@ -1,3 +1,5 @@
+type GenericFunction = ( arg0: unknown ) => unknown;
+
 export interface NavItem {
   id: string,
   icon: string | null,
@@ -7,6 +9,6 @@ export interface NavItem {
 }
 
 export interface NavCaller {
-  action: ( arg0: unknown ) => unknown,
+  action: GenericFunction,
   link: string
 }

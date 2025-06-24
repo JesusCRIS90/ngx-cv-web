@@ -30,7 +30,7 @@ export class NavItemComponent {
   onClick(): void {
 
     if (this.navItem().navAction !== null) {
-      this.navItem().navAction!.action( null );
+      this.navItem().navAction!.action(null);
     }
 
     // Emitted but not need it
@@ -41,20 +41,28 @@ export class NavItemComponent {
     public elementRef: ElementRef
   ) { }
 
-  protected getIconRef(): string {
+  public getRefId(): string {
+    return this.navItem().id;
+  }
+
+  public getIconRef(): string {
     const iconref = this.navItem().icon;
-    if ( iconref === null ) {
+    if (iconref === null) {
       return 'default-icon'
     }
     return iconref;
   }
 
-  protected getRefId(): string {
-    return this.navItem().id;
+  public getTitle(): string | null {
+    return this.navItem().title;
   }
 
-  protected isActive(): boolean{
-    if ( this.activeId() === this.getRefId() ) return true;
+  public getSubtitle(): string | null {
+    return this.navItem().subtitle;
+  }
+
+  public isActive(): boolean {
+    if (this.activeId() === this.getRefId()) return true;
     return false;
   }
 }
