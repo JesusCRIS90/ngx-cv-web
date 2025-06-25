@@ -1,8 +1,10 @@
-@for (item of navItems(); track $index) {
-<hori-nav-item
-  [activeId]="activeId()"
-  [navItem]="item"
-  class="hori-nav-item"
-  (navItemClicked)="navItemOnClick($event)"
-/>
-}
+<bee-vertical-layout class="hori-nav-flex-container" [policyPos]="POLICY.RIGHT_RIGHT" [gap]="10">
+  @for (item of navItems(); track $index) {
+  <hori-nav-item
+    [activeId]="activeId()"
+    [navItem]="item"
+    class="hori-nav-item"
+    (navItemClicked)="navItemOnClick($event)"
+  />
+  }
+</bee-vertical-layout>

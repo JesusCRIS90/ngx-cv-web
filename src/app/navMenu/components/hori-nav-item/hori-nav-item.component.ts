@@ -6,16 +6,25 @@ import {
   SVGIconComponent as SVGIcon,
 } from '@beexy/ngx-components'
 
+import {
+  HoverLayoutComponent as HoverLayout,
+  PairLayoutComponent as PairLayout,
+  PAIR_DISTRIBUTION as PAIR_POLICY
+} from '@beexy/ngx-layouts'
 
 @Component({
   selector: 'hori-nav-item',
   imports: [
     NavItemComponent,
     SVGIcon,
+    HoverLayout,
+    PairLayout
   ],
   templateUrl: './hori-nav-item.component.html',
 })
 export class HoriNavItemComponent<T = unknown> {
+  PAIR_POLICY = PAIR_POLICY;
+
   navItem = input.required<NavItem<T>>();
   activeId = input.required<string>();
 
@@ -24,6 +33,10 @@ export class HoriNavItemComponent<T = unknown> {
 
   public getIcon(): string | undefined {
     return this.navItem().icon;
+  }
+
+  protected getTitle(): string | undefined {
+    return this.navItem().title;
   }
 
   protected navItemOnClick(NavItem: NavItem<T>) {

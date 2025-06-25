@@ -23,11 +23,11 @@ import { NavMenuItems } from "../../../data/temporal.data"
     HoriNavSecMenuComponent,
   ],
   templateUrl: './nav-menu.component.html',
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
+  // styles: `
+  //   :host {
+  //     display: block;
+  //   }
+  // `,
 })
 export class NavMenuComponent {
 
