@@ -6,9 +6,7 @@ import {
   NavMenuComponent
 } from '../../navMenu/components'
 
-
 import { SectionTrackerDirective } from "../../directives"
-
 
 import {
   ContactSectionComponent,

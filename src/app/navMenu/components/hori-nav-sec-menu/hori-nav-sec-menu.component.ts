@@ -25,8 +25,6 @@ export class HoriNavSecMenuComponent {
   @Output()
   navItemClicked = new EventEmitter<string>();
 
-  // @HostBinding('class.ver-nav-menu') addClass = true;
-
   protected navItemOnClick(id: string) {
     // emitted but not need it
     this.navItemClicked.emit(id);

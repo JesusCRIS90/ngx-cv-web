@@ -11,7 +11,6 @@ import {
   VertNavSecMenuComponent
 } from '../../components'
 
-// TODO: Refatorize this?
 import { NavMenuItems } from "../../../data/temporal.data"
 
 @Component({
@@ -23,11 +22,6 @@ import { NavMenuItems } from "../../../data/temporal.data"
     HoriNavSecMenuComponent,
   ],
   templateUrl: './nav-menu.component.html',
-  // styles: `
-  //   :host {
-  //     display: block;
-  //   }
-  // `,
 })
 export class NavMenuComponent {
 
