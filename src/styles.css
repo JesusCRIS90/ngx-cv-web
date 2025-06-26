@@ -1,139 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/styles/pop-ups/pop-ups.styles.css';
+@import './app/styles/nav-menu/nav-menu.styles.css';
 
+/* This property is exclusive for development */
 section {
   height: 1500px;
 }
 
+/* Change the BG Color */
 body {
   background-color: rgb(145, 145, 145);
 }
 
-/* NavSectionMenu Styles */
-.hori-nav-menu {
-  position: fixed;
-  top: 50%;
-  left: 96%;
-  transform: translate(-50%, -50%);
 
-  .nav-icon-container {
-    display: flex;
 
-    align-items: center;
-    justify-content: center;
 
-    width: 45px;
-    height: 45px;
 
-    background-color: #7458a8;
-    border-radius: 50px;
 
-    bee-svg-icon {
-      height: 24px;
-      width: 24px;
-    }
-  }
 
-  .hori-nav-flex-container {
-    width: 50px;
-  }
 
-  .hori-nav-item {
-    .bee-nav-item-container.active .nav-icon-container {
-      background-color: #c4a3eb;
-    }
 
-    .bee-nav-item-container {
-      background-color:#7458a8;
-      border-radius: 50px;
-    }
 
-    .bee-nav-item-container.active {
-      background-color: #c4a3eb;
-      border-radius: 50px;
-    }
-
-    .nav-text-container p {
-      text-transform: uppercase;
-      font-size: 16px;
-      margin: 0;
-      padding: 0;
-      margin-left: 10px;
-      padding-left: 10px;
-      color: #f7ffff;
-    }
-  }
-}
-
-.vert-nav-button {
-  position: fixed;
-  top: 0%;
-  right: 2%;
-  margin-top: 10px;
-  /* z-index: 1100; */
-
-  div {
-    background-color: #7458a8;
-    border-radius: 50px;
-    padding: 8px;
-
-    width: 30px;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  svg {
-    fill: #f7ffff;
-    height: 24px;
-    width: 24px;
-  }
-}
-
-.custom-sidebar {
-  .bee-sidebar-popup-container {
-    background-color: #414141;
-  }
-
-  .bee-sidebar-popup-close-button {
-    color: #ffffff;
-    left: 5%;
-    right: auto;
-  }
-
-  .bee-sidebar-popup-content {
-    margin-top: 50px;
-  }
-}
-
-.vert-nav-item {
-  .bee-nav-item-container.active {
-    .nav-icon-container svg {
-      fill: #c4a3eb;
-    }
-
-    .nav-text-container p {
-      color: #c4a3eb;
-    }
-  }
-}
-
-.nav-container.active {
-  .title {
-    color: #c4a3eb;
-  }
-  svg {
-    fill: #c4a3eb;
-  }
-}
-
-.nav-text-container .title {
-  margin: 10px 20px 10px 0px;
-  padding: 0;
-}
-
-.nav-text-container .subtitle {
-  margin: 0;
-  padding: 0;
-}

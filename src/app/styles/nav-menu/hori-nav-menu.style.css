@@ -1,0 +1,54 @@
+.hori-nav-menu {
+  position: fixed;
+  top: 50%;
+  left: 96%;
+  transform: translate(-50%, -50%);
+
+  .nav-icon-container {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    background-color: #7458a8;
+    border-radius: 50px;
+
+    bee-svg-icon {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .hori-nav-flex-container {
+    width: 50px;
+  }
+
+  .hori-nav-item {
+    .bee-nav-item-container.active .nav-icon-container {
+      background-color: #c4a3eb;
+    }
+
+    .bee-nav-item-container {
+      background-color:#7458a8;
+      border-radius: 50px;
+    }
+
+    .bee-nav-item-container.active {
+      background-color: #c4a3eb;
+      border-radius: 50px;
+    }
+
+    .nav-text-container p {
+      text-transform: uppercase;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      margin-left: 10px;
+      padding-left: 10px;
+      color: #f7ffff;
+    }
+  }
+}

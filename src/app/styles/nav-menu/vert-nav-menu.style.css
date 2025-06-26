@@ -1,0 +1,47 @@
+/* Vertical Navigation Button */
+
+.vert-nav-button {
+  position: fixed;
+  top: 0%;
+  right: 2%;
+  margin-top: 10px;
+  /* z-index: 1100; */
+
+  div {
+    background-color: #7458a8;
+    border-radius: 50px;
+    padding: 8px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  svg {
+    fill: #f7ffff;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+/* Vertical Navigation Menu */
+
+.vert-nav-item {
+  .bee-nav-item-container.active {
+    .nav-icon-container svg {
+      fill: #c4a3eb;
+    }
+
+    .nav-text-container p {
+      color: #c4a3eb;
+    }
+  }
+
+  .nav-text-container .title {
+    margin: 10px 20px 10px 0px;
+    padding: 0;
+  }
+}

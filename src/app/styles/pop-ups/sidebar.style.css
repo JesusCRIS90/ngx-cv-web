@@ -1,0 +1,15 @@
+.custom-sidebar {
+  .bee-sidebar-popup-container {
+    background-color: #414141;
+  }
+
+  .bee-sidebar-popup-close-button {
+    color: #ffffff;
+    left: 5%;
+    right: auto;
+  }
+
+  .bee-sidebar-popup-content {
+    margin-top: 50px;
+  }
+}
