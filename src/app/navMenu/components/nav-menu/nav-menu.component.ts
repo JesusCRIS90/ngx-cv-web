@@ -1,4 +1,4 @@
-import { Component, input, QueryList } from '@angular/core';
+import { Component, inject, input, QueryList } from '@angular/core';
 
 import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layouts'
 import { SideBarPopupService } from '@beexy/ngx-popups'
@@ -11,7 +11,7 @@ import {
   VertNavSecMenuComponent
 } from '../../components'
 
-import { NavMenuItems } from "../../../data/temporal.data"
+import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../../config'
 
 @Component({
   selector: 'nav-menu',
@@ -29,13 +29,14 @@ export class NavMenuComponent {
 
   activeSecId = input.required<string>();
 
+  private commonConfig:AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
+
   constructor(
     protected sidebarPopupService: SideBarPopupService,
   ) { }
 
   getNavItems(): NavItem[] {
-    // NavMenuItems are Imported
-    return NavMenuItems;
+    return this.commonConfig.NavAppItems;
   }
 
   setSections(sections: QueryList<SectionTrackerDirective>) {
