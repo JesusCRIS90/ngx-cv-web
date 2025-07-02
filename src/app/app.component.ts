@@ -53,7 +53,7 @@ export class AppComponent {
 
     this.loadingDataState.set(DataLoadingState.LOADING);
 
-    loadSVGIcons(getRightPath(this.commonConfig.svgSpriteSheetSrc));
+    // loadSVGIcons(getRightPath(this.commonConfig.svgSpriteSheetSrc));
     // this.loadData(getRightPath(DATA_GITHUB_CDN));
     this.loadData(this.commonConfig.jsonDataSrc);
   }
