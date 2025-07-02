@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, Inject, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
@@ -19,13 +19,15 @@ import {
 } from "./utils/loadJSONData"
 
 import {
-  SVGs_PATH,
-  DATA_PATH,
-  DATA_KEY
+  DATA_KEY,
+  DATA_GITHUB_CDN
 } from "./utils/common-data"
 
 import { DataLoadingState } from './enums'
-import { AppData } from './interfaces'
+
+import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './config'
+
+
 
 @Component({
   selector: 'app-root',
@@ -37,26 +39,29 @@ export class AppComponent {
   DataLoadingState = DataLoadingState;
 
   private storage = inject(StoragesManager);
+  private commonConfig:AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
 
   loadingDataState = signal<DataLoadingState>(DataLoadingState.LOADING);
 
   constructor(
     private router: Router,
-  ) { }
+  ) {
+    console.log( '[AppComponent]', this.commonConfig );
+  }
 
   ngOnInit(): void {
 
     this.loadingDataState.set(DataLoadingState.LOADING);
 
-    loadSVGIcons(getRightPath(SVGs_PATH));
-    this.loadData(getRightPath(DATA_PATH));
-
-    // console.log(this.storage);
+    loadSVGIcons(getRightPath(this.commonConfig.svgSpriteSheetSrc));
+    // this.loadData(getRightPath(DATA_GITHUB_CDN));
+    this.loadData(this.commonConfig.jsonDataSrc);
   }
 
   protected async loadData(path: string) {
 
     const response = await loadData(path);
+    console.log(`Data Loaded`, response);
 
     if (response.fail) {
       this.loadingDataState.set(DataLoadingState.FAIL);
