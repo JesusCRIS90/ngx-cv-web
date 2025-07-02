@@ -12,4 +12,5 @@ export const APP_CONFIG: AppCommonConfig = {
   defaultLang: 'en',
   enableDebug: true,
   NavAppItems: getNavAppItems(),
+  initialLoadingFail: false,
 };

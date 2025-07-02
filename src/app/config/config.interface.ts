@@ -6,4 +6,5 @@ export interface AppCommonConfig {
   defaultLang: string;
   enableDebug: boolean;
   NavAppItems: NavItem[];
+  initialLoadingFail: boolean;
 }

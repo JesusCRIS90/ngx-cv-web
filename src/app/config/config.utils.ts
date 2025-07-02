@@ -7,7 +7,8 @@ export const getJSONDataSrc = (): string => {
 }
 
 export const getSVGSpritesSheetSrc = (): string => {
-  return '/assets/sprite-sheet/icons-sheet.svg';
+  // return '/assets/sprite-sheet/icons-sheet.svg';
+  return 'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/refs/heads/main/jriz-cv/icons-sheet.txt';
 }
 
 export const getNavAppItems = (): NavItem[] => {
