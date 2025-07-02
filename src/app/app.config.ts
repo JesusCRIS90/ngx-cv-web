@@ -7,10 +7,13 @@ import {
 
 import { routes } from './app.routes';
 
+import { COMMON_APP_CONFIG_PROVIDER } from './config'
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    StoragesManager
+    StoragesManager,
+    COMMON_APP_CONFIG_PROVIDER,
   ]
 };

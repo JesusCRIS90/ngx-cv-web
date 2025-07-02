@@ -1,0 +1,15 @@
+import { NavItem } from '@beexy/ngx-components'
+
+import { NavMenuItems } from './config.navigation'
+
+export const getJSONDataSrc = (): string => {
+  return 'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/refs/heads/main/jriz-cv/tes.json';
+}
+
+export const getSVGSpritesSheetSrc = (): string => {
+  return '/assets/sprite-sheet/icons-sheet.svg';
+}
+
+export const getNavAppItems = (): NavItem[] => {
+  return NavMenuItems;
+}
