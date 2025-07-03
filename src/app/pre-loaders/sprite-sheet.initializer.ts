@@ -1,4 +1,5 @@
-import { APP_INITIALIZER, inject, Provider } from '@angular/core';
+// import { APP_INITIALIZER, inject, Provider } from '@angular/core';
+import { inject, provideAppInitializer, EnvironmentProviders } from '@angular/core';
 
 import { SpriteSheetManager } from '@beexy/tools'
 import { APP_COMMON_CONFIG_TOKEN } from '../config';
@@ -17,9 +18,12 @@ export async function initializeSpriteSheet(): Promise<void> {
   }
 }
 
-export const SPRITE_SHEET_PROVIDER: Provider = {
-  provide: APP_INITIALIZER,
-  useFactory: () => initializeSpriteSheet,
-  deps: [],
-  multi: true,
-};
+/* APP_INITIALIZER Version */
+// export const SPRITE_SHEET_PROVIDER: Provider = {
+//   provide: APP_INITIALIZER,
+//   useFactory: () => initializeSpriteSheet,
+//   deps: [],
+//   multi: true,
+// };
+
+export const SPRITE_SHEET_PROVIDER: EnvironmentProviders = provideAppInitializer(initializeSpriteSheet);

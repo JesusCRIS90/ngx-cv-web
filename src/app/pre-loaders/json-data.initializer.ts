@@ -1,4 +1,5 @@
-import { APP_INITIALIZER, inject, Provider } from '@angular/core';
+// import { APP_INITIALIZER, inject, Provider } from '@angular/core';
+import { inject, provideAppInitializer, EnvironmentProviders } from '@angular/core';
 
 import {
   StoragesManager,
@@ -40,9 +41,12 @@ export async function initializeLoadJSONData(): Promise<void> {
   addValue2Storage<any>(storage, config.dataKey, data2Storage);
 }
 
-export const JSON_DATA_PROVIDER: Provider = {
-  provide: APP_INITIALIZER,
-  useFactory: () => initializeLoadJSONData,
-  deps: [],
-  multi: true,
-};
+/* APP_INITIALIZER Version */
+// export const JSON_DATA_PROVIDER: Provider = {
+//   provide: APP_INITIALIZER,
+//   useFactory: () => initializeLoadJSONData,
+//   deps: [],
+//   multi: true,
+// };
+
+export const JSON_DATA_PROVIDER: EnvironmentProviders = provideAppInitializer(initializeLoadJSONData);
