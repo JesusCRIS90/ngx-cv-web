@@ -11,7 +11,7 @@ import {
   VertNavSecMenuComponent
 } from '../../components'
 
-import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../../config'
+import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../../providers/config'
 
 @Component({
   selector: 'nav-menu',
