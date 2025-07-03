@@ -8,7 +8,7 @@ import {
 import { routes } from './app.routes';
 
 import { COMMON_APP_CONFIG_PROVIDER } from './config'
-import { SPRITE_SHEET_PROVIDER } from './pre-loaders/sprite-sheet.initializer'
+import { SPRITE_SHEET_PROVIDER, JSON_DATA_PROVIDER } from './pre-loaders'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     StoragesManager,
     COMMON_APP_CONFIG_PROVIDER,
-    SPRITE_SHEET_PROVIDER
+    SPRITE_SHEET_PROVIDER,
+    JSON_DATA_PROVIDER
   ]
 };

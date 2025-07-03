@@ -13,4 +13,6 @@ export const APP_CONFIG: AppCommonConfig = {
   enableDebug: true,
   NavAppItems: getNavAppItems(),
   initialLoadingFail: false,
+  dataKey: 'AppKey',
+  mimeTypeJSONData: 'txt'
 };
