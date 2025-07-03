@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import {
   StoragesManager,
@@ -8,16 +8,11 @@ import {
 import { ModalWindowHostComponent } from "@beexy/ngx-modals"
 import { SideBarPopUpHostComponent } from '@beexy/ngx-popups'
 
-import { AppViewComponent } from "./views"
-
-
-import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './config'
-
-
+import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './providers/config'
 
 @Component({
   selector: 'app-root',
-  imports: [ModalWindowHostComponent, SideBarPopUpHostComponent, AppViewComponent],
+  imports: [ModalWindowHostComponent, SideBarPopUpHostComponent, RouterOutlet],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
