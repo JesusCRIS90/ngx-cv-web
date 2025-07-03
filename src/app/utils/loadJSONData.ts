@@ -1,13 +1,14 @@
 // TODO: Move this function to @beexy/tools
 
 import {
-  BeeJSONFileClient,
+  BeePlainTextFileClient,
+  Adapt_TXTPlain2Json,
   RequestResponse
 } from "@beexy/tools"
 
 export async function loadData(path: string): Promise<RequestResponse> {
 
-  const response = await new BeeJSONFileClient().requestData( path );
+  const response = await new BeePlainTextFileClient().requestData( path, Adapt_TXTPlain2Json );
 
   return response;
 
