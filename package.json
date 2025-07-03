@@ -22,7 +22,7 @@
     "@beexy/ngx-layouts": "^1.0.3",
     "@beexy/ngx-modals": "^1.0.1",
     "@beexy/ngx-popups": "^1.0.2",
-    "@beexy/tools": "^1.0.6",
+    "@beexy/tools": "^1.0.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
