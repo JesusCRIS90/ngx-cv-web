@@ -7,8 +7,8 @@ import {
 
 import { routes } from './app.routes';
 
-import { COMMON_APP_CONFIG_PROVIDER } from './config'
-import { SPRITE_SHEET_PROVIDER, JSON_DATA_PROVIDER } from './pre-loaders'
+import { COMMON_APP_CONFIG_PROVIDER } from './providers/config'
+import { SPRITE_SHEET_PROVIDER, JSON_DATA_PROVIDER } from './providers/pre-loaders'
 
 export const appConfig: ApplicationConfig = {
   providers: [
