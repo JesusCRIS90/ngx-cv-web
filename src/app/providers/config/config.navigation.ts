@@ -2,27 +2,27 @@ import { NavItem } from '@beexy/ngx-components'
 
 export const NavMenuItems: NavItem[] = [
   {
-    icon: 'icon-home',
+    icon: 'bicon-common-home',
     id: 'home',
     title: 'Home',
   },
   {
-    icon: 'icon-trending-up',
+    icon: 'bicon-common-projects',
     id: 'projects',
     title: 'Projects',
   },
   {
-    icon: 'icon-credit-card',
+    icon: 'bicon-common-experience',
     id: 'experience',
     title: 'Experience',
   },
   {
-    icon: 'icon-upload',
+    icon: 'bicon-common-skills',
     id: 'skills',
     title: 'Skills',
   },
     {
-    icon: 'icon-monitor',
+    icon: 'bicon-common-contact',
     id: 'contact',
     title: 'Contact',
   },

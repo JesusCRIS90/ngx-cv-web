@@ -84,11 +84,11 @@ export class NavMenuComponent {
 function getRefIconId(secId: string): string {
   switch (secId) {
 
-    case 'home': return 'icon-home';
-    case 'projects': return 'icon-trending-up';
-    case 'experience': return 'icon-credit-card';
-    case 'skills': return 'icon-upload';
-    case 'contact': return 'icon-monitor';
+    case 'home': return 'bicon-common-home';
+    case 'projects': return 'bicon-common-projects';
+    case 'experience': return 'bicon-common-experience';
+    case 'skills': return 'bicon-common-skills';
+    case 'contact': return 'bicon-common-contact';
 
     default:
       return 'default-icon'
