@@ -1,5 +1,7 @@
 import { Component, HostListener, Output, EventEmitter, OnDestroy, input } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
+import { ScrollTrackerService } from '../../services/scroll-tracker.service';
+import { ScrollTrackerRegistryService } from '../../services/scroll-tracker-registry.service';
 
 export interface ScrollYEventInfo {
   yPosPixel: number,
@@ -22,7 +24,11 @@ export class ScrollTrackerComponent {
   private lastScrollY = 0;
   private scrollSubject = new Subject<number>();
 
-  constructor() {
+  constructor(
+    private scrollTrackerService: ScrollTrackerService,
+    private registry: ScrollTrackerRegistryService,
+  ) {
+    this.updateScrollRegistry();
     this.configureDebouncing();
   }
 
@@ -64,13 +70,25 @@ export class ScrollTrackerComponent {
         // Update YScroll Pos in Pixels
         this.lastScrollY = currentY;
 
-        this.scrollYEventEmitted.emit({
+        // object to emit
+        const emitedScrollData: ScrollYEventInfo = {
           yPosPixel: currentY,
           yPosPercentage: percentage,
           direction: direction,
           yMaxScrollSizePixel: maxScrollable
-        });
+        }
+
+        this.scrollYEventEmitted.emit(emitedScrollData);
+        this.scrollTrackerService.emit(emitedScrollData);
 
       });
+  }
+
+  protected updateScrollRegistry() {
+    if (this.registry.alreadyInstantiated) {
+      throw new Error('Only one instance of ScrollTrackerComponent is allowed.');
+    } else{
+      this.registry.alreadyInstantiated = true;
+    }
   }
 }

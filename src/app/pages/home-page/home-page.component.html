@@ -2,7 +2,6 @@
   id="home"
   dirSectionYscrollTracker
   [dirProp_sectionId]="'home'"
-  [dirProp_yScrollEvent]="yScrollEventData()"
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
@@ -10,7 +9,6 @@
   id="projects"
   dirSectionYscrollTracker
   [dirProp_sectionId]="'projects'"
-  [dirProp_yScrollEvent]="yScrollEventData()"
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
@@ -18,7 +16,6 @@
   id="experience"
   dirSectionYscrollTracker
   [dirProp_sectionId]="'experience'"
-  [dirProp_yScrollEvent]="yScrollEventData()"
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
@@ -26,7 +23,6 @@
   id="skills"
   dirSectionYscrollTracker
   [dirProp_sectionId]="'skills'"
-  [dirProp_yScrollEvent]="yScrollEventData()"
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
@@ -34,10 +30,8 @@
   id="contact"
   dirSectionYscrollTracker
   [dirProp_sectionId]="'contact'"
-  [dirProp_yScrollEvent]="yScrollEventData()"
   (dirEvt_sectionVisible)="onSectionActive($event)"
 />
 
 <nav-menu [activeSecId]="activeSecId()"/>
 
-<scroll-tracker (scrollYEventEmitted)="getYScrollEvent($event)" />

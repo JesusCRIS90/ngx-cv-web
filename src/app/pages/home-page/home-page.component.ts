@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
 
 import {
-  ScrollTrackerComponent,
-  ScrollYEventInfo,
   NavMenuComponent
 } from '../../navMenu/components'
 
@@ -20,7 +18,6 @@ import {
   selector: 'app-home-page',
   standalone: true,
   imports: [
-    ScrollTrackerComponent,
     ContactSectionComponent,
     ExperienceSectionComponent,
     HomeSectionComponent,
@@ -37,7 +34,6 @@ export default class HomePageComponent implements AfterViewInit {
   @ViewChild(NavMenuComponent) navMenu!: NavMenuComponent;
 
   activeSecId = signal<string>('home');
-  yScrollEventData = signal<ScrollYEventInfo>({ direction: 'up', yPosPercentage: 0, yPosPixel: 0, yMaxScrollSizePixel: 0 })
 
   ngAfterViewInit(): void {
     this.navMenu.setSections(this.sections);
@@ -45,10 +41,6 @@ export default class HomePageComponent implements AfterViewInit {
 
   getSections(): QueryList<SectionTrackerDirective> {
     return this.sections;
-  }
-
-  getYScrollEvent(scrollEvent: ScrollYEventInfo) {
-    this.yScrollEventData.set(scrollEvent);
   }
 
   onSectionActive(sectionID: string) {

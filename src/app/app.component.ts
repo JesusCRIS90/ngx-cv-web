@@ -9,10 +9,11 @@ import { ModalWindowHostComponent } from "@beexy/ngx-modals"
 import { SideBarPopUpHostComponent } from '@beexy/ngx-popups'
 
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './providers/config'
+import { ScrollTrackerComponent } from './navMenu/components'
 
 @Component({
   selector: 'app-root',
-  imports: [ModalWindowHostComponent, SideBarPopUpHostComponent, RouterOutlet],
+  imports: [ModalWindowHostComponent, SideBarPopUpHostComponent, RouterOutlet, ScrollTrackerComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
