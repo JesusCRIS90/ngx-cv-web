@@ -3,8 +3,7 @@ import { Component, inject, input, QueryList } from '@angular/core';
 import { ResponsiveLayoutComponent as ResponsiveLayout } from '@beexy/ngx-layouts'
 import { SideBarPopupService } from '@beexy/ngx-popups'
 import { ClickableIconComponent, NavItem } from '@beexy/ngx-components'
-
-import { SectionTrackerDirective } from "../../../directives"
+import { BeeSectionTrackerDirective } from '@beexy/ngx-navigation'
 
 import {
   HoriNavSecMenuComponent,
@@ -25,7 +24,7 @@ import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../../providers/con
 })
 export class NavMenuComponent {
 
-  private sections!: QueryList<SectionTrackerDirective>;
+  private sections!: QueryList<BeeSectionTrackerDirective>;
 
   activeSecId = input.required<string>();
 
@@ -39,7 +38,7 @@ export class NavMenuComponent {
     return this.commonConfig.NavAppItems;
   }
 
-  setSections(sections: QueryList<SectionTrackerDirective>) {
+  setSections(sections: QueryList<BeeSectionTrackerDirective>) {
     this.sections = sections;
     this.injectNavActions(this.getNavItems());
   }

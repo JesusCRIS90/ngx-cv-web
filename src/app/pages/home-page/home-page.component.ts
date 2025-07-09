@@ -1,10 +1,9 @@
 import { AfterViewInit, Component, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
+import { BeeSectionTrackerDirective } from '@beexy/ngx-navigation'
 
 import {
   NavMenuComponent
 } from '../../navMenu/components'
-
-import { SectionTrackerDirective } from "../../directives"
 
 import {
   ContactSectionComponent,
@@ -23,14 +22,14 @@ import {
     HomeSectionComponent,
     ProjectsSectionComponent,
     SkillsSectionComponent,
-    SectionTrackerDirective,
+    BeeSectionTrackerDirective,
     NavMenuComponent,
   ],
   templateUrl: './home-page.component.html',
 })
 export default class HomePageComponent implements AfterViewInit {
 
-  @ViewChildren(SectionTrackerDirective) sections!: QueryList<SectionTrackerDirective>;
+  @ViewChildren(BeeSectionTrackerDirective) sections!: QueryList<BeeSectionTrackerDirective>;
   @ViewChild(NavMenuComponent) navMenu!: NavMenuComponent;
 
   activeSecId = signal<string>('home');
@@ -39,7 +38,7 @@ export default class HomePageComponent implements AfterViewInit {
     this.navMenu.setSections(this.sections);
   }
 
-  getSections(): QueryList<SectionTrackerDirective> {
+  getSections(): QueryList<BeeSectionTrackerDirective> {
     return this.sections;
   }
 
