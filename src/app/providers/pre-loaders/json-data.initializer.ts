@@ -11,6 +11,8 @@ import {
 } from "@beexy/tools"
 
 import { APP_COMMON_CONFIG_TOKEN } from '../config';
+import { AppData } from '../../interfaces'
+import { AppDataMapper } from '../../mappers/AppDataMapper'
 
 export async function initializeLoadJSONData(): Promise<void> {
 
@@ -32,13 +34,16 @@ export async function initializeLoadJSONData(): Promise<void> {
     return;
   }
 
-  // TODO: On this process an checker/adaptor function must be applied to assure
-  // data injected on App has the Interface that App is expecting
-  // const data2Storage: AppData = data as AppData;
-  const data2Storage: any = response.adaptedData as any;
+  // TODO: Old Version - Check new one and delete this
+  // const data2Storage: any = response.adaptedData as any;
+  // addValue2Storage<any>(storage, config.dataKey, data2Storage);
 
-  // addValue2Storage<AppData>(this.storage, DATA_KEY, data2Storage);
-  addValue2Storage<any>(storage, config.dataKey, data2Storage);
+  const data2Storage: AppData = AppDataMapper.normalizeData(response.adaptedData);
+  if (!addValue2Storage<AppData>(storage, config.dataKey, data2Storage)) {
+    console.error(`Failed to inject Data towards Global Storage`);
+    config.initialLoadingFail = true;
+    return;
+  }
 }
 
 /* APP_INITIALIZER Version */
