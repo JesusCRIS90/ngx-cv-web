@@ -1,3 +1,5 @@
+/* @import '../color-schemmas/app-color.styles.css'; */
+
 .hori-nav-menu {
   position: fixed;
   top: 50%;
@@ -13,7 +15,8 @@
     width: 45px;
     height: 45px;
 
-    background-color: #7458a8;
+    /* background-color: #7458a8; */
+    background-color: var(--primary-color);
     border-radius: 50px;
 
     bee-svg-icon {
@@ -28,16 +31,19 @@
 
   .hori-nav-item {
     .bee-nav-item-container.active .nav-icon-container {
-      background-color: #c4a3eb;
+      /* background-color: #c4a3eb; */
+      background-color: var(--primary-light);
     }
 
     .bee-nav-item-container {
-      background-color:#7458a8;
+      /* background-color: #7458a8; */
+      background-color: var(--primary-color);
       border-radius: 50px;
     }
 
     .bee-nav-item-container.active {
-      background-color: #c4a3eb;
+      /* background-color: #c4a3eb; */
+      background-color: var(--primary-light);
       border-radius: 50px;
     }
 

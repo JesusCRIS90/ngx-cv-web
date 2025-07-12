@@ -1,0 +1,10 @@
+@import "./violet-schema.style.css";
+
+
+.color-schema-violet {
+  --primary-color: var(--violet-600);
+  --primary-dark: var(--violet-850);
+  --primary-light: var(--violet-350);
+
+  --bg-color: var(--violet-050);
+}

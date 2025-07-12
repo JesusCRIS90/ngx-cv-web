@@ -1,5 +1,6 @@
-@import './app/styles/pop-ups/pop-ups.styles.css';
-@import './app/styles/nav-menu/nav-menu.styles.css';
+@import "./app/styles/app-vars/app-vars.styles.css";
+@import "./app/styles/pop-ups/pop-ups.styles.css";
+@import "./app/styles/nav-menu/nav-menu.styles.css";
 
 /* This property is exclusive for development */
 section {
@@ -8,15 +9,6 @@ section {
 
 /* Change the BG Color */
 body {
-  background-color: rgb(145, 145, 145);
+  background-color: rgb(41, 41, 41);
+  /* background-color: var(--bg-color); */
 }
-
-
-
-
-
-
-
-
-
-

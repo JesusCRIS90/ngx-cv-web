@@ -8,6 +8,7 @@ import {
 import { routes } from './app.routes';
 
 import { COMMON_APP_CONFIG_PROVIDER } from './providers/config'
+import { COLOR_SCHEMA_CONFIG_PROVIDER } from './providers/color'
 import { SPRITE_SHEET_PROVIDER, JSON_DATA_PROVIDER } from './providers/pre-loaders'
 
 export const appConfig: ApplicationConfig = {
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     StoragesManager,
     COMMON_APP_CONFIG_PROVIDER,
     SPRITE_SHEET_PROVIDER,
-    JSON_DATA_PROVIDER
+    JSON_DATA_PROVIDER,
+    COLOR_SCHEMA_CONFIG_PROVIDER,
   ]
 };

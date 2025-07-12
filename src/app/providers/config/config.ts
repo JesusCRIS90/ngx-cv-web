@@ -14,5 +14,9 @@ export const APP_CONFIG: AppCommonConfig = {
   NavAppItems: getNavAppItems(),
   initialLoadingFail: false,
   dataKey: 'AppKey',
-  mimeTypeJSONData: 'txt'
+  mimeTypeJSONData: 'txt',
+  colorConfig: {
+    availableSchemas: ['violet', 'blue'],
+    prefix: 'color-schema-'
+  }
 };
