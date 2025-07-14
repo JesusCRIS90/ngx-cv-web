@@ -15,8 +15,4 @@ export const APP_CONFIG: AppCommonConfig = {
   initialLoadingFail: false,
   dataKey: 'AppKey',
   mimeTypeJSONData: 'txt',
-  colorConfig: {
-    availableSchemas: ['violet', 'blue'],
-    prefix: 'color-schema-'
-  }
 };

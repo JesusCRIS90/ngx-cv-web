@@ -1,7 +1,5 @@
 import { NavItem } from '@beexy/ngx-components'
 
-import { ColorSchemaConfig } from '../color'
-
 export interface AppCommonConfig {
   jsonDataSrc: string;
   mimeTypeJSONData: 'json' | 'txt';
@@ -11,5 +9,4 @@ export interface AppCommonConfig {
   NavAppItems: NavItem[];
   initialLoadingFail: boolean;
   dataKey: string;
-  colorConfig: ColorSchemaConfig,
 }

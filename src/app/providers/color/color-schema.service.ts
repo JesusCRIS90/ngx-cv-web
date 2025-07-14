@@ -1,7 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { BodyClassManager } from './body-class-manager'
 
-import { COLOR_SCHEMA_CONFIG, ColorSchemaConfig } from './color-schema-config'
+import { COLOR_SCHEMA_CONFIG_TOKEN, ColorSchemaConfig } from '../color'
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ColorSchemaService {
   private currentSchema: string | null = null;
 
   constructor(
-    @Optional() @Inject(COLOR_SCHEMA_CONFIG) config?: ColorSchemaConfig
+    @Optional() @Inject(COLOR_SCHEMA_CONFIG_TOKEN) config?: ColorSchemaConfig
   ) {
     if (config === undefined) return;
 
@@ -40,7 +40,7 @@ export class ColorSchemaService {
   }
 
   clearSchema(): void {
-    BodyClassManager.clearColorSchemaClasses(this.prefix);
+    BodyClassManager.clearClassesWithPrefix(this.prefix);
     this.currentSchema = null;
   }
 

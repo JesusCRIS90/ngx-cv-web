@@ -21,7 +21,7 @@ export class BodyClassManager {
     return document.body.classList.contains(className);
   }
 
-  static clearColorSchemaClasses(prefix: string = 'color-schema-'): void {
+  static clearClassesWithPrefix(prefix: string): void {
     const classesToRemove = Array.from(document.body.classList).filter((cls) =>
       cls.startsWith(prefix)
     );
