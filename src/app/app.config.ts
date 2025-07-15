@@ -5,7 +5,7 @@ import {
   StoragesManager
 } from "@beexy/tools"
 
-import { provideBeeColorSchema } from '@beexy/ngx-providers'
+import { provideBeeColorSchema, provideBeeResponsiveSchema } from '@beexy/ngx-providers'
 
 import { routes } from './app.routes';
 
@@ -21,6 +21,11 @@ export const appConfig: ApplicationConfig = {
       availableSchemas: ['violet', 'blue'],
       prefix: 'color-schema-',
       initialSchema: 'violet'
+    }),
+    provideBeeResponsiveSchema({
+      availableSchemas: ['big-screen', 'tablets', 'smartphone'],
+      prefix: 'responsive-schema-',
+      debouncingDelayMS: 100
     }),
     StoragesManager,
     USER_CONFIG_APP_PROVIDER,
