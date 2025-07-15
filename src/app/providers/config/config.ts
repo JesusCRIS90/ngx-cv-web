@@ -1,4 +1,7 @@
+import { beeCreateUserConfigAppProvider } from '@beexy/ngx-providers';
+
 import { AppCommonConfig } from './config.interface'
+
 
 import {
   getJSONDataSrc,
@@ -16,3 +19,6 @@ export const APP_CONFIG: AppCommonConfig = {
   dataKey: 'AppKey',
   mimeTypeJSONData: 'txt',
 };
+
+export const { token: APP_COMMON_CONFIG_TOKEN, provider: USER_CONFIG_APP_PROVIDER } =
+  beeCreateUserConfigAppProvider<AppCommonConfig>(APP_CONFIG, 'AppCommonConfigToken');

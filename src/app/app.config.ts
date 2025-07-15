@@ -9,8 +9,9 @@ import { provideBeeColorSchema } from '@beexy/ngx-providers'
 
 import { routes } from './app.routes';
 
-import { COMMON_APP_CONFIG_PROVIDER } from './providers/config'
+import { USER_CONFIG_APP_PROVIDER  } from './providers/config'
 import { SPRITE_SHEET_PROVIDER, JSON_DATA_PROVIDER } from './providers/pre-loaders'
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +23,7 @@ export const appConfig: ApplicationConfig = {
       initialSchema: 'violet'
     }),
     StoragesManager,
-    COMMON_APP_CONFIG_PROVIDER,
+    USER_CONFIG_APP_PROVIDER,
     SPRITE_SHEET_PROVIDER,
     JSON_DATA_PROVIDER,
   ]
