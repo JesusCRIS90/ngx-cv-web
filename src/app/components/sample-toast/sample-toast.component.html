@@ -1,0 +1,8 @@
+<bee-relative-layout>
+  <div class="sample-toast">
+    <bee-floating-layout [anchorPoint]="POLICY_POSITION.TOP_RIGHT" [posX]="97" [posY]="5">
+      <button class="toast-close-button" (click)="manualClose()">X</button>
+    </bee-floating-layout>
+    <p class="toast-message">{{ message }}</p>
+  </div>
+</bee-relative-layout>

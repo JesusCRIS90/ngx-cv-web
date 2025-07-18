@@ -15,7 +15,7 @@
             <bee-link-icon [link]="getData().url_linkedin" [size]="28" [refName]="'bicon-social-linkedin'" />
             <bee-link-icon [link]="getData().url_github" [size]="28" [refName]="'bicon-tech-github'" />
             <bee-link-icon [size]="28" [refName]="'bicon-common-pdf'" />
-            <bee-link-icon [size]="28" [refName]="'bicon-common-email'" />
+            <bee-svg-icon appClickableAction (actionClick)="copyEmailtToClipboard($event)" [refName]="'bicon-common-email'"/>
           </bee-horizontal-layout>
         </div>
       </bee-pair-layout>
