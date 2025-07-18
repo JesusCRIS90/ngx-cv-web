@@ -1,3 +1,24 @@
 <section>
-  <p>home-section works!</p>
+  <bee-responsive-layout>
+    <ng-template #screenVertical>
+      <p>TODO</p>
+    </ng-template>
+
+    <ng-template #screenHorizontal>
+      <bee-pair-layout [pairDistribution]="PAIR_POLICY.GLUED" [gap]="10">
+        <img [src]="getProfileUrl()" alt="" />
+        <div>
+          <h1>{{ getData().name.text }}</h1>
+          <h1>{{ getData().role.text }}</h1>
+          <p>{{ getData().briefBio.text }}</p>
+          <bee-horizontal-layout [gap]="10">
+            <bee-link-icon [link]="getData().url_linkedin" [size]="28" [refName]="'bicon-social-linkedin'" />
+            <bee-link-icon [link]="getData().url_github" [size]="28" [refName]="'bicon-tech-github'" />
+            <bee-link-icon [size]="28" [refName]="'bicon-common-pdf'" />
+            <bee-link-icon [size]="28" [refName]="'bicon-common-email'" />
+          </bee-horizontal-layout>
+        </div>
+      </bee-pair-layout>
+    </ng-template>
+  </bee-responsive-layout>
 </section>
