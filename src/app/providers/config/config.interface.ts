@@ -9,4 +9,5 @@ export interface AppCommonConfig {
   NavAppItems: NavItem[];
   initialLoadingFail: boolean;
   dataKey: string;
+  factorVert2Hori: number;
 }
