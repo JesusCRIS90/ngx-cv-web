@@ -47,6 +47,10 @@ export class NavMenuComponent {
     return getRefIconId(this.activeSecId());
   }
 
+  protected getFactorVert2Hori(): number {
+    return this.commonConfig.factorVert2Hori;
+  }
+
   protected onClickSidebarNavMenu(): void {
     this.sidebarPopupService.open({
       component: VertNavSecMenuComponent,
