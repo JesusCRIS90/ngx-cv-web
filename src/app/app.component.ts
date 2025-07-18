@@ -24,8 +24,8 @@ export class AppComponent {
   constructor(
     private router: Router,
   ) {
-    console.log('[AppComponent]', this.commonConfig);
-    console.log(this.storage);
+    // console.log('[AppComponent]', this.commonConfig);
+    // console.log(this.storage);
   }
 
   ngOnInit(): void {

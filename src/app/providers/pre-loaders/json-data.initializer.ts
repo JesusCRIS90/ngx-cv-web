@@ -34,6 +34,8 @@ export async function initializeLoadJSONData(): Promise<void> {
     return;
   }
 
+  // console.log( "JSON-DATA-READ", response.adaptedData );
+
   const data2Storage: AppData = AppDataMapper.normalizeData(response.adaptedData);
   if (!addValue2Storage<AppData>(storage, config.dataKey, data2Storage)) {
     console.error(`Failed to inject Data towards Global Storage`);
