@@ -1,3 +1,23 @@
 <section>
   <p>projects-section works!</p>
+
+  <app-carousel
+    [items]="getItems()"
+    [arrowsPos]="'Inside'"
+    [circular]="true"
+    [pauseOnHover]="true"
+    (itemTriggered)="getCarouselTriggerInfo($event)"
+    >
+    <ng-template #body let-item>
+      <h1>{{item}}</h1>
+    </ng-template>
+
+    <ng-template #arrowLeft>
+      <button>←</button>
+    </ng-template>
+
+    <ng-template #arrowRight>
+      <button>→</button>
+    </ng-template>
+  </app-carousel>
 </section>

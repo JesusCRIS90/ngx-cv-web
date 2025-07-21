@@ -1,0 +1,54 @@
+<bee-relative-layout
+  dirAppEndlessTimer
+  [intervalMs]="autoPlayInterval()"
+  (tick)="onNext()"
+  #autoplay="dirAppEndlessTimer"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="carousel-body">
+    <ng-container
+      *ngTemplateOutlet="bodyTemplate; context: { $implicit: currentItem }"
+    ></ng-container>
+  </div>
+
+  @if( arrowLeftTemplate && arrowRightTemplate ) {
+  <bee-floating-layout
+    [posX]="0"
+    [posY]="50"
+    [anchorPoint]="getLeftArrowPos().policy"
+  >
+    <app-auto-hide-layout [autoHideMs]="1500">
+      <div class="arrow arrow-left" (click)="onPrev()">
+        <ng-container *ngTemplateOutlet="arrowLeftTemplate"></ng-container>
+      </div>
+    </app-auto-hide-layout>
+  </bee-floating-layout>
+
+  <bee-floating-layout
+    [posX]="100"
+    [posY]="50"
+    [anchorPoint]="getRightArrowPos().policy"
+  >
+    <app-auto-hide-layout [autoHideMs]="1500">
+      <div class="arrow arrow-right" (click)="onNext()">
+        <ng-container *ngTemplateOutlet="arrowRightTemplate"></ng-container>
+      </div>
+    </app-auto-hide-layout>
+  </bee-floating-layout>
+
+  } @if(indicatorsTemplate) {
+  <div class="carousel-indicators">
+    <ng-container
+      *ngTemplateOutlet="
+        indicatorsTemplate;
+        context: {
+          goTo: goTo.bind(this),
+          currentIndex: queue?.getCurrentIndex(),
+          items: items
+        }
+      "
+    ></ng-container>
+  </div>
+  }
+</bee-relative-layout>
