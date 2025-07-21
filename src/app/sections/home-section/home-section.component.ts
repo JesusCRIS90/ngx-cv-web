@@ -5,45 +5,37 @@ import { StoragesManager } from '@beexy/tools';
 import {
   ResponsiveLayoutComponent as ResponsiveLayout,
   PairLayoutComponent as PairLayout,
-  HorizontalLayoutComponent as FlexHori,
   PAIR_DISTRIBUTION as PAIR_POLICY,
+  ScreenOrientation as BeeScreenOrientation,
+  RelativeLayoutComponent as RelatativeLayout,
+  FloatingLayoutComponent as FloatLayout,
+  POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
-
-import {
-  HighlightKeyWordsDirective,
-  LinkIconComponent as LinkComp,
-  SVGIconComponent as SVGIcon
-} from '@beexy/ngx-components'
-
-import { ToastService } from '@beexy/ngx-popups'
 
 import { AppData, AppDataHome } from '../../interfaces';
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../providers/config';
-import {
-  ClickableActionDirective as ActionClickDir
-} from '../../directives'
 
-import { SampleToastComponent } from '../../components'
-import { copyToClipboard } from '../../utils'
+import { WhoIamComponent } from '../../components'
 
 @Component({
   selector: 'sec-home',
-  imports: [ResponsiveLayout, PairLayout, SVGIcon, ActionClickDir, HighlightKeyWordsDirective, LinkComp, FlexHori],
+  imports: [ResponsiveLayout, PairLayout, RelatativeLayout, FloatLayout, WhoIamComponent],
   templateUrl: './home-section.component.html',
 })
 export class HomeSectionComponent implements OnInit {
 
+  POLICY = POLICY;
   PAIR_POLICY = PAIR_POLICY;
 
   private storage = inject(StoragesManager);
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
 
   private data!: AppDataHome;
+  private orientation: BeeScreenOrientation = 'landscape';
 
   constructor(
     private router: Router,
-    private toastService: ToastService
-  ) {
+   ) {
     const dataStorage = this.storage.getStorageFromKey<AppData>(this.commonConfig.dataKey);
 
     // TODO: Think a better way to proceed here
@@ -54,8 +46,6 @@ export class HomeSectionComponent implements OnInit {
     if (dataStorage !== null) {
       this.data = dataStorage.getData().home;
     }
-
-    // this.toastService.setLimit( 10 )
   }
 
   ngOnInit(): void {
@@ -63,7 +53,10 @@ export class HomeSectionComponent implements OnInit {
   }
 
   getProfileUrl(): string {
-    return this.data.profileImg.hori;
+    if( this.orientation === 'landscape' )
+      return this.data.profileImg.hori;
+
+    return this.data.profileImg.vert;
   }
 
   getData(): AppDataHome {
@@ -74,19 +67,8 @@ export class HomeSectionComponent implements OnInit {
     return this.commonConfig.factorVert2Hori;
   }
 
-  protected async copyEmailtToClipboard(datEmited: void) {
-    let message = 'Email Copied to Clipboard';
-
-    const success = await copyToClipboard(this.data.url_email);
-    if (!success) {
-      message = 'Error Copying email to clipboar. Try again'
-    }
-
-    this.toastService.open({
-      component: SampleToastComponent,
-      data: {
-        message
-      }
-    })
+  protected updateOrientation(orientation: BeeScreenOrientation){
+    this.orientation = orientation
+    // console.log( orientation );
   }
 }
