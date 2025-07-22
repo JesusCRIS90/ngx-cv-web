@@ -10,7 +10,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet, CommonModule } from '@angular/common';
 
 import {
   RelativeLayoutComponent as RelativeLayout,
@@ -23,6 +23,7 @@ import { EndlessTimerDirective } from '../endless-timer.directive'
 import { AutoHideLayoutComponent } from '../auto-hide-layout/auto-hide-layout.component'
 
 type ArrowPos = 'Inside' | 'Outside';
+type CarouselTransition = 'fade' | 'slide-left' | 'slide-right';
 
 export interface CarouselTriggerData {
   totalItems: number,
@@ -32,7 +33,15 @@ export interface CarouselTriggerData {
 
 @Component({
   selector: 'app-carousel',
-  imports: [NgTemplateOutlet, RelativeLayout, FloatLayout, EndlessTimerDirective, AutoHideLayoutComponent],
+  standalone: true,
+  imports: [
+    NgTemplateOutlet,
+    CommonModule,
+    RelativeLayout,
+    FloatLayout,
+    EndlessTimerDirective,
+    AutoHideLayoutComponent,
+  ],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
 })
@@ -43,9 +52,14 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
   items = input.required<T[]>();
   arrowsPos = input<ArrowPos>('Outside');
   circular = input<boolean>(true);
+
   autoplay = input<boolean>(true);
   autoPlayInterval = input<number>(3000);
   pauseOnHover = input<boolean>(false);
+  autoHideMs = input<number>(0);
+
+  transitionType = input<CarouselTransition>('slide-right');
+
 
   @Output() itemTriggered = new EventEmitter<CarouselTriggerData>();
 
@@ -57,7 +71,12 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
   @ViewChild('autoplay') autoplayDirective?: EndlessTimerDirective;
 
   currentItem!: T;
+  previousItem!: T | null;
   queue!: CircularQueue<T>;
+  direction: 'left' | 'right' = 'right';
+
+  animationClass = '';
+  private animationResetTimeout: any;
 
   ngAfterContentInit(): void {
 
@@ -88,6 +107,10 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
     if (!this.circular()) {
       if (this.queue.isLastIndex()) return;
     }
+    this.direction = 'right';
+    this.resetAnimationClass(this.getAnimationClass());
+
+    this.previousItem = this.currentItem;
     this.queue.moveNext();
     this.currentItem = this.queue.current;
     this.autoplayDirective?.reset();
@@ -99,6 +122,10 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
     if (!this.circular()) {
       if (this.queue.isFirstIndex()) return;
     }
+    this.direction = 'left';
+    this.resetAnimationClass(this.getAnimationClass());
+
+    this.previousItem = this.currentItem;
     this.queue.movePrev();
     this.currentItem = this.queue.current;
     this.autoplayDirective?.reset();
@@ -107,6 +134,11 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
   }
 
   goTo(index: number) {
+    if (index === this.queue.getCurrentIndex()) return;
+
+    this.direction = index > this.queue.getCurrentIndex() ? 'right' : 'left';
+    this.resetAnimationClass(this.getAnimationClass());
+
     this.queue.moveTo(index);
     this.currentItem = this.queue.current;
 
@@ -120,35 +152,19 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
     return leftArrowProvided !== rightArrowProvided ? true : false;
   }
 
-  protected getLeftArrowPos() {
+  protected getLeftArrowPolicy() {
     if (this.arrowsPos() === 'Outside') {
-      return {
-        posX: 0,
-        posY: 0,
-        policy: POLICY.CENTER_RIGHT
-      }
+      return POLICY.CENTER_RIGHT;
     } else {
-      return {
-        posX: 0,
-        posY: 0,
-        policy: POLICY.CENTER_LEFT
-      }
+      return POLICY.CENTER_LEFT;
     }
   }
 
-  protected getRightArrowPos() {
+  protected getRightArrowPolicy() {
     if (this.arrowsPos() === 'Outside') {
-      return {
-        posX: 100,
-        posY: 0,
-        policy: POLICY.CENTER_LEFT
-      }
+      return POLICY.CENTER_LEFT;
     } else {
-      return {
-        posX: 100,
-        posY: 0,
-        policy: POLICY.CENTER_RIGHT
-      }
+      return POLICY.CENTER_RIGHT;
     }
   }
 
@@ -166,5 +182,37 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
       currentItemNumerical: this.queue.getCurrentIndex(),
       currentItem: this.currentItem
     })
+  }
+
+  protected getCurrentIndex(): number {
+    return this.queue.getCurrentIndex();
+  }
+
+  protected getAnimationClass(): string {
+    if (this.transitionType() === 'fade') {
+      return this.queue.getCurrentIndex() % 2 ? 'fade-animation-1' : 'fade-animation-2';
+    }
+    return this.direction === 'left' ? 'slide-left-animation' : 'slide-right-animation';
+  }
+
+  resetAnimationClass(className: string) {
+    if (className === 'fade-animation') {
+      this.animationClass = className;
+      return;
+    }
+
+    clearTimeout(this.animationResetTimeout);
+    this.animationClass = '';
+    this.animationResetTimeout = setTimeout(() => {
+      this.animationClass = className;
+    }, 0);
+  }
+
+  protected onAutoPlay(){
+    if( this.transitionType() === 'slide-left' ) {
+      this.onPrev();
+      return;
+    }
+    this.onNext();
   }
 }

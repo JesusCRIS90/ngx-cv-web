@@ -1,12 +1,12 @@
 <bee-relative-layout
   dirAppEndlessTimer
   [intervalMs]="autoPlayInterval()"
-  (tick)="onNext()"
+  (tick)="onAutoPlay()"
   #autoplay="dirAppEndlessTimer"
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()"
 >
-  <div class="carousel-body">
+  <div class="carousel-body" [ngClass]="animationClass">
     <ng-container
       *ngTemplateOutlet="bodyTemplate; context: { $implicit: currentItem }"
     ></ng-container>
@@ -16,9 +16,9 @@
   <bee-floating-layout
     [posX]="0"
     [posY]="50"
-    [anchorPoint]="getLeftArrowPos().policy"
+    [anchorPoint]="getLeftArrowPolicy()"
   >
-    <app-auto-hide-layout [autoHideMs]="1500">
+    <app-auto-hide-layout [autoHideMs]="autoHideMs()">
       <div class="arrow arrow-left" (click)="onPrev()">
         <ng-container *ngTemplateOutlet="arrowLeftTemplate"></ng-container>
       </div>
@@ -28,9 +28,9 @@
   <bee-floating-layout
     [posX]="100"
     [posY]="50"
-    [anchorPoint]="getRightArrowPos().policy"
+    [anchorPoint]="getRightArrowPolicy()"
   >
-    <app-auto-hide-layout [autoHideMs]="1500">
+    <app-auto-hide-layout [autoHideMs]="autoHideMs()">
       <div class="arrow arrow-right" (click)="onNext()">
         <ng-container *ngTemplateOutlet="arrowRightTemplate"></ng-container>
       </div>

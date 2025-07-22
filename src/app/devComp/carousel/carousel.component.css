@@ -2,4 +2,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* width: 100%; */
+}
+
+/* Fade Animation */
+.fade-animation-1 {
+  animation: fadeIn 1s ease;
+}
+
+.fade-animation-2 {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide Left */
+.slide-left-animation {
+  animation: slideInFromRight 0.3s ease;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Right */
+.slide-right-animation {
+  animation: slideInFromLeft 0.3s ease;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
