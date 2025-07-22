@@ -7,7 +7,7 @@
     [circular]="true"
     [pauseOnHover]="true"
     [transitionType]="'fade'"
-    (itemTriggered)="getCarouselTriggerInfo($event)"
+    (indexChanged)="getCarouselTriggerInfo($event)"
     >
     <ng-template #body let-item>
       <h1>{{item}}</h1>
