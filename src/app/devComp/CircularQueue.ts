@@ -30,9 +30,9 @@ export class CircularQueue<T = unknown> {
     this.index = this.calculatePrevIndex();
   }
 
-  moveTo( pos: number ): void {
-    if( !this.isValidPos( pos ) ) return;
-    this.index = pos;
+  moveTo( index: number ): void {
+    if( !this.isValidIndex( index ) ) return;
+    this.index = index;
   }
 
   getCurrentIndex(): number {
@@ -54,8 +54,8 @@ export class CircularQueue<T = unknown> {
     return (this.index - 1 + this.items.length) % this.items.length;
   }
 
-  protected isValidPos(pos: number): boolean {
-    if (pos < 0) return false;
-    return ( pos <= this.items.length - 1 ) ? true : false;
+  isValidIndex(index: number): boolean {
+    if (index < 0) return false;
+    return ( index <= this.items.length - 1 ) ? true : false;
   }
 }

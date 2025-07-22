@@ -9,6 +9,7 @@ import {
   OnDestroy,
   Output,
   EventEmitter,
+  computed,
 } from '@angular/core';
 import { NgTemplateOutlet, CommonModule } from '@angular/common';
 
@@ -49,6 +50,7 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
 
   POLICY = POLICY;
 
+  setIndex = input<number>();
   items = input.required<T[]>();
   arrowsPos = input<ArrowPos>('Outside');
   circular = input<boolean>(true);
@@ -61,7 +63,7 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
   transitionType = input<CarouselTransition>('slide-right');
 
 
-  @Output() itemTriggered = new EventEmitter<CarouselTriggerData>();
+  @Output() indexChanged = new EventEmitter<CarouselTriggerData>();
 
   @ContentChild('body') bodyTemplate!: TemplateRef<any>;
   @ContentChild('arrowLeft') arrowLeftTemplate?: TemplateRef<any>;
@@ -69,6 +71,14 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
   @ContentChild('indicators') indicatorsTemplate?: TemplateRef<any>;
 
   @ViewChild('autoplay') autoplayDirective?: EndlessTimerDirective;
+
+  readonly onSetIndexChange = computed(() => {
+    const index = this.setIndex();
+    if (index != null && this.queue.isValidIndex(index) && index !== this.queue.getCurrentIndex()) {
+      this.goTo(index);
+    }
+    return index;
+  });
 
   currentItem!: T;
   previousItem!: T | null;
@@ -177,7 +187,7 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
   }
 
   protected emitCarouselTriggered() {
-    this.itemTriggered.emit({
+    this.indexChanged.emit({
       totalItems: this.queue.totalItems,
       currentItemNumerical: this.queue.getCurrentIndex(),
       currentItem: this.currentItem
@@ -208,8 +218,8 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
     }, 0);
   }
 
-  protected onAutoPlay(){
-    if( this.transitionType() === 'slide-left' ) {
+  protected onAutoPlay() {
+    if (this.transitionType() === 'slide-left') {
       this.onPrev();
       return;
     }
