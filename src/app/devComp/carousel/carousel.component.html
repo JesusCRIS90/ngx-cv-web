@@ -39,16 +39,18 @@
 
   } @if(indicatorsTemplate) {
   <div class="carousel-indicators">
-    <ng-container
-      *ngTemplateOutlet="
-        indicatorsTemplate;
-        context: {
-          goTo: goTo.bind(this),
-          currentIndex: queue?.getCurrentIndex(),
-          items: items
-        }
-      "
-    ></ng-container>
+    <bee-floating-layout [posX]="50" [posY]="100" [anchorPoint]="getIndicatorPolicy()">
+      <ng-container
+        *ngTemplateOutlet="
+          indicatorsTemplate;
+          context: {
+            goTo: goTo.bind(this),
+            currentIndex: queue?.getCurrentIndex(),
+            items: items
+          }
+        "
+      ></ng-container>
+    </bee-floating-layout>
   </div>
   }
 </bee-relative-layout>

@@ -10,6 +10,8 @@ import {
   Output,
   EventEmitter,
   computed,
+  linkedSignal,
+  effect,
 } from '@angular/core';
 import { NgTemplateOutlet, CommonModule } from '@angular/common';
 
@@ -23,7 +25,7 @@ import { CircularQueue } from '../CircularQueue'
 import { EndlessTimerDirective } from '../endless-timer.directive'
 import { AutoHideLayoutComponent } from '../auto-hide-layout/auto-hide-layout.component'
 
-type ArrowPos = 'Inside' | 'Outside';
+type Position = 'Inside' | 'Outside';
 type CarouselTransition = 'fade' | 'slide-left' | 'slide-right';
 
 export interface CarouselTriggerData {
@@ -50,9 +52,10 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
 
   POLICY = POLICY;
 
-  setIndex = input<number>();
+  setIndex = input<number|null>();
   items = input.required<T[]>();
-  arrowsPos = input<ArrowPos>('Outside');
+  arrowsPos = input<Position>('Outside');
+  indicatorPos = input<Position>('Outside');
   circular = input<boolean>(true);
 
   autoplay = input<boolean>(true);
@@ -72,13 +75,7 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
 
   @ViewChild('autoplay') autoplayDirective?: EndlessTimerDirective;
 
-  readonly onSetIndexChange = computed(() => {
-    const index = this.setIndex();
-    if (index != null && this.queue.isValidIndex(index) && index !== this.queue.getCurrentIndex()) {
-      this.goTo(index);
-    }
-    return index;
-  });
+  setIndexSignal = linkedSignal(this.setIndex);
 
   currentItem!: T;
   previousItem!: T | null;
@@ -87,6 +84,16 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
 
   animationClass = '';
   private animationResetTimeout: any;
+
+  constructor() {
+    effect(() => {
+      const index = this.setIndexSignal();
+      // console.log('LinkedSignal triggered with index:', index);
+      if (index != null && this.queue.isValidIndex(index) && index !== this.queue.getCurrentIndex()) {
+        this.goTo(index);
+      }
+    });
+  }
 
   ngAfterContentInit(): void {
 
@@ -179,6 +186,14 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
       return POLICY.CENTER_LEFT;
     } else {
       return POLICY.CENTER_RIGHT;
+    }
+  }
+
+  protected getIndicatorPolicy() {
+    if( this.indicatorPos() === 'Outside' ){
+      return POLICY.TOP_CENTER;
+    } else{
+      return POLICY.BOTTOM_CENTER;
     }
   }
 
