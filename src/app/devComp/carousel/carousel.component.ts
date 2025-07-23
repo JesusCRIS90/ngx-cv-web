@@ -113,6 +113,10 @@ export class CarouselComponent<T> implements AfterContentInit, AfterViewInit, On
     this.autoplayDirective?.stop();
   }
 
+  get totalElements() {
+    return this.queue.totalItems;
+  }
+
   onNext() {
     if (!this.circular()) {
       if (this.queue.isLastIndex()) return;

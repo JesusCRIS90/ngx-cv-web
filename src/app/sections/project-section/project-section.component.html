@@ -8,9 +8,9 @@
     [pauseOnHover]="true"
     [transitionType]="'fade'"
     (indexChanged)="getCarouselTriggerInfo($event)"
-    >
+  >
     <ng-template #body let-item>
-      <h1>{{item}}</h1>
+      <h1>{{ item }}</h1>
     </ng-template>
 
     <ng-template #arrowLeft>
@@ -20,5 +20,18 @@
     <ng-template #arrowRight>
       <button>→</button>
     </ng-template>
+
+    <ng-template #indicators>
+      <bee-indicators
+        [totalElements]="totalElements"
+        [activeElement]="currentIndex"
+        [activeElementClass]="'active-indicator'"
+      >
+        <ng-template #element let-isActive="isActive">
+          <div class="circle" [class.active-indicator]="isActive"></div>
+        </ng-template>
+      </bee-indicators>
+    </ng-template>
   </app-carousel>
+
 </section>
