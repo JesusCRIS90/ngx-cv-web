@@ -1,0 +1,22 @@
+<!-- <ng-container @for (let idx of totalElements(); track idx)>
+  <ng-container
+    *ngTemplateOutlet="element; context: { isActive: idx === activeElement() }"
+  >
+  </ng-container>
+</ng-container> -->
+
+
+@for (idx of range(); track idx){
+  <ng-container
+    *ngTemplateOutlet="element; context: { isActive: idx === activeElement() }"
+  >
+  </ng-container>
+}
+
+
+<!-- <ng-container *ngFor="let i of [].constructor(totalElements()); let idx = index">
+  <ng-container
+    *ngTemplateOutlet="element; context: { isActive: idx === activeElement() }"
+  >
+  </ng-container>
+</ng-container> -->

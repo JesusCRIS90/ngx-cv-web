@@ -1,0 +1,9 @@
+.auto-hide-wrapper {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.auto-hide-wrapper.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

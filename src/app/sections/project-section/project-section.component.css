@@ -1,0 +1,14 @@
+/* Only for testing purpose. Delete it on near future */
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: lightgray;
+  display: inline-block;
+  margin: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.active-indicator {
+  background-color: dodgerblue;
+}
