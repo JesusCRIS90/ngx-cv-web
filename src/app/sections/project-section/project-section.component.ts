@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { CarouselComponent, CarouselTriggerData } from '../../devComp/carousel/carousel.component'
 import { IndicatorsComponent } from '../../devComp/indicators/indicators.component'
@@ -16,14 +16,21 @@ export class ProjectsSectionComponent {
   totalElements: number = this.items.length;
   currentIndex: number = 0;
 
-  getItems(){
+  indicatorIndex = signal<number | null>(null);
+
+  getItems() {
     return this.items;
   }
 
-  getCarouselTriggerInfo(data: CarouselTriggerData){
+  getCarouselTriggerInfo(data: CarouselTriggerData) {
     this.totalElements = data.totalItems;
     this.currentIndex = data.currentItemNumerical;
     // console.log( data );
+  }
+
+  IndicatorElementTriggered(index: number) {
+    console.log(`Indicator:${index} clicked`);
+    this.indicatorIndex.set(index);
   }
 
 }
