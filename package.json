@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@beexy/ngx-components": "^1.0.14",
-    "@beexy/ngx-layouts": "^1.0.4",
+    "@beexy/ngx-layouts": "^1.0.9",
     "@beexy/ngx-modals": "^1.0.1",
     "@beexy/ngx-navigation": "^1.0.0",
     "@beexy/ngx-popups": "^1.0.6",
