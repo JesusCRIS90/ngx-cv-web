@@ -6,3 +6,4 @@ export * from './short-experience-card/short-experience-card.component'
 
 export * from './short-vert-project-card/short-vert-project-card.component'
 export * from './short-hori-project-card/short-hori-project-card.component'
+export * from './long-project-card/long-project-card.component'
