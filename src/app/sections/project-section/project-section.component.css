@@ -1,14 +1,23 @@
-/* Only for testing purpose. Delete it on near future */
-.circle {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: lightgray;
-  display: inline-block;
-  margin: 4px;
-  transition: background-color 0.3s ease;
+.projects-sec{
+  padding-top: 20px;
 }
 
-.active-indicator {
-  background-color: dodgerblue;
+.projects-sec-hori-container{
+  .projects-title{
+    color: aliceblue;
+    align-items: center;
+    font-size: 60px;
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+}
+
+.projects-sec-vert-container{
+  .projects-title{
+    color: aliceblue;
+    align-items: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
 }
