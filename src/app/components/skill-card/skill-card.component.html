@@ -1,9 +1,9 @@
 <div class="skill-card">
   <bee-pair-layout [pairDistribution]="PAIR_POLICY.GLUED" [gap]="10" [spaceDistribution]="'20% auto'">
-    <bee-svg-icon class="skill-card-svg" [refName]="'bicon-tech-typescript'" [size]="45"/>
+    <bee-svg-icon class="skill-card-svg" [refName]="getIconName()" [size]="45"/>
     <div class="skill-card-text">
-      <h1>TypeScript</h1>
-      <p>Programming Language</p>
+      <h1>{{ getName() }}</h1>
+      <p>{{ getTopic() }}</p>
     </div>
   </bee-pair-layout>
 </div>
