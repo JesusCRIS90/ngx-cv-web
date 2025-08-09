@@ -1,7 +1,7 @@
 import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appClickableAction]',
+  selector: '[DClickableAction]',
 })
 export class ClickableActionDirective {
   @Output() actionClick = new EventEmitter<void>();
