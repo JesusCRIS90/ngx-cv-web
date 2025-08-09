@@ -12,3 +12,38 @@ body {
   background-color: rgb(41, 41, 41);
   /* background-color: var(--bg-color); */
 }
+
+/* Move to a CSS File */
+
+.skills-section {
+
+  width: 1500px;
+  margin: auto;
+
+  .skills-filter {
+    margin-bottom: 30px;
+
+    .skill-chip {
+      .chip-container {
+        border-radius: 25px;
+        background-color: #333333;
+        border: 2px solid #969696;
+        cursor: pointer;
+        font-size: 20px;
+
+        .chip-label {
+          color: #ffffff;
+          margin: 5px 15px 5px 15px;
+        }
+      }
+      .chip-container:hover {
+        border: 2px solid #9b83e1;
+      }
+    }
+    .skill-chip.item-active{
+      .chip-container{
+        border: 2px solid #9b83e1;
+      }
+    }
+  }
+}
