@@ -1,0 +1,24 @@
+.short-vert-project-card {
+  width: 300px;
+  height: auto;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 10px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hover-in{
+    background: #242424;
+    opacity: .15;
+  }
+
+  .overlay-text{
+    color: #ffffff;
+    opacity: 100%;
+  }
+}

@@ -1,0 +1,20 @@
+<bee-relative-layout class="short-hori-project-card">
+  <div DClickableAction (actionClick)="onClickAction()" beeHoverOnce (hoverChange)="onHoverChange($event)">
+    <img [class.hover-in]="onHover" [src]="imgUrl()" alt="NoImage" />
+    @if ( onHover ) {
+    <bee-floating-layout
+      [posX]="50"
+      [posY]="50"
+      [anchorPoint]="POLICY.CENTER_CENTER"
+    >
+      <div class="overlay-text">
+        <h1>Project Title</h1>
+        <p>Brief Description</p>
+      </div>
+    </bee-floating-layout>
+    }
+  </div>
+</bee-relative-layout>
+
+
+<!-- "./assets/images/hori-test-2.jpg" -->
