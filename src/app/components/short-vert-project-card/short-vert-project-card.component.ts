@@ -7,7 +7,10 @@ import {
   POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
 
+import { NoModalWindowService } from '@beexy/ngx-popups'
+
 import { ClickableActionDirective } from '../../directives'
+import { LongProjectCardComponent as LongProjectCard } from '../../components'
 
 @Component({
   selector: 'short-vert-project-card',
@@ -21,6 +24,8 @@ export class ShortVertProjectCardComponent {
   onHover: boolean = false;
   imgUrl = input.required<string>();
 
+  constructor(private noModalService: NoModalWindowService){}
+
   onHoverChange(isHovered: boolean) {
     // console.log('Hovered:', isHovered);
     this.onHover = isHovered;
@@ -28,6 +33,10 @@ export class ShortVertProjectCardComponent {
 
   onClickAction() {
     console.log('Clicked Project Card');
+    this.noModalService.open({
+      component: LongProjectCard,
+      data: {}
+    })
   }
 
 }
