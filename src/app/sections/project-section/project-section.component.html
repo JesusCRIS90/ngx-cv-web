@@ -1,39 +1,17 @@
 <section>
   <p>projects-section works!</p>
 
-  <app-carousel
-    [items]="getItems()"
-    [arrowsPos]="'Inside'"
-    [circular]="true"
-    [pauseOnHover]="true"
-    [transitionType]="'slide-right'"
-    (indexChanged)="getCarouselTriggerInfo($event)"
-    [setIndex]="indicatorIndex()"
-  >
+
+
+  <bee-vert-carousel [autoPlayInterval]="4000" [pauseOnHover]="true" [transitionType]="'fade'" [items]="vertURLs">
     <ng-template #body let-item>
-      <h1>{{ item }}</h1>
+      <short-vert-project-card [imgUrl]="item"/>
     </ng-template>
+  </bee-vert-carousel>
 
-    <ng-template #arrowLeft>
-      <button>←</button>
+  <bee-hori-carousel [pauseOnHover]="true" [transitionType]="'fade'" [items]="horiURLs">
+    <ng-template #body let-item>
+      <short-hori-project-card [imgUrl]="item" />
     </ng-template>
-
-    <ng-template #arrowRight>
-      <button>→</button>
-    </ng-template>
-
-    <ng-template #indicators>
-      <bee-indicators
-        [totalElements]="totalElements"
-        [activeElement]="currentIndex"
-        [activeElementClass]="'active-indicator'"
-        (indexClicked)="IndicatorElementTriggered($event)"
-      >
-        <ng-template #element let-isActive="isActive">
-          <div class="circle" [class.active-indicator]="isActive"></div>
-        </ng-template>
-      </bee-indicators>
-    </ng-template>
-  </app-carousel>
-
+  </bee-hori-carousel>
 </section>

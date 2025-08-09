@@ -1,36 +1,36 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { CarouselComponent, CarouselTriggerData } from '../../devComp/carousel/carousel.component'
-import { IndicatorsComponent } from '../../devComp/indicators/indicators.component'
+const horiUrls = [
+  "./assets/images/hori-test-1.jpg",
+  "./assets/images/hori-test-2.jpg",
+  "./assets/images/hori-test-3.jpg"
+]
+
+const vertUrls = [
+  "./assets/images/dog-test-1.jpg",
+  "./assets/images/dog-test-2.jpg",
+  "./assets/images/dog-test-3.jpg",
+]
+
+import {
+  ShortVertProjectCardComponent as ShortVertCardProject,
+  ShortHoriProjectCardComponent as ShortHoriCardProject,
+} from '../../components'
+
+import {
+  BeeHorizontalCarouselComponent as HoriCarousel,
+  BeeVerticalCarouselComponent as VertCarousel,
+} from '@beexy/ngx-navigation'
 
 @Component({
   selector: 'sec-projects',
-  imports: [CarouselComponent, IndicatorsComponent],
+  imports: [ShortVertCardProject, ShortHoriCardProject, HoriCarousel, VertCarousel],
   templateUrl: './project-section.component.html',
   styleUrl: './project-section.component.css'
 })
 export class ProjectsSectionComponent {
 
-  items = ['Slide1', 'Slide2', 'Slide3', 'Slide4', 'Slide5'];
-
-  totalElements: number = this.items.length;
-  currentIndex: number = 0;
-
-  indicatorIndex = signal<number | null>(null);
-
-  getItems() {
-    return this.items;
-  }
-
-  getCarouselTriggerInfo(data: CarouselTriggerData) {
-    this.totalElements = data.totalItems;
-    this.currentIndex = data.currentItemNumerical;
-    // console.log( data );
-  }
-
-  IndicatorElementTriggered(index: number) {
-    console.log(`Indicator:${index} clicked`);
-    this.indicatorIndex.set(index);
-  }
+  horiURLs = horiUrls;
+  vertURLs = vertUrls;
 
 }
