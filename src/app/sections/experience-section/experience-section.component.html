@@ -1,4 +1,12 @@
 <section>
   <p>experience-section works!</p>
-  <short-experience-card />
+  <!-- <short-experience-card [experience]="getEvents()[0]" /> -->
+
+  <bee-timeline [events]="getEvents()" [align]="'left'">
+    <ng-template #content let-event>
+      <short-experience-card [experience]="event" />
+      <!-- <p>{{ event.role }}</p> -->
+    </ng-template>
+  </bee-timeline>
+
 </section>
