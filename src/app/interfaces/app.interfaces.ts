@@ -4,3 +4,11 @@ export interface SkillCard {
   tag: string,
   refIconName: string,
 }
+
+export interface TimeLineCard {
+  icon: string,
+  role: string,
+  timeSpan: string,
+  company: string,
+  description: string,
+}

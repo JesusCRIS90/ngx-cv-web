@@ -1,0 +1,35 @@
+<div class="=bee-timeline">
+  <div
+    *ngFor="let event of events(); let i = index"
+    class="bee-timeline-item"
+    [ngClass]="getItemAlignment(i)"
+  >
+    <!-- Left side content -->
+    <div class="bee-timeline-content" *ngIf="getItemAlignment(i) === 'left'">
+      <ng-container
+        *ngTemplateOutlet="contentTemplate; context: { $implicit: event }"
+      ></ng-container>
+    </div>
+
+    <!-- Marker column -->
+    <div class="bee-timeline-marker-column">
+      <div class="bee-timeline-marker">
+        <ng-container
+          *ngIf="markerTemplate; else defaultMarker"
+          [ngTemplateOutlet]="markerTemplate"
+          [ngTemplateOutletContext]="{ $implicit: event }"
+        ></ng-container>
+        <ng-template #defaultMarker>
+          <div class="bee-default-marker"></div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Right side content -->
+    <div class="bee-timeline-content" *ngIf="getItemAlignment(i) === 'right'">
+      <ng-container
+        *ngTemplateOutlet="contentTemplate; context: { $implicit: event }"
+      ></ng-container>
+    </div>
+  </div>
+</div>
