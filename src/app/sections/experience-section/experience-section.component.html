@@ -1,12 +1,25 @@
 <section>
   <p>experience-section works!</p>
-  <!-- <short-experience-card [experience]="getEvents()[0]" /> -->
 
-  <bee-timeline [events]="getEvents()" [align]="'left'">
+  <bee-responsive-layout (orientationChange)="onOrientationChange($event)" [TriggerFactorVert2Hori]="getFactorVert2Hori()">
+    <ng-template #screenVertical></ng-template>
+    <ng-template #screenHorizontal></ng-template>
+  </bee-responsive-layout>
+
+  <bee-timeline [events]="getEvents()" [align]="getTimeLineAligment()">
     <ng-template #content let-event>
-      <short-experience-card [experience]="event" />
-      <!-- <p>{{ event.role }}</p> -->
+      <short-experience-card
+        class="short-exp-card"
+        [experience]="event"
+        DClickableAction
+        (actionClick)="onClickExpCard()"
+      />
+    </ng-template>
+    <ng-template #marker let-event>
+      <bee-round-icon
+        class="timeline-custom-icon"
+        [refName]="getIconRef(event.type)"
+      />
     </ng-template>
   </bee-timeline>
-
 </section>

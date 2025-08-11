@@ -46,3 +46,13 @@ body {
     }
   }
 }
+
+
+
+.timeline-custom-icon svg{
+  fill: #ffffff;
+}
+
+.timeline-custom-icon div{
+  background-color: var(--violet-600) !important;
+}
