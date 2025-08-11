@@ -1,15 +1,21 @@
-<div class="=bee-timeline">
-  <div
-    *ngFor="let event of events(); let i = index"
-    class="bee-timeline-item"
-    [ngClass]="getItemAlignment(i)"
+<div class="bee-timeline">
+
+  <bee-grid-1d-layout [inputGridDistribution]="'3fr auto 3fr'"
+  *ngFor="let event of events(); let i = index"
+  beeElementMetrics (metricsChange)="onElementMetricsChanges($event, i)"
+  class="bee-timeline-item"
   >
+
     <!-- Left side content -->
+    @if ( getItemAlignment(i) === 'left' ) {
     <div class="bee-timeline-content" *ngIf="getItemAlignment(i) === 'left'">
       <ng-container
         *ngTemplateOutlet="contentTemplate; context: { $implicit: event }"
       ></ng-container>
     </div>
+    } @else {
+    <div></div>
+    }
 
     <!-- Marker column -->
     <div class="bee-timeline-marker-column">
@@ -26,10 +32,14 @@
     </div>
 
     <!-- Right side content -->
+    @if ( getItemAlignment(i) === 'right' ) {
     <div class="bee-timeline-content" *ngIf="getItemAlignment(i) === 'right'">
       <ng-container
         *ngTemplateOutlet="contentTemplate; context: { $implicit: event }"
       ></ng-container>
     </div>
-  </div>
+    } @else {
+      <div></div>
+    }
+  </bee-grid-1d-layout>
 </div>

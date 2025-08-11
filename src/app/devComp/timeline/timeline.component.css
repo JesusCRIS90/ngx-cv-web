@@ -1,18 +1,12 @@
-:host {
-  display: block;
-  width: fit-content;
-}
+/* :host {} */
 
 .bee-timeline {
-  display: flex;
-  flex-direction: column;
   position: relative;
 }
 
 .bee-timeline-item {
-  display: flex;
-  align-items: center;
-  margin: 1.5rem 0;
+  margin: 10px 0;
+  width: fit-content;
 
   .left {
     flex-direction: row;
@@ -33,16 +27,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 0 0 40px;
+  /* flex: 0 0 40px; */
 }
 
-.bee-timeline-marker-column::before {
+.bee-timeline-item:not(:last-child) .bee-timeline-marker-column::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: #ec4242;
+  width: 5px;
+  /* height: 122px; */
+  height: var(--spine-height, 122px); /* default fallback */
+  background: #acacac;
   z-index: 0;
 }
 
@@ -57,6 +53,5 @@
   background: #007bff;
   border-radius: 50%;
   border: 2px solid white;
-  box-shadow: 0 0 0 2px #007bff;
+  box-shadow: 0 0 0 2px #acacac;
 }
-

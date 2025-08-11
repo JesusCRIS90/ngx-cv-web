@@ -11,4 +11,5 @@ export interface TimeLineCard {
   timeSpan: string,
   company: string,
   description: string,
+  type: 'education' | 'experience'
 }

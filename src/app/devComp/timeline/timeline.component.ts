@@ -6,11 +6,17 @@ import {
   TemplateRef,
 } from '@angular/core';
 
-type TimelineAlign = 'left' | 'right' | 'alternate';
+import {
+  GridLayout1DComponent as Grid1D,
+} from '@beexy/ngx-layouts'
+
+import { ElementMetricsDirective, ElementMetrics } from '../element-metrics.directive'
+
+export type TimelineAlign = 'left' | 'right' | 'alternate';
 
 @Component({
   selector: 'bee-timeline',
-  imports: [CommonModule],
+  imports: [CommonModule, Grid1D, ElementMetricsDirective],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.css',
 })
@@ -36,5 +42,25 @@ export class TimelineComponent {
       return index % 2 === 0 ? 'left' : 'right';
     }
     return this.align();
+  }
+
+  onElementMetricsChanges(metrics: ElementMetrics, index: number) {
+
+    // calculate: height + marginTop + marginBottom
+    const dynamicHeight =
+      metrics.height + metrics.margins.top
+
+    // find the marker column in this timeline item
+    const timelineItem = document.querySelectorAll('.bee-timeline-item')[index];
+    if (!timelineItem) return;
+
+    const markerColumn = timelineItem.querySelector('.bee-timeline-marker-column') as HTMLElement;
+    if (!markerColumn) return;
+
+    // set a CSS variable for the ::before pseudo-element
+    markerColumn.style.setProperty('--spine-height', `${dynamicHeight}px`);
+
+    // TODO: Testing purpose. Remove Later
+    console.log({ metrics, newValue: dynamicHeight });
   }
 }
