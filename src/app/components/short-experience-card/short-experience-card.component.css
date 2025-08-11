@@ -1,8 +1,9 @@
-.short-card-experience {
+.short-exp-card {
 
   width: 400px;
   padding: 10px 10px 10px 10px;
   background-color: cadetblue;
+  cursor: pointer;
 
   .exp-role {
     margin: 0;
