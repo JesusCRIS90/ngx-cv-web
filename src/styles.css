@@ -16,7 +16,6 @@ body {
 /* Move to a CSS File */
 
 .skills-section {
-
   margin: auto;
 
   .skills-filter {
@@ -39,20 +38,30 @@ body {
         border: 2px solid #9b83e1;
       }
     }
-    .skill-chip.item-active{
-      .chip-container{
+    .skill-chip.item-active {
+      .chip-container {
         border: 2px solid #9b83e1;
       }
     }
   }
 }
 
-
-
-.timeline-custom-icon svg{
+.timeline-custom-icon svg {
   fill: #ffffff;
 }
 
-.timeline-custom-icon div{
+.timeline-custom-icon div {
   background-color: var(--violet-600) !important;
+}
+
+.custom-no-modal {
+  .bee-no-modal-container {
+    background-color: #252525;
+  }
+  .bee-no-modal-close-button {
+    color: #ffffff;
+  }
+  .bee-no-modal-content{
+    margin: 20px 50px 20px 50px;
+  }
 }
