@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.bee-markdown-body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 1rem;
+}
