@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.long-project-card {
+  max-width: 1200px;
+  /* height: 700px; */
+
+  .project-card-links {
+    .action-link {
+      fill: coral !important;
+    }
+  }
+
+  .project-title {
+    color: #dbdbdb;
+  }
+
+  .project-description {
+    display: block;
+    max-height: 600px;
+    overflow-y: auto;
+
+    color: #dbdbdb;
+  }
+}

@@ -1,1 +1,25 @@
-<p>CARD UNDER CONSTRUCTION</p>
+<bee-vertical-layout class="long-project-card">
+  <h1 class="project-title">TITLE</h1>
+
+  @if ( getType() === 'video' ) {
+  <div class="project-video">Insert Youtube Video Embed Here</div>
+  } @else {
+  <div class="project-carousel">Insert Carousel Images Here</div>
+  }
+
+  <bee-pair-layout [spaceDistribution]="'3fr 1fr'" [pairDistribution]="PAIR_POLICY.CENTER">
+    <div class="project-card-techs">
+      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
+      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
+      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
+      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
+    </div>
+    <div class="project-card-links">
+      <bee-link-icon class="action-link" [refName]="'bicon-social-youtube'" />
+      <bee-link-icon [refName]="'bicon-social-youtube'" />
+      <bee-link-icon [refName]="'bicon-social-youtube'" />
+    </div>
+  </bee-pair-layout>
+
+  <bee-markdown-viewer class="project-description" [markdownPath]="'assets/docs/testFile.md'" />
+</bee-vertical-layout>

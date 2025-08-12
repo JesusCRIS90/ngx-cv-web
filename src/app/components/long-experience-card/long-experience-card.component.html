@@ -1,1 +1,21 @@
-<p>CARD UNDER CONSTRUCTION</p>
+<div class="long-exp-card">
+  <div class="header-exp-card">
+    <bee-pair-layout [pairDistribution]="PAIR_POLICY.OPPOSITE">
+      <div>
+        <h1>ROLE</h1>
+        <h2>COMPANY</h2>
+      </div>
+      <p> TIME SPAN</p>
+    </bee-pair-layout>
+  </div>
+  <div class="body-exp-card">
+    <bee-markdown-viewer [markdownPath]="'assets/docs/testFile.md'"/>
+  </div>
+  <h2>Main Technologies</h2>
+  <bee-horizontal-layout [policyPos]="POLICY.CENTER_LEFT">
+    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
+    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
+    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
+    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
+  </bee-horizontal-layout>
+</div>
