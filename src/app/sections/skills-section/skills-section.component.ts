@@ -5,7 +5,8 @@ import {
   CardLayoutComponent as CardLayout,
   GroupDirective,
   ItemDirective,
-  HorizontalLayoutComponent as HoriFlex
+  HorizontalLayoutComponent as HoriFlex,
+  FixedWidthLayoutComponent as FixWidthLay
 } from '@beexy/ngx-layouts'
 
 import {
@@ -62,7 +63,11 @@ const skills: SkillCard[] = [
 
 @Component({
   selector: 'sec-skills',
-  imports: [Chip, SkillCardComponent, CardLayout, ResponsiveCardGrid, HoriFlex, GroupDirective, ItemDirective],
+  imports: [
+    Chip, SkillCardComponent, CardLayout,
+    ResponsiveCardGrid, HoriFlex, FixWidthLay,
+    GroupDirective, ItemDirective,
+  ],
   templateUrl: './skills-section.component.html',
 })
 export class SkillsSectionComponent {
