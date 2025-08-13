@@ -13,13 +13,30 @@ import {
   LinkIconComponent as LinkIcon
 } from '@beexy/ngx-components'
 
+import {
+  BeeHorizontalCarouselComponent as HoriCarousel,
+} from '@beexy/ngx-navigation'
+
 import { Projects, ProjectMedia } from '../../interfaces'
 
 import { MarkdownViewerComponent as MDViewer } from '../../devComp/markdown-viewer/markdown-viewer.component'
+import { EmbedYoutubeVideoComponent } from '../../devComp/embed-youtube-video/embed-youtube-video.component'
+import { ImageFrameComponent } from '../../devComp/image-frame/image-frame.component'
+
+
+const horiUrls = [
+  "./assets/images/hori-test-1.jpg",
+  "./assets/images/hori-test-2.jpg",
+  "./assets/images/hori-test-3.jpg"
+]
 
 @Component({
   selector: 'long-project-card',
-  imports: [PairLay, HoriFlex, VertFlex, MDViewer, SVG, LinkIcon],
+  imports: [
+    PairLay, HoriFlex, VertFlex, MDViewer,
+    SVG, LinkIcon, HoriCarousel,
+    EmbedYoutubeVideoComponent, ImageFrameComponent
+  ],
   templateUrl: './long-project-card.component.html',
   styleUrl: './long-project-card.component.css',
 })
@@ -27,7 +44,9 @@ export class LongProjectCardComponent {
   PAIR_POLICY = PAIR_POLICY;
   POLICY = POLICY;
 
-  getType(): ProjectMedia{
+  testUrls = horiUrls;
+
+  getType(): ProjectMedia {
     return 'video';
   }
 }

@@ -2,12 +2,28 @@
   <h1 class="project-title">TITLE</h1>
 
   @if ( getType() === 'video' ) {
-  <div class="project-video">Insert Youtube Video Embed Here</div>
+  <!-- <div class="project-video">Insert Youtube Video Embed Here</div> -->
+  <app-embed-youtube-video
+    [source]="'https://www.youtube.com/embed/lq-xYp0IUVo'"
+  />
   } @else {
-  <div class="project-carousel">Insert Carousel Images Here</div>
+  <!-- <div class="project-carousel">Insert Carousel Images Here</div> -->
+  <bee-hori-carousel
+    [autoPlayInterval]="2500"
+    [pauseOnHover]="true"
+    [transitionType]="'slide-left'"
+    [items]="testUrls"
+  >
+    <ng-template #body let-item>
+       <bee-image-frame [imgSrc]="item" [mode]="'img'"></bee-image-frame>
+    </ng-template>
+  </bee-hori-carousel>
   }
 
-  <bee-pair-layout [spaceDistribution]="'3fr 1fr'" [pairDistribution]="PAIR_POLICY.CENTER">
+  <bee-pair-layout
+    [spaceDistribution]="'2fr 1fr'"
+    [pairDistribution]="PAIR_POLICY.CENTER"
+  >
     <div class="project-card-techs">
       <bee-svg-icon [refName]="'bicon-tech-cpp'" />
       <bee-svg-icon [refName]="'bicon-tech-cpp'" />
@@ -21,5 +37,12 @@
     </div>
   </bee-pair-layout>
 
-  <bee-markdown-viewer class="project-description" [markdownPath]="'assets/docs/testFile.md'" />
+  <bee-markdown-viewer
+    class="project-description"
+    [markdownPath]="'assets/docs/testFile.md'"
+  />
 </bee-vertical-layout>
+
+
+
+https://www.youtube.com/embed/lq-xYp0IUVo?autoplay=1&volumen=0.5
