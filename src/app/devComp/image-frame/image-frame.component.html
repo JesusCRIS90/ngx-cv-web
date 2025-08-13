@@ -1,0 +1,16 @@
+@if ( mode() === 'background' ) {
+  <div
+    class="bee-image-frame-container"
+    [class.active]="active()"
+    [style.background-image]="'url(' + imgSrc() + ')'"
+    role="img"
+    [attr.aria-label]="alt()"
+  >
+    <ng-content />
+  </div>
+} @else {
+  <div class="bee-image-frame-container">
+    <img [class.active]="active()" class="bee-frame-img" [src]="imgSrc()" [alt]="alt()" />
+    <ng-content />
+  </div>
+}
