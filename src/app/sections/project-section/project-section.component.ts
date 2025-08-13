@@ -5,6 +5,7 @@ import {
   ResponsiveLayoutComponent as ResponsiveLayout,
   GridLayout2DComponent as Grid2D,
   ItemGridLayoutComponent as ItemGrid,
+  FixedWidthLayoutComponent as FixWidthLay
 } from '@beexy/ngx-layouts'
 
 // TODO: Remove on a near Future
@@ -37,7 +38,11 @@ import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../providers/config
 
 @Component({
   selector: 'sec-projects',
-  imports: [ResponsiveLayout, Grid2D, ItemGrid, ShortVertCardProject, ShortHoriCardProject, HoriCarousel, VertCarousel],
+  imports: [
+    ResponsiveLayout, Grid2D, ItemGrid, FixWidthLay,
+    ShortVertCardProject, ShortHoriCardProject,
+    HoriCarousel, VertCarousel
+  ],
   templateUrl: './project-section.component.html',
   styleUrl: './project-section.component.css'
 })
