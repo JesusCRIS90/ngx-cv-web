@@ -1,3 +1,12 @@
+import {
+  Project,
+  Experience,
+  Skill,
+  SkillChip,
+  TextWithKeyWords,
+  ImageResponsiveVersions
+} from './app.interfaces'
+
 export interface AppData {
   home: AppDataHome,
   projects: AppDataProjects,
@@ -18,18 +27,22 @@ export interface AppDataHome{
   url_downloadCV: string,
   url_email: string,
 }
-export interface AppDataProjects{}
-export interface AppDataExperience{}
-export interface AppDataSkills{}
+
+export interface AppDataProjects{
+  projects: Project[]
+}
+
+export interface AppDataExperience{
+  experience: Experience[]
+}
+
+export interface AppDataSkills{
+  skills: Skill[],
+  chips: SkillChip[]
+}
+
 export interface AppDataContact{}
 
 
-interface TextWithKeyWords {
-  text: string,
-  keywords: string[]
-}
 
-interface ImageResponsiveVersions {
-  hori: string,
-  vert: string,
-}
+
