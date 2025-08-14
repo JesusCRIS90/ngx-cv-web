@@ -17,7 +17,7 @@ import {
   BeeHorizontalCarouselComponent as HoriCarousel,
 } from '@beexy/ngx-navigation'
 
-import { Projects, ProjectMedia } from '../../interfaces'
+import { Project, ProjectMedia } from '../../interfaces'
 
 import { MarkdownViewerComponent as MDViewer } from '../../devComp/markdown-viewer/markdown-viewer.component'
 import { EmbedYoutubeVideoComponent } from '../../devComp/embed-youtube-video/embed-youtube-video.component'
