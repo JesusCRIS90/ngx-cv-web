@@ -13,7 +13,9 @@ import {
   SkillChip,
   ImageResponsiveVersions,
   TimeLineCard,
-  LongExperienceCard
+  LongExperienceCard,
+  ShortProjectCard,
+  LongProjectCard
 } from '../interfaces'
 
 
@@ -45,6 +47,11 @@ export class AppDataMapper {
   public static AppData2Experience(data: AppData | null): Experience[] {
     if (data === null) return [];
     return data.experience.experience;
+  }
+
+  public static AppData2Projects(data: AppData | null): Project[] {
+    if (data === null) return [];
+    return data.projects.projects;
   }
 
   public static ExperienceArray2TimeLineCardArray(data: Experience[]): TimeLineCard[] {
@@ -79,6 +86,46 @@ export class AppDataMapper {
       mdDescription: data.mdDescription,
       techs: data.techs
     }
+  }
+
+  public static ProjectsArray2ShortProjectCards(data: Project[]): ShortProjectCard[] {
+    const cards: ShortProjectCard[] = [];
+    data.forEach((pro) => cards.push(AppDataMapper.Project2ShortProjectCard(pro)));
+    return cards;
+  }
+
+  public static Project2ShortProjectCard(data: Project): ShortProjectCard {
+    return {
+      id: data.id,
+      title: data.title,
+      briefBio: data.briefBio,
+      imageUrlsHori: AppDataMapper.ImagesResponsiveness2HoriImgs(data.imageUrls),
+      imageUrlsVert: AppDataMapper.ImagesResponsiveness2VertImgs(data.imageUrls)
+    }
+  }
+
+  public static Project2LongProjectCard(data: Project): LongProjectCard {
+    return {
+      title: data.title,
+      mdDescription: data.mdDescription,
+      type: data.type,
+      videoUrl: data.videoUrl,
+      techs: data.techs,
+      links: data.links,
+      imageUrls: AppDataMapper.ImagesResponsiveness2HoriImgs(data.imageUrls)
+    }
+  }
+
+  public static ImagesResponsiveness2HoriImgs(images: ImageResponsiveVersions[]): string[] {
+    const imgUrls: string[] = [];
+    images.forEach((img) => imgUrls.push(img.hori));
+    return imgUrls;
+  }
+
+  public static ImagesResponsiveness2VertImgs(images: ImageResponsiveVersions[]): string[] {
+    const imgUrls: string[] = [];
+    images.forEach((img) => imgUrls.push(img.vert));
+    return imgUrls;
   }
 
   // ------------------------------------------------------------------------------

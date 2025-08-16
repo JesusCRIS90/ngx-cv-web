@@ -6,7 +6,8 @@ export interface ShortProjectCard {
   id: string,
   title: string,
   briefBio: string,
-  imageUrls: string[],
+  imageUrlsVert: string[],
+  imageUrlsHori: string[]
 }
 
 export interface LongProjectCard {
