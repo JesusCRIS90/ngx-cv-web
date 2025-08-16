@@ -12,7 +12,7 @@
         class="short-exp-card"
         [experience]="event"
         DClickableAction
-        (actionClick)="onClickExpCard()"
+        (actionClick)="onClickExpCard(event.id)"
       />
     </ng-template>
     <ng-template #marker let-event>

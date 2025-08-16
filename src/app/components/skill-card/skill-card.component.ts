@@ -10,7 +10,7 @@ import {
 } from '@beexy/ngx-components'
 
 import {
-  SkillCard
+  SkillCard, Skill
 } from '../../interfaces'
 
 @Component({
@@ -22,7 +22,7 @@ import {
 export class SkillCardComponent {
   PAIR_POLICY = PAIR_POLICY;
 
-  skill = input.required<SkillCard>();
+  skill = input.required<Skill>();
 
   getIconName(): string {
     return this.skill().refIconName;

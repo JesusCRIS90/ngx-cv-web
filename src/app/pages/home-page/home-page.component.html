@@ -17,6 +17,7 @@
   beeDirSectionYscrollTracker
   [dirProp_sectionId]="'experience'"
   (dirEvt_sectionVisible)="onSectionActive($event)"
+  [experience]="getExperience()"
 />
 
 <sec-skills
@@ -24,6 +25,8 @@
   beeDirSectionYscrollTracker
   [dirProp_sectionId]="'skills'"
   (dirEvt_sectionVisible)="onSectionActive($event)"
+  [skills]="getSkills()"
+  [skillChips]="getSkillChips()"
 />
 
 <sec-contact
@@ -35,3 +38,5 @@
 
 <nav-menu [activeSecId]="activeSecId()"/>
 
+
+<!-- [skillChips]="adapter.AppData2Skills( getDataApp() )" -->

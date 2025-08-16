@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, linkedSignal, signal } from '@angular/core';
 
 import {
   ResponsiveLayoutComponent as ResponsiveLayout,
@@ -14,38 +14,12 @@ import { NoModalWindowService } from '@beexy/ngx-popups'
 import { ShortExperienceCardComponent, LongExperienceCardComponent } from '../../components'
 import { ClickableActionDirective } from '../../directives'
 
-import { TimeLineCard } from '../../interfaces'
+import { Experience, LongExperienceCard, TimeLineCard } from '../../interfaces'
 import { TimelineComponent, TimelineAlign } from '../../devComp/timeline/timeline.component'
 
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../providers/config';
+import { AppDataMapper } from '../../mappers/AppDataMapper';
 
-
-const experinceArray: TimeLineCard[] = [
-  {
-    icon: 'bicon-tech-education',
-    role: 'Software Engineer',
-    company: 'Seville University',
-    timeSpan: 'ENE 2019 - JUL 2024',
-    description: 'Brief Description',
-    type: 'experience',
-  },
-  {
-    icon: 'bicon-tech-education',
-    role: 'Software Engineer',
-    company: 'Seville University',
-    timeSpan: 'ENE 2019 - JUL 2024',
-    description: 'Brief Description',
-    type: 'experience',
-  },
-  {
-    icon: 'bicon-tech-education',
-    role: 'Software Engineer',
-    company: 'Seville University',
-    timeSpan: 'ENE 2019 - JUL 2024',
-    description: 'Brief Description',
-    type: 'education',
-  }
-]
 
 @Component({
   selector: 'sec-experience',
@@ -54,7 +28,9 @@ const experinceArray: TimeLineCard[] = [
 })
 export class ExperienceSectionComponent {
 
-  events: TimeLineCard[] = experinceArray;
+  experience = input.required<Experience[]>();
+
+  events = linkedSignal<TimeLineCard[]>(() => this.getTimeLineCards());
   timelineAligment = signal<TimelineAlign>('alternate');
 
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
@@ -62,7 +38,7 @@ export class ExperienceSectionComponent {
   constructor(private noModalService: NoModalWindowService) { }
 
   getEvents(): TimeLineCard[] {
-    return this.events;
+    return this.events();
   }
 
   getIconRef(type: 'education' | 'experience') {
@@ -70,11 +46,17 @@ export class ExperienceSectionComponent {
     else return 'bicon-common-experience';
   }
 
-  onClickExpCard() {
-    console.log('Experience Card Clicked')
+  onClickExpCard(id: string) {
+    console.log(`Experience Card with id: ${id} Clicked`);
+    const cardData = this.getExperienceById( id );
+
+    if( cardData === undefined ) return;
+
     this.noModalService.open({
       component: LongExperienceCardComponent,
-      data: {}
+      data: {
+        experienceCard: AppDataMapper.Experience2LongExperienceCard( cardData )
+      }
     })
   }
 
@@ -82,15 +64,24 @@ export class ExperienceSectionComponent {
     return this.commonConfig.factorVert2Hori;
   }
 
-  protected getTimeLineAligment(): TimelineAlign{
+  protected getTimeLineAligment(): TimelineAlign {
     return this.timelineAligment();
   }
 
-  protected onOrientationChange(orientation: ScreenOrientation){
-    if( orientation === 'landscape' ){
-      this.timelineAligment.set( 'alternate' );
+  protected onOrientationChange(orientation: ScreenOrientation) {
+    if (orientation === 'landscape') {
+      this.timelineAligment.set('alternate');
       return;
     }
-    this.timelineAligment.set( 'right' );
+    this.timelineAligment.set('right');
   }
+
+  protected getTimeLineCards(): TimeLineCard[] {
+    return AppDataMapper.ExperienceArray2TimeLineCardArray(this.experience());
+  }
+
+  protected getExperienceById( id: string ): Experience | undefined {
+    return this.experience().find( (card) => card.id === id );
+  }
+
 }

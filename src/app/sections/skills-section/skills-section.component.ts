@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, effect, input, linkedSignal, OnInit, signal } from '@angular/core';
 
 import {
   ResponsiveCardGridLayoutComponent as ResponsiveCardGrid,
@@ -14,7 +14,7 @@ import {
 } from '@beexy/ngx-components'
 
 import { SkillCardComponent } from '../../components'
-import { SkillCard } from '../../interfaces';
+import { SkillCard, Skill, SkillChip } from '../../interfaces';
 
 const skills: SkillCard[] = [
   {
@@ -72,12 +72,18 @@ const skills: SkillCard[] = [
 })
 export class SkillsSectionComponent {
 
-  compSkills: SkillCard[] = skills;
-  skills2Show = signal<SkillCard[]>(skills);
+  skills = input.required<Skill[]>();
+  skillChips = input.required<SkillChip[]>();
+
+  // skills2Show = signal<Skill[]>([]);
+  skills2Show = linkedSignal<Skill[]>( () => this.skills() );
+  // skills2Show!: Skill[];
   activeTag: string = 'all'
 
+  constructor() {}
+
   protected showingSelected(selected: string[]) {
-    // console.log(selected);
+    console.log(selected);
     let tag = '';
     // let tag = 'all';
     if (selected.length !== 0) {
@@ -90,16 +96,22 @@ export class SkillsSectionComponent {
   protected filterSkillsByTag(tag: string) {
     // Case Tag === 'all'
     if (tag === 'all') {
-      this.skills2Show.set(this.compSkills);
+      this.skills2Show.set(this.skills());
       return;
     }
     // Other Case - Filter using tag
-    const newSkillsList = this.compSkills.filter((skill) => skill.tag === tag);
+    const newSkillsList = this.skills().filter((skill) => skill.tag.includes(tag));
+
+    // console.log( newSkillsList );
     this.skills2Show.set(newSkillsList);
   }
 
   protected getActiveTag(): string {
     return this.activeTag;
+  }
+
+  protected isSkills2ShowEmpty(): boolean {
+    return this.skills2Show().length === 0 ? true : false;
   }
 }
 

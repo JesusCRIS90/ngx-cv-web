@@ -2,20 +2,19 @@
   <div class="header-exp-card">
     <bee-pair-layout [pairDistribution]="PAIR_POLICY.OPPOSITE">
       <div>
-        <h1>ROLE</h1>
-        <h2>COMPANY</h2>
+        <h1>{{ getCard().role }}</h1>
+        <h2>{{ getCard().company }}</h2>
       </div>
-      <p> TIME SPAN</p>
+      <p>{{ getCard().timeSpan }}</p>
     </bee-pair-layout>
   </div>
   <div class="body-exp-card">
-    <bee-markdown-viewer [markdownPath]="'assets/docs/testFile.md'"/>
+    <bee-markdown-viewer [markdownPath]="getCard().mdDescription" />
   </div>
   <h2>Main Technologies</h2>
   <bee-horizontal-layout [policyPos]="POLICY.CENTER_LEFT">
-    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
-    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
-    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
-    <bee-svg-icon [refName]="'bicon-tech-cpp'"/>
+    @for (tech of getCard().techs; track $index) {
+    <bee-svg-icon [refName]="tech.icon" />
+    }
   </bee-horizontal-layout>
 </div>

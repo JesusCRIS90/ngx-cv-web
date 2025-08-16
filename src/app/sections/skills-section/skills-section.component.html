@@ -6,43 +6,23 @@
       class="skills-filter"
       beeGroupItemComponentDirective
       (activeItemsChanged)="showingSelected($event)"
-      [activeIds]="[getActiveTag()]"
       [multiple]="false"
+      [activeIds]="[getActiveTag()]"
       [gap]="10"
       [wrap]="true"
     >
+      @for (chip of skillChips(); track $index) {
       <bee-chip
         beeItemComponentDirective
-        [id]="'all'"
+        [id]="chip.tag"
         class="skill-chip"
-        [label]="'All'"
+        [label]="chip.topic"
       />
-      <bee-chip
-        beeItemComponentDirective
-        [id]="'p-language'"
-        class="skill-chip"
-        [label]="'Programming Language'"
-      />
-      <bee-chip
-        beeItemComponentDirective
-        [id]="'softLibs'"
-        class="skill-chip"
-        [label]="'Software Libraries'"
-      />
-      <bee-chip
-        beeItemComponentDirective
-        [id]="'db'"
-        class="skill-chip"
-        [label]="'Database'"
-      />
-      <bee-chip
-        beeItemComponentDirective
-        [id]="'con-ver'"
-        class="skill-chip"
-        [label]="'Control Version'"
-      />
+      }
     </bee-horizontal-layout>
 
+    <!-- This @if is need it due to life-cycle from Angular -->
+    @if ( !isSkills2ShowEmpty() ) {
     <bee-responsive-card-grid-layout [gap]="15">
       @for (skill of skills2Show(); track $index) {
       <bee-card-layout [minMaxWidth]="{ min: 250, max: 250 }">
@@ -50,6 +30,8 @@
       </bee-card-layout>
       }
     </bee-responsive-card-grid-layout>
+    } @else {
+      <p class="no-skills-2-show-message">Please Select a Chip to show Skills</p>
+    }
   </bee-fixed-width-layout>
-
 </section>
