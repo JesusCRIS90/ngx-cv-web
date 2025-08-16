@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, linkedSignal } from '@angular/core';
 
 import {
   BeeHoverOnceDirective as HoverOnce,
@@ -7,21 +7,29 @@ import {
   POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
 
+import {
+  BeeHorizontalCarouselComponent as HoriCarousel,
+} from '@beexy/ngx-navigation'
+
 import { NoModalWindowService } from '@beexy/ngx-popups'
 
 import { ClickableActionDirective } from '../../directives'
 import { LongProjectCardComponent as LongProjectCard } from '../../components'
+import { Project } from '../../interfaces';
+import { AppDataMapper } from '../../mappers/AppDataMapper';
 
 @Component({
   selector: 'short-hori-project-card',
-  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective],
+  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective, HoriCarousel],
   templateUrl: './short-hori-project-card.component.html',
   styleUrl: './short-hori-project-card.component.css',
 })
 export class ShortHoriProjectCardComponent {
   POLICY = POLICY;
 
-  imgUrl = input.required<string>();
+  projectInfo = input.required<Project>();
+  imgurls = linkedSignal( () => this.getHoriImgUrls() );
+
   onHover: boolean = false;
 
   constructor(private noModalService: NoModalWindowService) { }
@@ -31,14 +39,31 @@ export class ShortHoriProjectCardComponent {
     this.onHover = isHovered;
   }
 
-  onClickAction() {
-    console.log('Clicked Project Card');
+  onClickAction( id: string ) {
+    console.log(`Clicked Project Card with id:${id}`);
     this.noModalService.open({
       component: LongProjectCard,
-      data: {}
+      data: {
+        projectInfo: this.projectInfo()
+      }
     })
   }
 
+  getProjectInfo(): Project{
+    return this.projectInfo();
+  }
+
+  getAutoplayTimer(): number {
+    return 2000 * Number(this.projectInfo().id);
+  }
+
+  getId(): string {
+    return this.projectInfo().id;
+  }
+
+  protected getHoriImgUrls(): string[]{
+    return AppDataMapper.ImagesResponsiveness2HoriImgs( this.projectInfo().imageUrls )
+  }
 }
 
 

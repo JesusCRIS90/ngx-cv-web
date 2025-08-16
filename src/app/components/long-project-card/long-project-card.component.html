@@ -1,10 +1,9 @@
 <bee-vertical-layout class="long-project-card">
-  <h1 class="project-title">TITLE</h1>
+  <h1 class="project-title">{{ getProjectInfo().title }}</h1>
 
   @if ( getType() === 'video' ) {
-  <!-- <div class="project-video">Insert Youtube Video Embed Here</div> -->
   <app-embed-youtube-video
-    [source]="'https://www.youtube.com/embed/lq-xYp0IUVo'"
+    [source]="getProjectInfo().videoUrl"
   />
   } @else {
   <!-- <div class="project-carousel">Insert Carousel Images Here</div> -->
@@ -12,7 +11,7 @@
     [autoPlayInterval]="2500"
     [pauseOnHover]="true"
     [transitionType]="'slide-left'"
-    [items]="testUrls"
+    [items]="getImgUrls()"
   >
     <ng-template #body let-item>
        <bee-image-frame [imgSrc]="item" [mode]="'img'"></bee-image-frame>
@@ -25,24 +24,19 @@
     [pairDistribution]="PAIR_POLICY.CENTER"
   >
     <div class="project-card-techs">
-      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
-      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
-      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
-      <bee-svg-icon [refName]="'bicon-tech-cpp'" />
+      @for (tech of getProjectInfo().techs; track $index) {
+        <bee-svg-icon [refName]="tech.icon" />
+      }
     </div>
     <div class="project-card-links">
-      <bee-link-icon class="action-link" [refName]="'bicon-social-youtube'" />
-      <bee-link-icon [refName]="'bicon-social-youtube'" />
-      <bee-link-icon [refName]="'bicon-social-youtube'" />
+      @for (link of getProjectInfo().links; track $index) {
+        <bee-link-icon class="action-link" [refName]="link.icon" />
+      }
     </div>
   </bee-pair-layout>
 
   <bee-markdown-viewer
     class="project-description"
-    [markdownPath]="'assets/docs/testFile.md'"
+    [markdownPath]="getProjectInfo().mdDescription"
   />
 </bee-vertical-layout>
-
-
-
-https://www.youtube.com/embed/lq-xYp0IUVo?autoplay=1&volumen=0.5

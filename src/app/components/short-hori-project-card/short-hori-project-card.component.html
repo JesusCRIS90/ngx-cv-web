@@ -1,20 +1,31 @@
-<bee-relative-layout class="short-hori-project-card">
-  <div DClickableAction (actionClick)="onClickAction()" beeHoverOnce (hoverChange)="onHoverChange($event)">
-    <img [class.hover-in]="onHover" [src]="imgUrl()" alt="NoImage" />
-    @if ( onHover ) {
-    <bee-floating-layout
-      [posX]="50"
-      [posY]="50"
-      [anchorPoint]="POLICY.CENTER_CENTER"
-    >
-      <div class="overlay-text">
-        <h1>Project Title</h1>
-        <p>Brief Description</p>
+<bee-hori-carousel
+  [autoPlayInterval]="getAutoplayTimer()"
+  [pauseOnHover]="true"
+  [transitionType]="'fade'"
+  [items]="imgurls()"
+>
+  <ng-template #body let-item>
+    <bee-relative-layout class="short-hori-project-card">
+      <div
+        DClickableAction
+        (actionClick)="onClickAction( getId() )"
+        beeHoverOnce
+        (hoverChange)="onHoverChange($event)"
+      >
+        <img [class.hover-in]="onHover" [src]="item" alt="NoImage" />
+        @if ( onHover ) {
+        <bee-floating-layout
+          [posX]="50"
+          [posY]="50"
+          [anchorPoint]="POLICY.CENTER_CENTER"
+        >
+          <div class="overlay-text">
+            <h1>{{ getProjectInfo().title }}</h1>
+            <p>{{ getProjectInfo().briefBio }}</p>
+          </div>
+        </bee-floating-layout>
+        }
       </div>
-    </bee-floating-layout>
-    }
-  </div>
-</bee-relative-layout>
-
-
-<!-- "./assets/images/hori-test-2.jpg" -->
+    </bee-relative-layout>
+  </ng-template>
+</bee-hori-carousel>

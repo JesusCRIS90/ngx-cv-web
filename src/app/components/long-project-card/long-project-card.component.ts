@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import {
   PairLayoutComponent as PairLay,
@@ -22,6 +22,7 @@ import { Project, ProjectMedia } from '../../interfaces'
 import { MarkdownViewerComponent as MDViewer } from '../../devComp/markdown-viewer/markdown-viewer.component'
 import { EmbedYoutubeVideoComponent } from '../../devComp/embed-youtube-video/embed-youtube-video.component'
 import { ImageFrameComponent } from '../../devComp/image-frame/image-frame.component'
+import { AppDataMapper } from '../../mappers/AppDataMapper';
 
 
 const horiUrls = [
@@ -40,13 +41,28 @@ const horiUrls = [
   templateUrl: './long-project-card.component.html',
   styleUrl: './long-project-card.component.css',
 })
-export class LongProjectCardComponent {
+export class LongProjectCardComponent implements OnInit {
   PAIR_POLICY = PAIR_POLICY;
   POLICY = POLICY;
 
+  projectInfo!: Project;
+
   testUrls = horiUrls;
 
-  getType(): ProjectMedia {
-    return 'video';
+  ngOnInit(): void {
+    console.log("LongProjectCard", this.projectInfo);
   }
+
+  getType(): ProjectMedia {
+    return this.projectInfo.type;
+  }
+
+  getProjectInfo(): Project {
+    return this.projectInfo;
+  }
+
+  getImgUrls(): string[] {
+    return AppDataMapper.ImagesResponsiveness2HoriImgs( this.projectInfo.imageUrls );
+  }
+
 }

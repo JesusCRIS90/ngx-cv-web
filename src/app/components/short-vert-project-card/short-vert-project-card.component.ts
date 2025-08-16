@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, linkedSignal } from '@angular/core';
 
 import {
   BeeHoverOnceDirective as HoverOnce,
@@ -7,24 +7,32 @@ import {
   POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
 
+import {
+  BeeVerticalCarouselComponent as VertCarousel,
+} from '@beexy/ngx-navigation'
+
 import { NoModalWindowService } from '@beexy/ngx-popups'
 
 import { ClickableActionDirective } from '../../directives'
 import { LongProjectCardComponent as LongProjectCard } from '../../components'
+import { Project } from '../../interfaces';
+import { AppDataMapper } from '../../mappers/AppDataMapper';
 
 @Component({
   selector: 'short-vert-project-card',
-  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective],
+  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective, VertCarousel],
   templateUrl: './short-vert-project-card.component.html',
   styleUrl: './short-vert-project-card.component.css',
 })
 export class ShortVertProjectCardComponent {
   POLICY = POLICY;
 
-  onHover: boolean = false;
-  imgUrl = input.required<string>();
+  projectInfo = input.required<Project>();
+  imgurls = linkedSignal(() => this.getVertImgUrls());
 
-  constructor(private noModalService: NoModalWindowService){}
+  onHover: boolean = false;
+
+  constructor(private noModalService: NoModalWindowService) { }
 
   onHoverChange(isHovered: boolean) {
     // console.log('Hovered:', isHovered);
@@ -35,8 +43,21 @@ export class ShortVertProjectCardComponent {
     console.log('Clicked Project Card');
     this.noModalService.open({
       component: LongProjectCard,
-      data: {}
+      data: {
+        projectInfo: this.projectInfo()
+      }
     })
   }
 
+  getProjectInfo(): Project {
+    return this.projectInfo();
+  }
+
+  getAutoplayTimer(): number {
+    return 2000 * Number(this.projectInfo().id);
+  }
+
+  protected getVertImgUrls(): string[] {
+    return AppDataMapper.ImagesResponsiveness2VertImgs(this.projectInfo().imageUrls)
+  }
 }
