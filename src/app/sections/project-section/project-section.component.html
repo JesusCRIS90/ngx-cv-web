@@ -18,64 +18,36 @@
             [x_dir]="{ start: 1, span: 1 }"
             [y_dir]="{ start: 1, span: 2 }"
           >
-            <bee-vert-carousel
-              [autoPlayInterval]="4000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="vertURLs"
-            >
-              <ng-template #body let-item>
-                <short-vert-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-vert-carousel>
+            <short-vert-project-card
+              [projectInfo]="getProjectWithIndex(0)"
+            />
           </bee-item-grid-layout>
 
           <bee-item-grid-layout
             [x_dir]="{ start: 2, span: 1 }"
             [y_dir]="{ start: 2, span: 2 }"
           >
-            <bee-vert-carousel
-              [autoPlayInterval]="5000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="vertURLs"
-            >
-              <ng-template #body let-item>
-                <short-vert-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-vert-carousel>
+            <short-vert-project-card
+              [projectInfo]="getProjectWithIndex(1)"
+            />
           </bee-item-grid-layout>
 
           <bee-item-grid-layout
             [x_dir]="{ start: 1, span: 1 }"
             [y_dir]="{ start: 3, span: 2 }"
           >
-            <bee-vert-carousel
-              [autoPlayInterval]="6000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="vertURLs"
-            >
-              <ng-template #body let-item>
-                <short-vert-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-vert-carousel>
+            <short-vert-project-card
+              [projectInfo]="getProjectWithIndex(2)"
+            />
           </bee-item-grid-layout>
 
           <bee-item-grid-layout
             [x_dir]="{ start: 2, span: 1 }"
             [y_dir]="{ start: 4, span: 2 }"
           >
-            <bee-vert-carousel
-              [autoPlayInterval]="6000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="vertURLs"
-            >
-              <ng-template #body let-item>
-                <short-vert-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-vert-carousel>
+            <short-vert-project-card
+              [projectInfo]="getProjectWithIndex(0)"
+            />
           </bee-item-grid-layout>
         </bee-grid-2d-layout>
       </ng-template>
@@ -96,48 +68,27 @@
             [x_dir]="{ start: 1, span: 1 }"
             [y_dir]="{ start: 1, span: 2 }"
           >
-            <bee-hori-carousel
-              [autoPlayInterval]="5000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="horiURLs"
-            >
-              <ng-template #body let-item>
-                <short-hori-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-hori-carousel>
+            <short-hori-project-card
+              [projectInfo]="getProjectWithIndex(0)"
+            />
           </bee-item-grid-layout>
 
           <bee-item-grid-layout
             [x_dir]="{ start: 2, span: 1 }"
             [y_dir]="{ start: 2, span: 2 }"
           >
-            <bee-hori-carousel
-              [autoPlayInterval]="4000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="horiURLs"
-            >
-              <ng-template #body let-item>
-                <short-hori-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-hori-carousel>
+            <short-hori-project-card
+              [projectInfo]="getProjectWithIndex(1)"
+            />
           </bee-item-grid-layout>
 
           <bee-item-grid-layout
             [x_dir]="{ start: 3, span: 1 }"
             [y_dir]="{ start: 1, span: 2 }"
           >
-            <bee-hori-carousel
-              [autoPlayInterval]="6000"
-              [pauseOnHover]="true"
-              [transitionType]="'fade'"
-              [items]="horiURLs"
-            >
-              <ng-template #body let-item>
-                <short-hori-project-card [imgUrl]="item" />
-              </ng-template>
-            </bee-hori-carousel>
+            <short-hori-project-card
+              [projectInfo]="getProjectWithIndex(2)"
+            />
           </bee-item-grid-layout>
         </bee-grid-2d-layout>
       </ng-template>
