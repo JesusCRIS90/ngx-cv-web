@@ -11,7 +11,9 @@ import {
   Experience,
   Skill,
   SkillChip,
-  ImageResponsiveVersions
+  ImageResponsiveVersions,
+  TimeLineCard,
+  LongExperienceCard
 } from '../interfaces'
 
 
@@ -29,6 +31,57 @@ export class AppDataMapper {
 
     return data;
   }
+
+  public static AppData2Skills(data: AppData | null): Skill[] {
+    if (data === null) return [];
+    return data.skills.skills;
+  }
+
+  public static AppData2SkillChips(data: AppData | null): SkillChip[] {
+    if (data === null) return [];
+    return data.skills.chips;
+  }
+
+  public static AppData2Experience(data: AppData | null): Experience[] {
+    if (data === null) return [];
+    return data.experience.experience;
+  }
+
+  public static ExperienceArray2TimeLineCardArray(data: Experience[]): TimeLineCard[] {
+    const timelinesCards: TimeLineCard[] = [];
+    data.forEach((exp) => timelinesCards.push(AppDataMapper.Experience2TimeLineCard(exp)))
+    return timelinesCards;
+  }
+
+  public static ExperienceArray2LongExperienceCard(data: Experience[]): LongExperienceCard[] {
+    const longCards: LongExperienceCard[] = [];
+    data.forEach((exp) => longCards.push(AppDataMapper.Experience2LongExperienceCard(exp)))
+    return longCards;
+  }
+
+  protected static Experience2TimeLineCard(data: Experience): TimeLineCard {
+    return {
+      id: data.id,
+      role: data.role,
+      company: data.company,
+      timeSpan: data.timeSpan,
+      description: data.description,
+      type: data.type,
+      icon: AppDataMapper.getExperienceIcon(data.type)
+    }
+  }
+
+  public static Experience2LongExperienceCard(data: Experience): LongExperienceCard {
+    return {
+      role: data.role,
+      company: data.company,
+      timeSpan: data.timeSpan,
+      mdDescription: data.mdDescription,
+      techs: data.techs
+    }
+  }
+
+  // ------------------------------------------------------------------------------
 
   private static normalizeHomeData(jsonData: unknown): AppDataHome {
 
@@ -72,6 +125,7 @@ export class AppDataMapper {
 
     const projects: Project[] = Array.isArray(dataObj.SProjects)
       ? dataObj.SProjects.map((p: any) => ({
+        id: AppDataMapper.isString(p?.id) ? p.id.trim() : '',
         title: AppDataMapper.isString(p?.title) ? p.title.trim() : '',
         briefBio: AppDataMapper.isString(p?.briefBio) ? p.briefBio.trim() : '',
         mdDescription: AppDataMapper.isString(p?.mdDescription) ? p.mdDescription.trim() : '',
@@ -92,6 +146,7 @@ export class AppDataMapper {
 
     const experience: Experience[] = Array.isArray(dataObj.SExperience)
       ? dataObj.SExperience.map((e: any) => ({
+        id: AppDataMapper.isString(e?.id) ? e.id.trim() : '',
         role: AppDataMapper.isString(e?.role) ? e.role.trim() : '',
         company: AppDataMapper.isString(e?.company) ? e.company.trim() : '',
         timeSpan: AppDataMapper.isString(e?.timeSpan) ? e.timeSpan.trim() : '',
@@ -242,6 +297,9 @@ export class AppDataMapper {
     return adaptedSkills;
   }
 
+  private static getExperienceIcon(type: ExperienceType): string {
+    return type === 'experience' ? 'bicon-common-experience' : 'bicon-common-education';
+  }
 }
 
 

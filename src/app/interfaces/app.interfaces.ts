@@ -3,6 +3,7 @@ export type ExperienceType = 'experience' | 'education';
 
 
 export interface ShortProjectCard {
+  id: string,
   title: string,
   briefBio: string,
   imageUrls: string[],
@@ -19,6 +20,7 @@ export interface LongProjectCard {
 }
 
 export interface TimeLineCard {
+  id: string,
   icon: string,
   role: string,
   timeSpan: string,
@@ -45,6 +47,7 @@ export interface SkillCard {
 // ------------------------------------------
 
 export interface Project {
+  id: string,
   title: string,
   briefBio: string,
   mdDescription: string,
@@ -56,6 +59,7 @@ export interface Project {
 }
 
 export interface Experience {
+  id: string,
   role: string,
   company: string,
   timeSpan: string,
