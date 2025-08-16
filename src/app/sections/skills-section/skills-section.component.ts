@@ -75,9 +75,8 @@ export class SkillsSectionComponent {
   skills = input.required<Skill[]>();
   skillChips = input.required<SkillChip[]>();
 
-  // skills2Show = signal<Skill[]>([]);
-  skills2Show = linkedSignal<Skill[]>( () => this.skills() );
-  // skills2Show!: Skill[];
+  skills2Show = signal<Skill[]>([]);
+  // skills2Show = linkedSignal<Skill[]>( () => this.skills() );
   activeTag: string = 'all'
 
   constructor() {}
