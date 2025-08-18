@@ -59,8 +59,5 @@ export class TimelineComponent {
 
     // set a CSS variable for the ::before pseudo-element
     markerColumn.style.setProperty('--spine-height', `${dynamicHeight}px`);
-
-    // TODO: Testing purpose. Remove Later
-    console.log({ metrics, newValue: dynamicHeight });
   }
 }
