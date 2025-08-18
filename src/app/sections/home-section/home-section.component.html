@@ -1,13 +1,12 @@
 <section>
-  <bee-responsive-layout (orientationChange)="updateOrientation($event)" [TriggerFactorVert2Hori]="getFactorVert2Hori()">
+  <bee-responsive-layout
+    [TriggerFactorVert2Hori]="getFactorVert2Hori()"
+  >
     <ng-template #screenVertical>
-      <bee-relative-layout>
-        <bee-floating-layout [posX]="10" [posY]="7" [anchorPoint]="POLICY.TOP_LEFT">
-          <img style="width: 60%;" [src]="getProfileUrl()" alt="" />
-        </bee-floating-layout>
+      <bee-vertical-layout [policyPos]="POLICY.CENTER_CENTER">
+        <img style="width: 60%" [src]="getProfileUrl()" alt="profile-image" />
         <app-who-iam [data]="getData()" />
-      </bee-relative-layout>
-
+      </bee-vertical-layout>
     </ng-template>
 
     <ng-template #screenHorizontal>

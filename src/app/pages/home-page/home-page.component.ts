@@ -3,7 +3,7 @@ import { AfterViewInit, Component, inject, QueryList, signal, ViewChild, ViewChi
 import { BeeSectionTrackerDirective } from '@beexy/ngx-navigation'
 import { StoragesManager, } from "@beexy/tools"
 
-import { AppData, Experience, Project, Skill, SkillChip } from '../../interfaces';
+import { AppData, AppDataHome, Experience, Project, Skill, SkillChip } from '../../interfaces';
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../providers/config'
 import { AppDataMapper } from '../../mappers/AppDataMapper'
 
@@ -72,6 +72,10 @@ export default class HomePageComponent implements AfterViewInit {
 
   getDataApp(): AppData | null {
     return this.dataApp;
+  }
+
+  getDataHome(): AppDataHome | undefined {
+    return this.dataApp?.home;
   }
 
   getSkills(): Skill[] {
