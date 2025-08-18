@@ -8,7 +8,8 @@
   /* z-index: 1100; */
 
   div {
-    background-color: #7458a8;
+    /* background-color: #7458a8; */
+    background-color: var( --primary-color );
     border-radius: 50px;
     padding: 8px;
 
@@ -21,7 +22,8 @@
   }
 
   svg {
-    fill: #f7ffff;
+    /* Think about this color */
+    fill: var(--white-1);
     height: 24px;
     width: 24px;
   }
@@ -32,11 +34,11 @@
 .vert-nav-item {
   .bee-nav-item-container.active {
     .nav-icon-container svg {
-      fill: #c4a3eb;
+      fill: var( --primary-light )
     }
 
     .nav-text-container p {
-      color: #c4a3eb;
+      color: var( --primary-light );
     }
   }
 

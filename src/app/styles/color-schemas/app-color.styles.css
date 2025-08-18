@@ -1,10 +1,14 @@
 @import "./violet-schema.style.css";
 
 
+/* This must be values */
 .color-schema-violet {
-  --primary-color: var(--violet-600);
-  --primary-dark: var(--violet-850);
-  --primary-light: var(--violet-350);
+  --primary-color: #7f22fe;   /* --violet-600 */
+  --primary-dark: #52129f;    /* --violet-850 */
+  --primary-light: #c8b3ff;   /* --violet-350 */
 
-  --bg-color: var(--violet-050);
+  --white-1: #f5f3ff;         /* --violet-050 */
+  --white-pure: #ffffff;
+
+  --bg-color: #292929;        /* --violet-050 */
 }
