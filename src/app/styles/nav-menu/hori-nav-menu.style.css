@@ -29,8 +29,10 @@
   }
 
   .hori-nav-item {
+
     .bee-nav-item-container.active .nav-icon-container {
-      background-color: var(--primary-light);
+      /* background-color: var(--primary-light); */
+      /* border: 3px solid var(--primary-light); */
     }
 
     .bee-nav-item-container {
@@ -39,7 +41,8 @@
     }
 
     .bee-nav-item-container.active {
-      background-color: var(--primary-light);
+      border: 3px solid var(--primary-light-2);
+      background-color: var(--primary-color);
       border-radius: 50px;
     }
 
@@ -50,7 +53,7 @@
       padding: 0;
       margin-left: 10px;
       padding-left: 10px;
-      color: var(--white-1)
+      color: var(--white-1);
     }
   }
 }

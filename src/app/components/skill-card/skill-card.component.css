@@ -5,9 +5,10 @@
 .skill-card {
 
   padding: 20px 10px 20px 10px;
-  background-color: #333333;
+  background-color: var(--bg-color-lighter);
   border-radius: 5px;
-  color: #f2f2f2;
+  /* border: 2px solid var(--bg-color); */
+  color: var(--white-1);
 
   .skill-card-text h1 {
     margin: 0;
@@ -20,4 +21,9 @@
     padding: 0;
     font-size: 15px;
   }
+}
+
+.skill-card:hover{
+  border: 2px solid var(--primary-light-2);
+  /* cursor: pointer; */
 }

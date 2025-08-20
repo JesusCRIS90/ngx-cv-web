@@ -1,6 +1,7 @@
 @import "./app/styles/app-vars/app-vars.styles.css";
 @import "./app/styles/pop-ups/pop-ups.styles.css";
 @import "./app/styles/nav-menu/nav-menu.styles.css";
+@import "./app//styles//sections/sections.styles.css";
 
 /* This property is exclusive for development */
 section {
@@ -12,51 +13,6 @@ body {
   background-color: var(--bg-color);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Move to a CSS File */
-
-.skills-section {
-  margin: auto;
-
-  .skills-filter {
-    margin-bottom: 30px;
-
-    .skill-chip {
-      .chip-container {
-        border-radius: 25px;
-        background-color: #333333;
-        border: 2px solid #969696;
-        cursor: pointer;
-        font-size: 20px;
-
-        .chip-label {
-          color: #ffffff;
-          margin: 5px 15px 5px 15px;
-        }
-      }
-      .chip-container:hover {
-        border: 2px solid #9b83e1;
-      }
-    }
-    .skill-chip.item-active {
-      .chip-container {
-        border: 2px solid #9b83e1;
-      }
-    }
-  }
-}
 
 .timeline-custom-icon svg {
   fill: #ffffff;
@@ -78,12 +34,3 @@ body {
   }
 }
 
-
-.skills-section{
-
-  .no-skills-2-show-message{
-    font-size: 50px;
-    color: #ffffff;
-    text-align: center;
-  }
-}
