@@ -4,33 +4,77 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   .profile-image {
     width: var(--home-sec-profile-img);
   }
 
   .who-i-am {
+    max-width: 750px;
     padding: 0px 0px 0px 50px;
+
     .name {
-      font-size: 50px;
+      font-size: 70px;
+      font-weight: 600;
+      letter-spacing: 3px;
       margin: 0;
       padding: 0;
+      color: var(--white-1);
     }
+
+    .name span {
+      color: var(--primary-light-2);
+    }
+
     .role {
-      font-size: 50px;
+      font-size: 60px;
+      font-weight: 600;
+      letter-spacing: 3px;
       margin: 0;
       padding: 0;
+      color: var(--white-1);
     }
+
+    .role span {
+      color: var(--primary-light-2);
+    }
+
     .brief-description {
+      color: var(--white-1);
       font-size: 25px;
+      letter-spacing: 2px;
       margin: 0;
       padding: 0;
 
       margin-top: 20px;
     }
 
+    .brief-description span {
+      color: var(--primary-light-2);
+    }
+
     .contact-icons {
       margin-top: 80px;
+
+      .icon-link svg {
+        width: 35px;
+        height: auto;
+      }
+
+      .icon-link svg:hover {
+        fill: var(--primary-light-2);
+      }
+
+      .svg-icon-link svg {
+        width: 35px;
+        height: auto;
+      }
+
+      .svg-icon-link svg:hover {
+        fill: var(--primary-light-2);
+        cursor: pointer;
+      }
     }
   }
 }

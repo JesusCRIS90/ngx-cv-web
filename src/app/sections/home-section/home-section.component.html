@@ -1,4 +1,4 @@
-<section beeBackgroundDir [urlImage]="getBackgroundImage()" class="home-section">
+<section beeBackgroundDir [urlImage]="getBackgroundImage()" [blurDeepth]="5" [colorOverlay]="'#05050590'" class="home-section">
   <bee-responsive-layout [TriggerFactorVert2Hori]="getFactorVert2Hori()">
     <ng-template #screenVertical>
       <bee-vertical-layout [policyPos]="POLICY.CENTER_CENTER">
@@ -13,12 +13,10 @@
     </ng-template>
 
     <ng-template #screenHorizontal>
-      <!-- <bee-image-frame [imgSrc]="getBackgroundImage()" [mode]="'background'"> -->
         <bee-pair-layout [pairDistribution]="PAIR_POLICY.GLUED" [gap]="10">
           <img class="profile-image" [src]="getProfileUrl()" alt="" />
           <app-who-iam class="who-i-am" [data]="getData()" />
         </bee-pair-layout>
-      <!-- </bee-image-frame> -->
     </ng-template>
   </bee-responsive-layout>
 </section>
