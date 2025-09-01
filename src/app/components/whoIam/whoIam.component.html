@@ -1,23 +1,36 @@
 <!-- <div> -->
-  <h1 class="name">{{ getData().name.text }}</h1>
-  <h1 class="role">{{ getData().role.text }}</h1>
-  <p class="brief-description">{{ getData().briefBio.text }}</p>
-  <bee-horizontal-layout class="contact-icons" [gap]="10">
-    <bee-link-icon
-      [link]="getData().url_linkedin"
-      [size]="28"
-      [refName]="'bicon-social-linkedin'"
-    />
-    <bee-link-icon
-      [link]="getData().url_github"
-      [size]="28"
-      [refName]="'bicon-tech-github'"
-    />
-    <bee-link-icon [size]="28" [refName]="'bicon-common-pdf'" />
-    <bee-svg-icon
-      DClickableAction
-      (actionClick)="copyEmailtToClipboard($event)"
-      [refName]="'bicon-common-email'"
-    />
-  </bee-horizontal-layout>
+<h1 beeDHighlightKeyWords [keywords]="getData().name.keywords" class="name">
+  {{ getData().name.text }}
+</h1>
+<h1 beeDHighlightKeyWords [keywords]="getData().role.keywords" class="role">
+  {{ getData().role.text }}
+</h1>
+<p
+  beeDHighlightKeyWords
+  [keywords]="getData().briefBio.keywords"
+  class="brief-description"
+>
+  {{ getData().briefBio.text }}
+</p>
+<bee-horizontal-layout class="contact-icons" [gap]="25">
+  <bee-link-icon
+    class="icon-link"
+    [link]="getData().url_linkedin"
+    [size]="28"
+    [refName]="'bicon-social-linkedin'"
+  />
+  <bee-link-icon
+    class="icon-link"
+    [link]="getData().url_github"
+    [size]="28"
+    [refName]="'bicon-tech-github'"
+  />
+  <bee-link-icon class="icon-link" [size]="28" [refName]="'bicon-common-pdf'" />
+  <bee-svg-icon
+    class="svg-icon-link"
+    DClickableAction
+    (actionClick)="copyEmailtToClipboard($event)"
+    [refName]="'bicon-common-email'"
+  />
+</bee-horizontal-layout>
 <!-- </div> -->

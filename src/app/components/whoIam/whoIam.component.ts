@@ -4,10 +4,11 @@ import {
   HorizontalLayoutComponent as FlexHori,
 } from '@beexy/ngx-layouts'
 import {
-  HighlightKeyWordsDirective as HighlightWords,
+  HighlightKeyWordsDirective as keywordDir,
   LinkIconComponent as LinkIcon,
   SVGIconComponent as SVGIcon
 } from '@beexy/ngx-components'
+
 import { ToastService } from '@beexy/ngx-popups'
 
 import {
@@ -19,7 +20,7 @@ import { copyToClipboard } from '../../utils'
 
 @Component({
   selector: 'app-who-iam',
-  imports: [FlexHori, LinkIcon, SVGIcon, ActionClickDir],
+  imports: [FlexHori, LinkIcon, SVGIcon, ActionClickDir, keywordDir],
   templateUrl: './whoIam.component.html',
 })
 export class WhoIamComponent {
