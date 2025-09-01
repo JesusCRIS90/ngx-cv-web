@@ -1,8 +1,8 @@
-<div>
-  <h1>{{ getData().name.text }}</h1>
-  <h1>{{ getData().role.text }}</h1>
-  <p>{{ getData().briefBio.text }}</p>
-  <bee-horizontal-layout [gap]="10">
+<!-- <div> -->
+  <h1 class="name">{{ getData().name.text }}</h1>
+  <h1 class="role">{{ getData().role.text }}</h1>
+  <p class="brief-description">{{ getData().briefBio.text }}</p>
+  <bee-horizontal-layout class="contact-icons" [gap]="10">
     <bee-link-icon
       [link]="getData().url_linkedin"
       [size]="28"
@@ -20,4 +20,4 @@
       [refName]="'bicon-common-email'"
     />
   </bee-horizontal-layout>
-</div>
+<!-- </div> -->
