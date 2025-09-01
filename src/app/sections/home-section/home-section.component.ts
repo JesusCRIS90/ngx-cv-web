@@ -13,10 +13,11 @@ import { AppDataHome } from '../../interfaces';
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../providers/config';
 
 import { WhoIamComponent } from '../../components'
+import { BackgroundDirectiveDirective as bgDir } from '../../devComp/background-directive.directive'
 
 @Component({
   selector: 'sec-home',
-  imports: [ResponsiveLayout, PairLayout, VFlex, WhoIamComponent],
+  imports: [ResponsiveLayout, PairLayout, VFlex, WhoIamComponent, bgDir],
   templateUrl: './home-section.component.html',
 })
 export class HomeSectionComponent implements OnInit {
@@ -28,16 +29,22 @@ export class HomeSectionComponent implements OnInit {
 
   homeData = input.required<AppDataHome | undefined>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (this.homeData() === undefined) {
       this.router.navigate(['/error']);
     }
+
+    console.log(this.homeData());
   }
 
   getProfileUrl(): string {
     return this.homeData()!.profileImg.hori;
+  }
+
+  getBackgroundImage(): string {
+    return this.homeData()!.background.hori;
   }
 
   getData(): AppDataHome {

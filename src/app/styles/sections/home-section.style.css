@@ -1,7 +1,9 @@
 .home-section {
-
   /* Delete on Near Future */
   height: 100dvh;
+
+  display: flex;
+  align-items: center;
 
   .profile-image {
     width: var(--home-sec-profile-img);

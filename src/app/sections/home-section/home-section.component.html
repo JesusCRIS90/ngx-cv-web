@@ -1,19 +1,24 @@
-<section class="home-section">
-  <bee-responsive-layout
-    [TriggerFactorVert2Hori]="getFactorVert2Hori()"
-  >
+<section beeBackgroundDir [urlImage]="getBackgroundImage()" class="home-section">
+  <bee-responsive-layout [TriggerFactorVert2Hori]="getFactorVert2Hori()">
     <ng-template #screenVertical>
       <bee-vertical-layout [policyPos]="POLICY.CENTER_CENTER">
-        <img class="profile-image" style="width: 60%" [src]="getProfileUrl()" alt="profile-image" />
+        <img
+          class="profile-image"
+          style="width: 60%"
+          [src]="getProfileUrl()"
+          alt="profile-image"
+        />
         <app-who-iam class="who-i-am" [data]="getData()" />
       </bee-vertical-layout>
     </ng-template>
 
     <ng-template #screenHorizontal>
-      <bee-pair-layout [pairDistribution]="PAIR_POLICY.GLUED" [gap]="10">
-        <img class="profile-image" [src]="getProfileUrl()" alt="" />
-        <app-who-iam class="who-i-am" [data]="getData()" />
-      </bee-pair-layout>
+      <!-- <bee-image-frame [imgSrc]="getBackgroundImage()" [mode]="'background'"> -->
+        <bee-pair-layout [pairDistribution]="PAIR_POLICY.GLUED" [gap]="10">
+          <img class="profile-image" [src]="getProfileUrl()" alt="" />
+          <app-who-iam class="who-i-am" [data]="getData()" />
+        </bee-pair-layout>
+      <!-- </bee-image-frame> -->
     </ng-template>
   </bee-responsive-layout>
 </section>
