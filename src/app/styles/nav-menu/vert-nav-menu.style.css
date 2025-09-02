@@ -9,7 +9,7 @@
 
   div {
     /* background-color: #7458a8; */
-    background-color: var( --primary-color );
+    background-color: var(--primary-color);
     border-radius: 50px;
     padding: 8px;
 
@@ -34,16 +34,25 @@
 .vert-nav-item {
   .bee-nav-item-container.active {
     .nav-icon-container svg {
-      fill: var( --primary-light )
+      fill: var(--primary-light);
     }
 
     .nav-text-container p {
-      color: var( --primary-light );
+      color: var(--primary-light);
     }
   }
 
   .nav-text-container .title {
     margin: 10px 20px 10px 0px;
     padding: 0;
+  }
+}
+
+.bee-nav-item-container {
+  .nav-icon-container {
+    .svg-icon {
+      height: 24px;
+      width: 24px;
+    }
   }
 }

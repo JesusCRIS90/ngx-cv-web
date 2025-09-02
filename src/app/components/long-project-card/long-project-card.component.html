@@ -3,34 +3,38 @@
 
   @if ( getType() === 'video' ) {
   <app-embed-youtube-video
+    class="project-video"
     [source]="getProjectInfo().videoUrl"
   />
   } @else {
   <!-- <div class="project-carousel">Insert Carousel Images Here</div> -->
   <bee-hori-carousel
+    class="project-carousel"
     [autoPlayInterval]="2500"
     [pauseOnHover]="true"
     [transitionType]="'slide-left'"
     [items]="getImgUrls()"
   >
     <ng-template #body let-item>
-       <bee-image-frame [imgSrc]="item" [mode]="'img'"></bee-image-frame>
+      <bee-image-frame [imgSrc]="item" [mode]="'img'"></bee-image-frame>
     </ng-template>
   </bee-hori-carousel>
   }
 
   <bee-pair-layout
+    class="icons-container"
     [spaceDistribution]="'2fr 1fr'"
+    [gap]="50"
     [pairDistribution]="PAIR_POLICY.CENTER"
   >
     <div class="project-card-techs">
       @for (tech of getProjectInfo().techs; track $index) {
-        <bee-svg-icon [refName]="tech.icon" />
+      <bee-svg-icon class="tech-icon" [refName]="tech.icon" />
       }
     </div>
     <div class="project-card-links">
       @for (link of getProjectInfo().links; track $index) {
-        <bee-link-icon class="action-link" [refName]="link.icon" />
+      <bee-link-icon class="action-link" [refName]="link.icon" />
       }
     </div>
   </bee-pair-layout>

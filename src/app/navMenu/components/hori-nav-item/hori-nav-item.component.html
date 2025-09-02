@@ -4,7 +4,9 @@
   (clicked)="navItemOnClick($event)"
 >
   <bee-hover-layout>
+
     <ng-template #hoverIn>
+
       <bee-pair-layout class="nav-container" [pairDistribution]="PAIR_POLICY.CENTER" [spaceDistribution]="'2fr 1fr'" [gap]="5">
         <div class="nav-text-container">
           <p class="title"> {{ getTitle() }} </p>
@@ -15,12 +17,16 @@
         </div>
 
       </bee-pair-layout>
+
     </ng-template>
 
     <ng-template #hoverOut>
+
       <div class="nav-icon-container">
-        <bee-svg-icon [refName]="getIcon() ?? 'default-icon'" />
+        <bee-svg-icon class="nav-icon" [refName]="getIcon() ?? 'default-icon'" />
       </div>
+
     </ng-template>
+
   </bee-hover-layout>
 </bee-nav-item>

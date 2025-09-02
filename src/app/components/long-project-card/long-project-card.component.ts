@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   PairLayoutComponent as PairLay,
   PAIR_DISTRIBUTION as PAIR_POLICY,
-  HorizontalLayoutComponent as HoriFlex,
+  // HorizontalLayoutComponent as HoriFlex,
   VerticalLayoutComponent as VertFlex,
   POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
@@ -34,7 +34,7 @@ const horiUrls = [
 @Component({
   selector: 'long-project-card',
   imports: [
-    PairLay, HoriFlex, VertFlex, MDViewer,
+    PairLay, VertFlex, MDViewer,
     SVG, LinkIcon, HoriCarousel,
     EmbedYoutubeVideoComponent, ImageFrameComponent
   ],

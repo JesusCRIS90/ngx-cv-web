@@ -6,6 +6,13 @@
   left: 96%;
   transform: translate(-50%, -50%);
 
+  .nav-icon {
+    .svg-icon {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
   .nav-icon-container {
     display: flex;
 
@@ -18,7 +25,7 @@
     background-color: var(--primary-color);
     border-radius: 50px;
 
-    bee-svg-icon {
+    .svg-icon {
       height: 24px;
       width: 24px;
     }
@@ -29,11 +36,6 @@
   }
 
   .hori-nav-item {
-
-    .bee-nav-item-container.active .nav-icon-container {
-      /* background-color: var(--primary-light); */
-      /* border: 3px solid var(--primary-light); */
-    }
 
     .bee-nav-item-container {
       background-color: var(--primary-color);

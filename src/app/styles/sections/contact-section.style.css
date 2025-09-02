@@ -1,0 +1,15 @@
+.sec-contact {
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    color: var(--white-1);
+    align-items: center;
+    font-size: 60px;
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+}
