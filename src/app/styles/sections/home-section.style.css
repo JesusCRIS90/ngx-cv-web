@@ -57,9 +57,10 @@
     .contact-icons {
       margin-top: 80px;
 
-      .icon-link svg {
+      .icon-link .svg-icon {
         width: 35px;
         height: auto;
+        fill: var(--white-1);
       }
 
       .icon-link svg:hover {

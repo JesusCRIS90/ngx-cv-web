@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 
-  .title{
+  .title {
     color: var(--white-1);
     align-items: center;
     font-size: 60px;
@@ -46,4 +46,34 @@
     color: var(--white-pure);
     text-align: center;
   }
+}
+
+.skill-card {
+  padding: 20px 10px 20px 10px;
+  background-color: var(--bg-color-lighter);
+  border-radius: 5px;
+  color: var(--white-1);
+  border: 2px solid var(--bg-color-lighter);
+
+  .skill-card-text h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  .skill-card-text p {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .svg-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.skill-card:hover {
+  border: 2px solid var(--primary-light-2);
+  /* cursor: pointer; */
 }
