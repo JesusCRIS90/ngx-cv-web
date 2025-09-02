@@ -1,4 +1,5 @@
-<bee-vertical-layout class="long-project-card">
+<!-- <bee-vertical-layout class="long-project-card"> -->
+<div class="long-project-card">
   <h1 class="project-title">{{ getProjectInfo().title }}</h1>
 
   @if ( getType() === 'video' ) {
@@ -16,7 +17,7 @@
     [items]="getImgUrls()"
   >
     <ng-template #body let-item>
-      <bee-image-frame [imgSrc]="item" [mode]="'img'"></bee-image-frame>
+      <bee-image-frame class="frame-container" [imgSrc]="item" [mode]="'img'"></bee-image-frame>
     </ng-template>
   </bee-hori-carousel>
   }
@@ -43,4 +44,5 @@
     class="project-description"
     [markdownPath]="getProjectInfo().mdDescription"
   />
-</bee-vertical-layout>
+</div>
+<!-- </bee-vertical-layout> -->

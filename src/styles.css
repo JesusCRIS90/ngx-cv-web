@@ -14,14 +14,6 @@ body {
 }
 
 
-.timeline-custom-icon svg {
-  fill: #ffffff;
-}
-
-.timeline-custom-icon div {
-  background-color: var(--violet-600) !important;
-}
-
 .custom-no-modal {
   .bee-no-modal-container {
     background-color: #252525;

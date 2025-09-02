@@ -13,3 +13,63 @@
     padding-top: 10px;
   }
 }
+
+.long-exp-card {
+  display: flex;
+  flex-direction: column;
+  width: 80dvh;
+  max-height: 75dvh;
+
+  .header {
+    margin-bottom: 20px;
+
+    .role {
+      margin: 0;
+      color: var(--primary-light-2);
+      margin-bottom: 5px;
+    }
+
+    .company {
+      margin: 0;
+      color: var(--white-1);
+    }
+
+    .time {
+      margin: 0;
+      font-size: 28px;
+      color: var(--white-1);
+    }
+  }
+
+  .body {
+    padding: 12px;
+    flex: 1 1 auto; /* take remaining vertical space */
+    min-height: 0; /* IMPORTANT — allows children to overflow internally */
+    overflow: auto; /* prevent nm-body from creating its own page scroll */
+    color: var(--white-1);
+  }
+
+  .techs-title {
+    margin: 0;
+    margin-top: 20px;
+    color: var(--primary-light-2);
+  }
+
+  .tech-icons {
+    margin-top: 20px;
+    .svg-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+
+
+.timeline-custom-icon svg {
+  fill: #ffffff;
+}
+
+.timeline-custom-icon div {
+  background-color: var(--primary-color) !important;
+}

@@ -6,10 +6,11 @@ import {
 } from '@beexy/ngx-layouts'
 
 import { TimeLineCard } from '../../interfaces'
+import { BeeTruncatePipe } from '../../pipes/text-truncate.pipe'
 
 @Component({
   selector: 'short-experience-card',
-  imports: [PairLay],
+  imports: [PairLay, BeeTruncatePipe],
   templateUrl: './short-experience-card.component.html',
   styleUrl: './short-experience-card.component.css',
 })

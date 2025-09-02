@@ -2,7 +2,7 @@
   /* display: block; */
 }
 
-.long-project-card {
+/* .long-project-card {
   max-width: 1200px;
   height: 75dvh;
 
@@ -18,7 +18,6 @@
 
   .project-description {
     display: block;
-    /* max-height: 600px; */
     max-width: fit-content;
     overflow-y: auto;
 
@@ -34,7 +33,7 @@
   .project-card-techs {
     .tech-icon {
       margin-right: 10px;
-      svg {
+      svg-icon {
         width: 50px !important;
         height: auto !important;
       }
@@ -49,4 +48,4 @@
       }
     }
   }
-}
+} */

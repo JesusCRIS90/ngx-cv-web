@@ -1,25 +1,39 @@
 .short-exp-card {
-
-  width: 400px;
-  padding: 10px 10px 10px 10px;
-  background-color: cadetblue;
+  width: 600px;
+  min-height: 100px;
+  padding: 20px 20px 20px 20px;
+  background-color: var(--bg-color-lighter);
+  border: 2px solid var(--bg-color-lighter);
+  border-radius: 10px;
   cursor: pointer;
 
   .exp-role {
+    color: var(--white-1);
+    font-size: 25px;
     margin: 0;
     padding: 0;
   }
   .exp-time-span {
+    font-size: 20px;
+    color: var(--white-1);
     margin: 0;
     padding: 0;
   }
   .exp-company {
+    font-size: 20px;
+    color: var(--white-1);
     margin: 0;
     padding: 0;
   }
   .exp-description {
+    font-size: 18px;
+    color: var(--white-1);
     margin: 0;
     padding: 0;
     margin-top: 10px;
   }
+}
+
+.short-exp-card:hover {
+  border: 2px solid var(--primary-light);
 }
