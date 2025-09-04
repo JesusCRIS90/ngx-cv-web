@@ -20,8 +20,8 @@
           [anchorPoint]="POLICY.CENTER_CENTER"
         >
           <div class="overlay-text">
-            <h1>{{ getProjectInfo().title }}</h1>
-            <p>{{ getProjectInfo().briefBio }}</p>
+            <h1 class="title">{{ getProjectInfo().title }}</h1>
+            <p class="description">{{ getProjectInfo().briefBio | beeTruncate:100 }}</p>
           </div>
         </bee-floating-layout>
         }

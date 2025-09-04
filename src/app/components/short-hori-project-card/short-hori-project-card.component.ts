@@ -17,10 +17,11 @@ import { ClickableActionDirective } from '../../directives'
 import { LongProjectCardComponent as LongProjectCard } from '../../components'
 import { Project } from '../../interfaces';
 import { AppDataMapper } from '../../mappers/AppDataMapper';
+import { BeeTruncatePipe } from '../../pipes/text-truncate.pipe'
 
 @Component({
   selector: 'short-hori-project-card',
-  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective, HoriCarousel],
+  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective, HoriCarousel, BeeTruncatePipe],
   templateUrl: './short-hori-project-card.component.html',
   styleUrl: './short-hori-project-card.component.css',
 })

@@ -20,5 +20,15 @@
   .overlay-text{
     color: #ffffff;
     opacity: 100%;
+
+    .title{
+      color: var(--primary-light-2);
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 35px;
+    }
+    .description{
+      margin: 0;
+    }
   }
 }
