@@ -7,6 +7,8 @@ import {
   POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
 
+import { BeeTooltipPopupDirective as DBeeToolTip } from '@beexy/ngx-popups'
+
 import { SVGIconComponent as SVG } from '@beexy/ngx-components'
 
 import { LongExperienceCard, Technology } from '../../interfaces'
@@ -15,7 +17,7 @@ import { MarkdownViewerComponent as MDViewer } from '../../devComp/markdown-view
 
 @Component({
   selector: 'app-long-experience-card',
-  imports: [PairLay, HoriFlex, MDViewer, SVG],
+  imports: [PairLay, HoriFlex, MDViewer, SVG, DBeeToolTip],
   templateUrl: './long-experience-card.component.html',
   styleUrl: './long-experience-card.component.css',
 })

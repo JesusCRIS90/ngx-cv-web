@@ -4,7 +4,7 @@ import {
   PairLayoutComponent as PairLay,
   PAIR_DISTRIBUTION as PAIR_POLICY,
   // HorizontalLayoutComponent as HoriFlex,
-  VerticalLayoutComponent as VertFlex,
+  // VerticalLayoutComponent as VertFlex,
   POLICY_POSITION as POLICY,
 } from '@beexy/ngx-layouts'
 
@@ -12,6 +12,8 @@ import {
   SVGIconComponent as SVG,
   LinkIconComponent as LinkIcon
 } from '@beexy/ngx-components'
+
+import { BeeTooltipPopupDirective as DBeeToolTip } from '@beexy/ngx-popups'
 
 import {
   BeeHorizontalCarouselComponent as HoriCarousel,
@@ -34,9 +36,10 @@ const horiUrls = [
 @Component({
   selector: 'long-project-card',
   imports: [
-    PairLay, VertFlex, MDViewer,
+    PairLay, MDViewer,
     SVG, LinkIcon, HoriCarousel,
-    EmbedYoutubeVideoComponent, ImageFrameComponent
+    EmbedYoutubeVideoComponent, ImageFrameComponent,
+    DBeeToolTip
   ],
   templateUrl: './long-project-card.component.html',
   styleUrl: './long-project-card.component.css',

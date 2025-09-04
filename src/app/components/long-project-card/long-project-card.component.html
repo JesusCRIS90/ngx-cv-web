@@ -30,7 +30,7 @@
   >
     <div class="project-card-techs">
       @for (tech of getProjectInfo().techs; track $index) {
-      <bee-svg-icon class="tech-icon" [refName]="tech.icon" />
+      <bee-svg-icon beeDirTooltip [tooltipDelay]="800" [tooltipMsg]="tech.tooltip" class="tech-icon" [refName]="tech.icon" />
       }
     </div>
     <div class="project-card-links">

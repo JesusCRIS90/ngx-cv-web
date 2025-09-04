@@ -18,7 +18,7 @@
 
   <bee-horizontal-layout class="tech-icons" [policyPos]="POLICY.CENTER_LEFT" [gap]="20">
     @for (tech of getCard().techs; track $index) {
-    <bee-svg-icon [id]="tech.name" [refName]="tech.icon" />
+    <bee-svg-icon beeDirTooltip [tooltipDelay]="800" [tooltipMsg]="tech.tooltip" [id]="tech.name" [refName]="tech.icon" />
     }
   </bee-horizontal-layout>
 
