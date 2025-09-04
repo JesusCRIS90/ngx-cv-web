@@ -7,8 +7,8 @@
   place-content: center;
   align-items: center;
 
-  width: 80dvh;
-  height: 85dvh;
+  width: var(--long-project-card-width);
+  height: var(--long-project-card-height);
 
   .project-card-links {
     .action-link {
@@ -18,10 +18,11 @@
 
   .project-title {
     color: var(--white-1);
+    font-size: var(--long-project-card-font-size-title);
   }
 
   .frame-container .bee-frame-img {
-    width: 600px;
+    width: var(--long-project-card-img-width);
   }
 
   .project-description {
@@ -29,7 +30,7 @@
     max-width: fit-content;
     overflow-y: auto;
 
-    font-size: 20px;
+    font-size: var(--long-project-card-font-size-description);
 
     color: var(--white-1);
   }
@@ -43,8 +44,8 @@
     .tech-icon {
       margin-right: 10px;
       .svg-icon {
-        width: 40px;
-        height: 40px;
+        width: var(--long-project-card-icon-size);
+        height: var(--long-project-card-icon-size);
       }
     }
   }
@@ -52,8 +53,8 @@
   .project-card-links {
     .action-link {
       .svg-icon {
-        width: 40px;
-        height: 40px;
+        width: var(--long-project-card-icon-size);
+        height: var(--long-project-card-icon-size);
       }
     }
   }

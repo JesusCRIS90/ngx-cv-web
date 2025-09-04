@@ -13,9 +13,16 @@
   --font-size-project-card-title-hori: 35px;
   --font-size-project-card-description-hori: 18px;
   --space-project-card-title-description-hori: 10px;
+  /* Projects Long Card Vars */
+  --long-project-card-width: 80dvh;
+  --long-project-card-height: 85dvh;
+  --long-project-card-img-width: 600px;
+  --long-project-card-font-size-title: 40px;
+  --long-project-card-font-size-description: 20px;
+  --long-project-card-icon-size: 40px;
 
   /* Experience Vars */
-  --short-experience-card-width: 700px;
+  --short-experience-card-width: 600px;
   --short-experience-card-min-height: 100px;
   --experience-title-font-size: 60px;
   --font-size-experience-card-role: 25px;
