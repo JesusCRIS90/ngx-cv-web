@@ -1,3 +1,26 @@
 .responsive-schema-ultra-wide-screen {
+  /* Home Vars */
   --home-sec-profile-img: 950px;
+  --font-size-home-sec-name: 70px;
+  --font-size-home-sec-role: 60px;
+  --font-size-home-sec-bio: 30px;
+  --icon-size-home-sec: 35px;
+  --space-home-sec-bio-icons: 80px;
+
+  /* Projects Vars */
+  --short-project-card-hori-width: 700px;
+  --project-title-font-size-hori: 60px;
+  --font-size-project-card-title-hori: 50px;
+  --font-size-project-card-description-hori: 25px;
+  --space-project-card-title-description-hori: 10px;
+
+  /* Experience Vars */
+  --short-experience-card-width: 800px;
+  --short-experience-card-min-height:100px;
+  --experience-title-font-size: 60px;
+  --font-size-experience-card-role: 30px;
+  --font-size-experience-card-company: 25px;
+  --font-size-experience-card-timespan: 25px;
+  --font-size-experience-card-description: 20px;
+
 }

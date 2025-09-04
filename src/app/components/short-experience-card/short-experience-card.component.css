@@ -1,6 +1,6 @@
 .short-exp-card {
-  width: 600px;
-  min-height: 100px;
+  width: var(--short-experience-card-width);
+  min-height: var(--short-experience-card-min-height);
   padding: 20px 20px 20px 20px;
   background-color: var(--bg-color-lighter);
   border: 2px solid var(--bg-color-lighter);
@@ -9,24 +9,24 @@
 
   .exp-role {
     color: var(--white-1);
-    font-size: 25px;
+    font-size: var(--font-size-experience-card-role);
     margin: 0;
     padding: 0;
   }
   .exp-time-span {
-    font-size: 20px;
+    font-size: var(--font-size-experience-card-timespan);
     color: var(--white-1);
     margin: 0;
     padding: 0;
   }
   .exp-company {
-    font-size: 20px;
+    font-size: var(--font-size-experience-card-company);
     color: var(--white-1);
     margin: 0;
     padding: 0;
   }
   .exp-description {
-    font-size: 18px;
+    font-size: var(--font-size-experience-card-description);
     color: var(--white-1);
     margin: 0;
     padding: 0;

@@ -2,12 +2,10 @@
 }
 
 .long-project-card {
-
   display: flex;
   flex-direction: column;
   place-content: center;
   align-items: center;
-
 
   width: 80dvh;
   height: 85dvh;
@@ -22,7 +20,7 @@
     color: var(--white-1);
   }
 
-  .frame-container .bee-frame-img{
+  .frame-container .bee-frame-img {
     width: 600px;
   }
 
@@ -58,5 +56,29 @@
         height: 40px;
       }
     }
+  }
+
+  /* SCROLL BAR CUSTOMIZATION */
+
+  /* Width and height of scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px; /* vertical */
+  }
+
+  /* Track (background of scrollbar) */
+  ::-webkit-scrollbar-track {
+    background: var(--primary-light);
+    border-radius: 10px;
+    height: 5px;
+  }
+
+  /* Thumb (draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
   }
 }

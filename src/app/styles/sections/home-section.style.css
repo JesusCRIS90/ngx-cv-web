@@ -1,5 +1,4 @@
 .home-section {
-  /* Delete on Near Future */
   height: 100dvh;
 
   display: flex;
@@ -11,11 +10,12 @@
   }
 
   .who-i-am {
-    max-width: 750px;
-    padding: 0px 0px 0px 50px;
+    /* max-width: 750px; */
+    max-width: 75%;
+    padding: 0px 0px 0px 25px;
 
     .name {
-      font-size: 70px;
+      font-size: var(--font-size-home-sec-name);
       font-weight: 600;
       letter-spacing: 3px;
       margin: 0;
@@ -28,7 +28,7 @@
     }
 
     .role {
-      font-size: 60px;
+      font-size: var(--font-size-home-sec-role);
       font-weight: 600;
       letter-spacing: 3px;
       margin: 0;
@@ -42,7 +42,7 @@
 
     .brief-description {
       color: var(--white-1);
-      font-size: 25px;
+      font-size: var(--font-size-home-sec-bio);
       letter-spacing: 2px;
       margin: 0;
       padding: 0;
@@ -55,10 +55,10 @@
     }
 
     .contact-icons {
-      margin-top: 80px;
+      margin-top: var(--space-home-sec-bio-icons);
 
       .icon-link .svg-icon {
-        width: 35px;
+        width: var(--icon-size-home-sec);
         height: auto;
         fill: var(--white-1);
       }
@@ -68,7 +68,7 @@
       }
 
       .svg-icon-link svg {
-        width: 35px;
+        width: var(--icon-size-home-sec);
         height: auto;
       }
 

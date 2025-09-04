@@ -1,6 +1,6 @@
 <section class="projects-sec">
-  <bee-fixed-width-layout [offset]="300">
-    <bee-responsive-layout [TriggerFactorVert2Hori]="getFactorVert2Hori()">
+  <!-- <bee-fixed-width-layout [offset]="300"> -->
+    <bee-responsive-layout class="project-cards-container" [TriggerFactorVert2Hori]="getFactorVert2Hori()">
       <ng-template #screenVertical>
         <bee-grid-2d-layout
           [gap]="20"
@@ -93,5 +93,5 @@
         </bee-grid-2d-layout>
       </ng-template>
     </bee-responsive-layout>
-  </bee-fixed-width-layout>
+  <!-- </bee-fixed-width-layout> -->
 </section>

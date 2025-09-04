@@ -1,5 +1,5 @@
 .short-hori-project-card {
-  width: 500px;
+  width: var(--short-project-card-hori-width);
   height: auto;
   overflow: hidden;
   cursor: pointer;
@@ -13,22 +13,23 @@
   }
 
   .hover-in{
-    background: #242424;
+    background: var(--bg-color);
     opacity: .15;
   }
 
   .overlay-text{
-    color: #ffffff;
+    color: var(--white-1);
     opacity: 100%;
 
     .title{
       color: var(--primary-light-2);
       margin: 0;
-      margin-bottom: 10px;
-      font-size: 35px;
+      margin-bottom: var(--space-project-card-title-description-hori);
+      font-size: var(--font-size-project-card-title-hori);
     }
     .description{
       margin: 0;
+      font-size: var(--font-size-project-card-description-hori);
     }
   }
 }
