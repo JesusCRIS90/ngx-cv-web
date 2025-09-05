@@ -2,13 +2,6 @@
   /* Fixed Properties */
   position: relative;
   overflow: hidden;
-
-  /* Variable Properties */
-  /* width: 600px; */
-  /* width * ( 9 / 16 ) */
-  /* height: 338px; */
-
-  /* margin: 10px 0px 20px 0px; */
 }
 
 .video-container .yt-iframe {
@@ -18,8 +11,4 @@
   left: 0;
   width: -webkit-fill-available;
   height: -webkit-fill-available;
-
-  /* Variable Properties */
-  /* border-radius: 10px; */
-  /* border-color: blueviolet; */
 }
