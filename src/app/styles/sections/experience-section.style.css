@@ -8,17 +8,25 @@
   .title {
     color: var(--white-1);
     align-items: center;
-    font-size: 60px;
+    font-size: var(--experience-title-font-size);
     text-transform: uppercase;
     padding-top: 10px;
   }
 }
 
+.timeline-custom-icon svg {
+  fill: #ffffff;
+}
+
+.timeline-custom-icon div {
+  background-color: var(--primary-color) !important;
+}
+
 .long-exp-card {
   display: flex;
   flex-direction: column;
-  width: 80dvh;
-  max-height: 75dvh;
+  width: var(--long-experience-card-width);
+  max-height: var(--long-experience-card-height);
 
   .header {
     margin-bottom: 20px;
@@ -27,16 +35,18 @@
       margin: 0;
       color: var(--primary-light-2);
       margin-bottom: 5px;
+      font-size: var(--long-experience-card-font-size-role);
     }
 
     .company {
       margin: 0;
       color: var(--white-1);
+      font-size: var(--long-experience-card-font-size-company);
     }
 
     .time {
       margin: 0;
-      font-size: 28px;
+      font-size: var(--long-experience-card-font-size-timespan);
       color: var(--white-1);
     }
   }
@@ -49,7 +59,12 @@
     color: var(--white-1);
   }
 
+  .bee-markdown-body {
+    font-size: var(--long-experience-card-font-size-description);
+  }
+
   .techs-title {
+    font-size: var(--long-experience-card-font-size-title-icons);
     margin: 0;
     margin-top: 20px;
     color: var(--primary-light-2);
@@ -58,8 +73,8 @@
   .tech-icons {
     margin-top: 20px;
     .svg-icon {
-      width: 50px;
-      height: 50px;
+      width: var(--long-experience-card-icons-size);
+      height: var(--long-experience-card-icons-size);
     }
   }
 
@@ -86,12 +101,4 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
   }
-}
-
-.timeline-custom-icon svg {
-  fill: #ffffff;
-}
-
-.timeline-custom-icon div {
-  background-color: var(--primary-color) !important;
 }

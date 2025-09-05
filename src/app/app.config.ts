@@ -13,6 +13,7 @@ import { USER_CONFIG_APP_PROVIDER } from './providers/config'
 import { SPRITE_SHEET_PROVIDER, JSON_DATA_PROVIDER } from './providers/pre-loaders'
 
 const responsiveAvailablesSchemmas = [
+  'tiny-screen',
   'small-screen',
   'medium-screen',
   'big-screen',

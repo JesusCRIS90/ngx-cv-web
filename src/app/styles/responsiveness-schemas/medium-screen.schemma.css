@@ -1,32 +1,48 @@
 .responsive-schema-medium-screen {
   /* Home Vars */
-  --home-sec-profile-img: 320px;
-  --font-size-home-sec-name: 30px;
-  --font-size-home-sec-role: 25px;
+  --home-sec-profile-img: 400px;
+  --font-size-home-sec-name: 35px;
+  --font-size-home-sec-role: 30px;
   --font-size-home-sec-bio: 18px;
-  --icon-size-home-sec: 25px;
+  --icon-size-home-sec: 35px;
   --space-home-sec-bio-icons: 0px;
 
   /* Projects Vars */
-  --short-project-card-hori-width: 220px;
-  --project-title-font-size-hori: 30px;
-  --font-size-project-card-title-hori: 18px;
-  --font-size-project-card-description-hori: 12px;
+  --short-project-card-hori-width: 280px;
+  --project-title-font-size-hori: 40px;
+  --font-size-project-card-title-hori: 22px;
+  --font-size-project-card-description-hori: 14px;
   --space-project-card-title-description-hori: 5px;
   /* Projects Long Card Vars */
   --long-project-card-width: 80dvh;
   --long-project-card-height: 70dvh;
   --long-project-card-img-width: 180px;
+  --long-project-card-video-width: 280px;
   --long-project-card-font-size-title: 15px;
   --long-project-card-font-size-description: 12px;
-  --long-project-card-icon-size: 15px;
+  --long-project-card-icon-size: 25px;
 
   /* Experience Vars */
-  --short-experience-card-width: 300px;
-  --short-experience-card-min-height: 50px;
-  --experience-title-font-size: 60px;
-  --font-size-experience-card-role: 15px;
-  --font-size-experience-card-company: 15px;
-  --font-size-experience-card-timespan: 15px;
-  --font-size-experience-card-description: 12px;
+  --short-experience-card-width: 380px;
+  --short-experience-card-min-height: 100px;
+  --experience-title-font-size: 50px;
+  --font-size-experience-card-role: 22px;
+  --font-size-experience-card-company: 20px;
+  --font-size-experience-card-timespan: 18px;
+  --font-size-experience-card-description: 16px;
+
+  /* Experience Long Card Vars */
+  --long-experience-card-width: 150dvh;
+  --long-experience-card-height: 75dvh;
+  --long-experience-card-font-size-role: 25px;
+  --long-experience-card-font-size-company: 22px;
+  --long-experience-card-font-size-timespan: 22px;
+  --long-experience-card-font-size-description: 16px;
+  --long-experience-card-font-size-title-icons: 16px;
+  --long-experience-card-icons-size: 30px;
+
+  /* Hori Nav Menu */
+  --nav-menu-hori-container-size: 35px;
+  --nav-menu-hori-icon-size: 18px;
+  --nav-menu-hori-font-size: 14px;
 }

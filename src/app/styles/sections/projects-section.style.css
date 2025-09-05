@@ -25,6 +25,16 @@
     width: var(--long-project-card-img-width);
   }
 
+  .project-video .video-container {
+    width: var(--long-project-card-video-width);
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-video .video-container .yt-iframe {
+    border-radius: 10px;
+    border-color: blueviolet;
+  }
+
   .project-description {
     display: block;
     max-width: fit-content;

@@ -1,21 +1,25 @@
 .video-container {
+  /* Fixed Properties */
   position: relative;
   overflow: hidden;
-  width: 600px;
-  height: 338px;  /* width * ( 9 / 16 ) */
 
-  margin: 10px 0px 20px 0px;
+  /* Variable Properties */
+  /* width: 600px; */
+  /* width * ( 9 / 16 ) */
+  /* height: 338px; */
+
+  /* margin: 10px 0px 20px 0px; */
 }
 
-.video-container {
-  .yt-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+.video-container .yt-iframe {
+  /* Fixed Properties */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
 
-    border-radius: 10px;
-    border-color: blueviolet;
-  }
+  /* Variable Properties */
+  /* border-radius: 10px; */
+  /* border-color: blueviolet; */
 }
