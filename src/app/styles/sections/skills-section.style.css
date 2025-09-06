@@ -1,9 +1,14 @@
 .skills-section {
-  margin-top: 50px;
+  min-height: 100dvh;
+  /* margin-top: 50px; */
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .body{
+    margin: 0;
+  }
 
   .title {
     color: var(--white-1);
