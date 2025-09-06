@@ -36,11 +36,28 @@ export class ProjectsSectionComponent {
     return this.commonConfig.factorVert2Hori;
   }
 
-  getShortProjectCardInfo( ): ShortProjectCard[] {
-    return AppDataMapper.ProjectsArray2ShortProjectCards( this.projects() )
+  getShortProjectCardInfo(): ShortProjectCard[] {
+    return AppDataMapper.ProjectsArray2ShortProjectCards(this.projects())
   }
 
-  getProjectWithIndex( index: number ): Project{
+  getProjectWithIndex(index: number): Project {
     return this.projects()[index];
+  }
+
+  protected get_y_PatternHori(i: number) {
+    return Math.floor((2 * i) / 3) + 1;
+  }
+
+  protected get_x_PatternHori(i: number) {
+    const pattern = [1, 3, 2];
+    return pattern[i % 3];
+  }
+
+  protected get_y_PatternVert(i: number) {
+    return i + 1;
+  }
+
+  protected get_x_PatternVert(i: number) {
+    return (i % 2) + 1;
   }
 }
