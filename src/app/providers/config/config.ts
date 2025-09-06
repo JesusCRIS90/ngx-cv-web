@@ -18,7 +18,7 @@ export const APP_CONFIG: AppCommonConfig = {
   initialLoadingFail: false,
   dataKey: 'AppKey',
   mimeTypeJSONData: 'txt',
-  factorVert2Hori: 0.85
+  factorVert2Hori: 0.98
 };
 
 export const { token: APP_COMMON_CONFIG_TOKEN, provider: USER_CONFIG_APP_PROVIDER } =

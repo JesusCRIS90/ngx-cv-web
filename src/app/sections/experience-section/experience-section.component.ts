@@ -39,6 +39,7 @@ export class ExperienceSectionComponent implements OnInit, OnDestroy, AfterViewI
   events = linkedSignal<TimeLineCard[]>(() => this.getTimeLineCards());
   timelineAligment = signal<TimelineAlign>('alternate');
 
+  private orientation: ScreenOrientation = 'landscape';
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
 
   constructor(
@@ -47,13 +48,13 @@ export class ExperienceSectionComponent implements OnInit, OnDestroy, AfterViewI
   ) { }
 
   ngAfterViewInit(): void {
-    this.updateTimeLineAlignmentBaseInWindowResize()
+    this.updateTimeLineAlignment()
   }
 
   ngOnInit(): void {
     this.resizeSubscription = fromEvent(window, 'resize')
       .pipe(debounceTime(200)) // delay in ms (adjust as needed)
-      .subscribe(() => this.updateTimeLineAlignmentBaseInWindowResize());
+      .subscribe(() => this.updateTimeLineAlignment());
   }
 
   ngOnDestroy(): void {
@@ -94,11 +95,7 @@ export class ExperienceSectionComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   protected onOrientationChange(orientation: ScreenOrientation) {
-    if (orientation === 'landscape') {
-      this.timelineAligment.set('alternate');
-      return;
-    }
-    this.timelineAligment.set('right');
+    this.orientation = orientation;
   }
 
   protected getTimeLineCards(): TimeLineCard[] {
@@ -109,8 +106,13 @@ export class ExperienceSectionComponent implements OnInit, OnDestroy, AfterViewI
     return this.experience().find((card) => card.id === id);
   }
 
-  protected updateTimeLineAlignmentBaseInWindowResize() {
-    console.log('EXPERIENCE RESIZING')
+  protected updateTimeLineAlignment() {
+
+    if (this.orientation === 'portrait') {
+      this.timelineAligment.set('right');
+      return;
+    }
+
     if (this.responsiveService.getCurrentSchema() === 'small-screen') {
       this.timelineAligment.set('right');
     } else {
