@@ -1,4 +1,7 @@
-import { Component, inject, input, linkedSignal, signal } from '@angular/core';
+import { AfterViewInit, Component, HostListener, inject, input, linkedSignal, OnDestroy, OnInit, signal } from '@angular/core';
+
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import {
   ResponsiveLayoutComponent as ResponsiveLayout,
@@ -11,10 +14,12 @@ import {
 
 import { NoModalWindowService } from '@beexy/ngx-popups'
 
+import { BeeResponsiveSchemaService as ResponsiveService } from '@beexy/ngx-providers'
+
 import { ShortExperienceCardComponent, LongExperienceCardComponent } from '../../components'
 import { ClickableActionDirective } from '../../directives'
 
-import { Experience, LongExperienceCard, TimeLineCard } from '../../interfaces'
+import { Experience, TimeLineCard } from '../../interfaces'
 import { TimelineComponent, TimelineAlign } from '../../devComp/timeline/timeline.component'
 
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from '../../providers/config';
@@ -26,7 +31,8 @@ import { AppDataMapper } from '../../mappers/AppDataMapper';
   imports: [ShortExperienceCardComponent, TimelineComponent, SVGRound, ClickableActionDirective, ResponsiveLayout],
   templateUrl: './experience-section.component.html',
 })
-export class ExperienceSectionComponent {
+export class ExperienceSectionComponent implements OnInit, OnDestroy, AfterViewInit {
+  private resizeSubscription!: Subscription;
 
   experience = input.required<Experience[]>();
 
@@ -35,7 +41,26 @@ export class ExperienceSectionComponent {
 
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
 
-  constructor(private noModalService: NoModalWindowService) { }
+  constructor(
+    private noModalService: NoModalWindowService,
+    private responsiveService: ResponsiveService
+  ) { }
+
+  ngAfterViewInit(): void {
+    this.updateTimeLineAlignmentBaseInWindowResize()
+  }
+
+  ngOnInit(): void {
+    this.resizeSubscription = fromEvent(window, 'resize')
+      .pipe(debounceTime(200)) // delay in ms (adjust as needed)
+      .subscribe(() => this.updateTimeLineAlignmentBaseInWindowResize());
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeSubscription) {
+      this.resizeSubscription.unsubscribe();
+    }
+  }
 
   getEvents(): TimeLineCard[] {
     return this.events();
@@ -48,14 +73,14 @@ export class ExperienceSectionComponent {
 
   onClickExpCard(id: string) {
     console.log(`Experience Card with id: ${id} Clicked`);
-    const cardData = this.getExperienceById( id );
+    const cardData = this.getExperienceById(id);
 
-    if( cardData === undefined ) return;
+    if (cardData === undefined) return;
 
     this.noModalService.open({
       component: LongExperienceCardComponent,
       data: {
-        experienceCard: AppDataMapper.Experience2LongExperienceCard( cardData )
+        experienceCard: AppDataMapper.Experience2LongExperienceCard(cardData)
       }
     })
   }
@@ -80,8 +105,16 @@ export class ExperienceSectionComponent {
     return AppDataMapper.ExperienceArray2TimeLineCardArray(this.experience());
   }
 
-  protected getExperienceById( id: string ): Experience | undefined {
-    return this.experience().find( (card) => card.id === id );
+  protected getExperienceById(id: string): Experience | undefined {
+    return this.experience().find((card) => card.id === id);
   }
 
+  protected updateTimeLineAlignmentBaseInWindowResize() {
+    console.log('EXPERIENCE RESIZING')
+    if (this.responsiveService.getCurrentSchema() === 'small-screen') {
+      this.timelineAligment.set('right');
+    } else {
+      this.timelineAligment.set('alternate');
+    }
+  }
 }

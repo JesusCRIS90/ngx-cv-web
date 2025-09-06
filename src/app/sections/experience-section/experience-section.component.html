@@ -1,7 +1,7 @@
 <section class="sec-experience">
   <h1 class="title">Experience</h1>
 
-  <bee-timeline [events]="getEvents()" [align]="getTimeLineAligment()">
+  <bee-timeline class="experience-timeline" [events]="getEvents()" [align]="getTimeLineAligment()">
     <ng-template #content let-event>
       <short-experience-card
         class="short-exp-card"

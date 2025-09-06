@@ -23,13 +23,13 @@
   --long-project-card-icon-size: 30px;
 
   /* Experience Vars */
-  --short-experience-card-width: 150px;
-  --short-experience-card-min-height: 20px;
-  --experience-title-font-size: 60px;
-  --font-size-experience-card-role: 12px;
-  --font-size-experience-card-company: 12px;
-  --font-size-experience-card-timespan: 12px;
-  --font-size-experience-card-description: 8px;
+  --short-experience-card-width: 600px;
+  --short-experience-card-min-height: 80px;
+  --experience-title-font-size: 30px;
+  --font-size-experience-card-role: 20px;
+  --font-size-experience-card-company: 18px;
+  --font-size-experience-card-timespan: 16px;
+  --font-size-experience-card-description: 14px;
 
   /* Experience Long Card Vars */
   --long-experience-card-width: 150dvh;
