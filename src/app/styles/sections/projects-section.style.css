@@ -3,13 +3,22 @@
 }
 
 .long-project-card {
-  display: flex;
-  flex-direction: column;
-  place-content: center;
-  align-items: center;
 
+  /* margin-top: 50px; */
   width: var(--long-project-card-width);
   height: var(--long-project-card-height);
+
+  .scroll-area {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .scroll-area .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .project-card-links {
     .action-link {
@@ -39,7 +48,7 @@
   .project-description {
     display: block;
     max-width: fit-content;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 
     font-size: var(--long-project-card-font-size-description);
 

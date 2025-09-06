@@ -1,48 +1,58 @@
-<!-- <bee-vertical-layout class="long-project-card"> -->
 <div class="long-project-card">
-  <h1 class="project-title">{{ getProjectInfo().title }}</h1>
+  <div class="scroll-area">
+    <div class="container">
+      <h1 class="project-title">{{ getProjectInfo().title }}</h1>
 
-  @if ( getType() === 'video' ) {
-  <app-embed-youtube-video
-    class="project-video"
-    [source]="getProjectInfo().videoUrl"
-  />
-  } @else {
-  <!-- <div class="project-carousel">Insert Carousel Images Here</div> -->
-  <bee-hori-carousel
-    class="project-carousel"
-    [autoPlayInterval]="2500"
-    [pauseOnHover]="true"
-    [transitionType]="'slide-left'"
-    [items]="getImgUrls()"
-  >
-    <ng-template #body let-item>
-      <bee-image-frame class="frame-container" [imgSrc]="item" [mode]="'img'"></bee-image-frame>
-    </ng-template>
-  </bee-hori-carousel>
-  }
-
-  <bee-pair-layout
-    class="icons-container"
-    [spaceDistribution]="'2fr 1fr'"
-    [gap]="50"
-    [pairDistribution]="PAIR_POLICY.CENTER"
-  >
-    <div class="project-card-techs">
-      @for (tech of getProjectInfo().techs; track $index) {
-      <bee-svg-icon beeDirTooltip [tooltipDelay]="800" [tooltipMsg]="tech.tooltip" class="tech-icon" [refName]="tech.icon" />
+      @if ( getType() === 'video' ) {
+      <app-embed-youtube-video
+        class="project-video"
+        [source]="getProjectInfo().videoUrl"
+      />
+      } @else {
+      <bee-hori-carousel
+        class="project-carousel"
+        [autoPlayInterval]="2500"
+        [pauseOnHover]="true"
+        [transitionType]="'slide-left'"
+        [items]="getImgUrls()"
+      >
+        <ng-template #body let-item>
+          <bee-image-frame
+            class="frame-container"
+            [imgSrc]="item"
+            [mode]="'img'"
+          ></bee-image-frame>
+        </ng-template>
+      </bee-hori-carousel>
       }
-    </div>
-    <div class="project-card-links">
-      @for (link of getProjectInfo().links; track $index) {
-      <bee-link-icon class="action-link" [refName]="link.icon" />
-      }
-    </div>
-  </bee-pair-layout>
 
-  <bee-markdown-viewer
-    class="project-description"
-    [markdownPath]="getProjectInfo().mdDescription"
-  />
+      <bee-pair-layout
+        class="icons-container"
+        [spaceDistribution]="'2fr 1fr'"
+        [gap]="50"
+        [pairDistribution]="PAIR_POLICY.CENTER"
+      >
+        <div class="project-card-techs">
+          @for (tech of getProjectInfo().techs; track $index) {
+          <bee-svg-icon
+            beeDirTooltip
+            [tooltipDelay]="800"
+            [tooltipMsg]="tech.tooltip"
+            class="tech-icon"
+            [refName]="tech.icon"
+          />
+          }
+        </div>
+        <div class="project-card-links">
+          @for (link of getProjectInfo().links; track $index) {
+          <bee-link-icon class="action-link" [refName]="link.icon" />
+          }
+        </div>
+      </bee-pair-layout>
+      <bee-markdown-viewer
+        class="project-description"
+        [markdownPath]="getProjectInfo().mdDescription"
+      />
+    </div>
+  </div>
 </div>
-<!-- </bee-vertical-layout> -->
