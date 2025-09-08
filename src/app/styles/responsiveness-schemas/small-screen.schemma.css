@@ -1,4 +1,6 @@
 .responsive-schema-small-screen {
+  --common-titles-font-size: 35px;
+
   /* Home Vars */
   --home-sec-profile-img: 300px;
   --font-size-home-sec-name: 30px;
@@ -40,7 +42,7 @@
   --long-experience-card-font-size-description: 16px;
   --long-experience-card-font-size-title-icons: 16px;
   --long-experience-card-icons-size: 30px;
-  --long-experience-card-space-title-icons:2px;
+  --long-experience-card-space-title-icons: 2px;
 
   /* Hori Nav Menu */
   --nav-menu-hori-container-size: 35px;

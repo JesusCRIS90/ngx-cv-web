@@ -9,7 +9,7 @@
   .title {
     color: var(--white-1);
     align-items: center;
-    font-size: var(--experience-title-font-size);
+    font-size: var(--common-titles-font-size);
     text-transform: uppercase;
     padding-top: 10px;
   }

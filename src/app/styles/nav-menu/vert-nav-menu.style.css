@@ -8,13 +8,12 @@
   /* z-index: 1100; */
 
   div {
-    /* background-color: #7458a8; */
     background-color: var(--primary-color);
     border-radius: 50px;
     padding: 8px;
 
-    width: 30px;
-    height: 30px;
+    width: var(--nav-menu-vert-container-size);
+    height: var(--nav-menu-vert-container-size);
 
     display: flex;
     align-items: center;
@@ -24,8 +23,8 @@
   svg {
     /* Think about this color */
     fill: var(--white-1);
-    height: 24px;
-    width: 24px;
+    height: var(--nav-menu-vert-icon-size);
+    width: var(--nav-menu-vert-icon-size);
   }
 }
 
@@ -51,8 +50,8 @@
 .bee-nav-item-container {
   .nav-icon-container {
     .svg-icon {
-      height: 24px;
-      width: 24px;
+      height: var(--nav-menu-vert-icon-size);
+      width: var(--nav-menu-vert-icon-size);
     }
   }
 }

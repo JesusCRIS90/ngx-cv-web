@@ -1,3 +1,54 @@
-.responsive-schema-smartphone-vertical{}
+.responsive-schema-smartphone-vertical {
+  --common-titles-font-size: 35px;
 
+  /* Home Vars */
+  --home-sec-profile-img: 300px;
+  --font-size-home-sec-name: 35px;
+  --font-size-home-sec-role: 30px;
+  --font-size-home-sec-bio: 18px;
+  --icon-size-home-sec: 30px;
+  --space-home-sec-bio-icons: 5px;
+  --common-space-section: 25px;
 
+  /* Projects Vars */
+  /* --project-title-font-size-hori: 35px; */
+  --short-project-card-vert-width: 190px;
+  --font-size-project-card-title-vert: 25px;
+  --font-size-project-card-description-vert: 18px;
+  --space-project-card-title-description-vert: 8px;
+
+  /* Experience Vars */
+  /* --experience-title-font-size: 35px; */
+  --short-experience-card-width: 300px;
+  --short-experience-card-min-height: 80px;
+  --font-size-experience-card-role: 18px;
+  --font-size-experience-card-company: 16px;
+  --font-size-experience-card-timespan: 14px;
+  --font-size-experience-card-description: 14px;
+
+  /* Projects Long Card Vars */
+  --long-project-card-width: 70dvh;
+  --long-project-card-height: 70dvh;
+  --long-project-card-img-width: 300px;
+  --long-project-card-video-width: 300px;
+  --long-project-card-font-size-title: 25px;
+  --long-project-card-font-size-description: 16px;
+  --long-project-card-icon-size: 32px;
+  --long-project-card-margins: 30px 5px 0px 5px;
+
+  /* Experience Long Card Vars */
+  --long-experience-card-width: 70dvh;
+  --long-experience-card-height: 80dvh;
+  --long-experience-card-font-size-role: 24px;
+  --long-experience-card-font-size-company: 18px;
+  --long-experience-card-font-size-timespan: 18px;
+  --long-experience-card-font-size-description: 16px;
+  --long-experience-card-font-size-title-icons: 18px;
+  --long-experience-card-icons-size: 30px;
+  --long-experience-card-space-title-icons: 5px;
+
+  /* Vert Nav Menu */
+  --nav-menu-vert-container-size: 32px;
+  --nav-menu-vert-icon-size: 24px;
+  --nav-menu-vert-font-size: 16px;
+}

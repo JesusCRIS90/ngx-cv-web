@@ -6,7 +6,7 @@
   .projects-title {
     color: var(--white-1);
     align-items: center;
-    font-size: var(--project-title-font-size-hori);
+    font-size: var(--common-titles-font-size);
     text-transform: uppercase;
     padding-top: 10px;
   }
@@ -16,7 +16,7 @@
   .projects-title {
     color: var(--white-1);
     align-items: center;
-    font-size: 50px;
+    font-size: var(--common-titles-font-size);
     text-transform: uppercase;
     padding-top: 10px;
   }

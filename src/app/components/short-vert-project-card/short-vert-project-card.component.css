@@ -12,19 +12,19 @@
     display: block;
   }
 
-  .hover-in{
-    background: #242424;
-    opacity: .15;
+  .hover-in {
+    background: var(--bg-color);
+    opacity: 0.15;
   }
 
-  .overlay-text{
-    color: #ffffff;
+  .overlay-text {
+    color: var(--white-1);
     opacity: 100%;
-    h1{
+    h1 {
       font-size: var(--font-size-project-card-title-vert);
-    color: var(--primary-light-2);
+      color: var(--primary-light-2);
     }
-    p{
+    p {
       font-size: var(--font-size-project-card-description-vert);
     }
   }

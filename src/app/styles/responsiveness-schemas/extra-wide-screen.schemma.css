@@ -1,4 +1,6 @@
 .responsive-schema-extra-wide-screen {
+  --common-titles-font-size: 35px;
+
   /* Home Vars */
   --home-sec-profile-img: 750px;
   --font-size-home-sec-name: 70px;
@@ -40,7 +42,7 @@
   --long-experience-card-font-size-description: 20px;
   --long-experience-card-font-size-title-icons: 25px;
   --long-experience-card-icons-size: 40px;
-    --long-experience-card-space-title-icons: 20px;
+  --long-experience-card-space-title-icons: 20px;
 
   /* Hori Nav Menu */
   --nav-menu-hori-container-size: 45px;

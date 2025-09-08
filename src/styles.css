@@ -3,11 +3,6 @@
 @import "./app/styles/nav-menu/nav-menu.styles.css";
 @import "./app//styles//sections/sections.styles.css";
 
-/* This property is exclusive for development */
-section {
-  /* height: 1500px; */
-}
-
 /* Change the BG Color */
 body {
   background-color: var(--bg-color);
@@ -23,6 +18,7 @@ body {
   }
   .bee-no-modal-content{
     margin: 20px 50px 20px 50px;
+    margin: var(--long-project-card-margins ,20px 50px 20px 50px)
   }
 }
 

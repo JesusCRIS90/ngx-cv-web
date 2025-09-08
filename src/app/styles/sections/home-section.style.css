@@ -1,12 +1,15 @@
 .home-section {
-  height: 100dvh;
+  min-height: 100dvh;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  padding-top: var(--common-space-section);
+
   .profile-image {
     width: var(--home-sec-profile-img);
+    margin-bottom: var(--common-space-section, 0);
   }
 
   .who-i-am {
