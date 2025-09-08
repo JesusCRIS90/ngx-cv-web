@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import {
   StoragesManager,
@@ -11,8 +14,10 @@ import {
   ToastHostComponent,
   NoModalWindowHostComponent,
   TooltipPopupHostComponent as ToolTipHost
- } from '@beexy/ngx-popups'
+} from '@beexy/ngx-popups'
+
 import { BeeScrollTrackerComponent } from '@beexy/ngx-navigation'
+import { BeeResponsiveSchemaService as ResponsiveService } from '@beexy/ngx-providers'
 
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './providers/config'
 
@@ -21,13 +26,17 @@ import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './providers/config'
   imports: [NoModalWindowHostComponent, ModalWindowHostComponent, SideBarPopUpHostComponent, ToastHostComponent, RouterOutlet, BeeScrollTrackerComponent, ToolTipHost],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'ngx-cv-web';
+
+  private resizeSubscription!: Subscription;
+
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
   private storage = inject(StoragesManager);
 
   constructor(
     private router: Router,
+    private responsiveService: ResponsiveService
   ) {
     // console.log('[AppComponent]', this.commonConfig);
     // console.log(this.storage);
@@ -39,7 +48,31 @@ export class AppComponent {
       return;
     }
 
+    this.configWindowResize();
+
     this.router.navigate(['/']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeSubscription) {
+      this.resizeSubscription.unsubscribe();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.checkInvalidScreenSize()
+  }
+
+  private configWindowResize() {
+    this.resizeSubscription = fromEvent(window, 'resize')
+      .pipe(debounceTime(120)) // delay in ms (adjust as needed)
+      .subscribe(() => this.checkInvalidScreenSize());
+  }
+
+  private checkInvalidScreenSize() {
+    if (this.responsiveService.getCurrentSchema() === 'tiny-screen') {
+      this.router.navigate(['/invalidScreenSize']);
+    }
   }
 
 }
