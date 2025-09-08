@@ -1,55 +1,13 @@
 <section class="projects-sec">
     <bee-responsive-layout class="project-cards-container" [TriggerFactorVert2Hori]="getFactorVert2Hori()">
+
       <ng-template #screenVertical>
-        <bee-grid-2d-layout
-          [gap]="20"
-          class="projects-sec-vert-container"
-          [inputGrid2Distribution]="{ x: '1fr 1fr', y: '1fr 1fr' }"
-        >
-          <bee-item-grid-layout
-            [x_dir]="{ start: 2, span: 1 }"
-            [y_dir]="{ start: 1, span: 1 }"
-          >
-            <h1 class="projects-title">Projects</h1>
-          </bee-item-grid-layout>
-
-          @for (project of projects(); track $index) {
-          <bee-item-grid-layout
-            [x_dir]="{ start: get_x_PatternVert($index), span: 1 }"
-            [y_dir]="{ start: get_y_PatternVert($index), span: 2 }"
-          >
-            <short-vert-project-card
-              [projectInfo]="project"
-            />
-          </bee-item-grid-layout>
-          }
-
-        </bee-grid-2d-layout>
+        <layout-vert-short-project-cards [projects]="projects()"/>
       </ng-template>
 
       <ng-template #screenHorizontal>
-        <bee-grid-2d-layout
-          class="projects-sec-hori-container"
-          [inputGrid2Distribution]="{ x: '1fr 1fr 1fr', y: '1fr 1fr 1fr' }"
-        >
-          <bee-item-grid-layout
-            [x_dir]="{ start: 2, span: 1 }"
-            [y_dir]="{ start: 1, span: 1 }"
-          >
-            <h1 class="projects-title">Projects</h1>
-          </bee-item-grid-layout>
-
-          @for (project of projects(); track $index) {
-            <bee-item-grid-layout
-              [x_dir]="{ start: get_x_PatternHori($index), span: 1 }"
-              [y_dir]="{ start: get_y_PatternHori($index), span: 2 }"
-            >
-              <short-hori-project-card
-                [projectInfo]="project"
-              />
-            </bee-item-grid-layout>
-          }
-        </bee-grid-2d-layout>
+        <layout-hori-short-project-cards [projects]="projects()" />
       </ng-template>
+
     </bee-responsive-layout>
 </section>

@@ -1,5 +1,5 @@
 .projects-sec{
-  margin-top: 120px;
+  /* margin-top: 120px; */
 
   display: flex;
   align-items: center;
@@ -7,25 +7,5 @@
 
   .project-cards-container{
     width: 90%;
-  }
-}
-
-.projects-sec-hori-container{
-  .projects-title{
-    color: var(--white-1);
-    align-items: center;
-    font-size: var(--project-title-font-size-hori);
-    text-transform: uppercase;
-    padding-top: 10px;
-  }
-}
-
-.projects-sec-vert-container{
-  .projects-title{
-    color: var(--white-1);
-    align-items: center;
-    font-size: 50px;
-    text-transform: uppercase;
-    padding-top: 10px;
   }
 }

@@ -2,8 +2,27 @@
   min-height: 100dvh;
 }
 
-.long-project-card {
+.projects-sec-hori-container {
+  .projects-title {
+    color: var(--white-1);
+    align-items: center;
+    font-size: var(--project-title-font-size-hori);
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+}
 
+.projects-sec-vert-container {
+  .projects-title {
+    color: var(--white-1);
+    align-items: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+}
+
+.long-project-card {
   /* margin-top: 50px; */
   width: var(--long-project-card-width);
   height: var(--long-project-card-height);

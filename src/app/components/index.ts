@@ -8,3 +8,6 @@ export * from './short-vert-project-card/short-vert-project-card.component'
 export * from './short-hori-project-card/short-hori-project-card.component'
 export * from './long-project-card/long-project-card.component'
 export * from './long-experience-card/long-experience-card.component'
+
+export * from './layout-hori-short-project-cards/layout-hori-short-project-cards.component'
+export * from './layout-vert-short-project-cards/layout-vert-short-project-cards.component'
