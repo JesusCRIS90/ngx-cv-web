@@ -23,7 +23,7 @@
   --long-project-card-icon-size: 30px;
 
   /* Experience Vars */
-  --short-experience-card-width: 600px;
+  --short-experience-card-width: 500px;
   --short-experience-card-min-height: 80px;
   --experience-title-font-size: 30px;
   --font-size-experience-card-role: 20px;
@@ -32,14 +32,15 @@
   --font-size-experience-card-description: 14px;
 
   /* Experience Long Card Vars */
-  --long-experience-card-width: 150dvh;
-  --long-experience-card-height: 75dvh;
+  --long-experience-card-width: 160dvh;
+  --long-experience-card-height: 72dvh;
   --long-experience-card-font-size-role: 22px;
   --long-experience-card-font-size-company: 18px;
   --long-experience-card-font-size-timespan: 18px;
   --long-experience-card-font-size-description: 16px;
   --long-experience-card-font-size-title-icons: 16px;
   --long-experience-card-icons-size: 30px;
+  --long-experience-card-space-title-icons:2px;
 
   /* Hori Nav Menu */
   --nav-menu-hori-container-size: 35px;

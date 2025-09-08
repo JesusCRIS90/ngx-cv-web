@@ -77,7 +77,7 @@
   }
 
   .tech-icons {
-    margin-top: 20px;
+    margin-top: var(--long-experience-card-space-title-icons);
     .svg-icon {
       width: var(--long-experience-card-icons-size);
       height: var(--long-experience-card-icons-size);
