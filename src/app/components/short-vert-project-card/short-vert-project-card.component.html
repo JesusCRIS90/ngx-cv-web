@@ -21,7 +21,7 @@
         >
           <div class="overlay-text">
             <h1>{{ getProjectInfo().title }}</h1>
-            <p>{{ getProjectInfo().briefBio }}</p>
+            <p>{{ getProjectInfo().briefBio | beeTruncate:100 }}</p>
           </div>
         </bee-floating-layout>
         }

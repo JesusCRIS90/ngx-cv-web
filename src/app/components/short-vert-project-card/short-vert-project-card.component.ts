@@ -13,6 +13,8 @@ import {
 
 import { NoModalWindowService } from '@beexy/ngx-popups'
 
+import { BeeTruncatePipe } from '../../pipes/text-truncate.pipe'
+
 import { ClickableActionDirective } from '../../directives'
 import { LongProjectCardComponent as LongProjectCard } from '../../components'
 import { Project } from '../../interfaces';
@@ -20,7 +22,7 @@ import { AppDataMapper } from '../../mappers/AppDataMapper';
 
 @Component({
   selector: 'short-vert-project-card',
-  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective, VertCarousel],
+  imports: [HoverOnce, RelativeLay, FloatLay, ClickableActionDirective, VertCarousel, BeeTruncatePipe],
   templateUrl: './short-vert-project-card.component.html',
   styleUrl: './short-vert-project-card.component.css',
 })

@@ -6,7 +6,12 @@
       </ng-template>
 
       <ng-template #screenHorizontal>
-        <layout-hori-short-project-cards [projects]="projects()" />
+        @if ( getResponsiveSChemma() === 'small-screen' ) {
+          <layout-vert-short-project-cards [projects]="projects()"/>
+        } @else {
+          <layout-hori-short-project-cards [projects]="projects()" />
+        }
+
       </ng-template>
 
     </bee-responsive-layout>

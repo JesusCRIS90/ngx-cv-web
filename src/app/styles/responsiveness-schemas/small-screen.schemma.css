@@ -8,11 +8,11 @@
   --space-home-sec-bio-icons: 0px;
 
   /* Projects Vars */
-  --short-project-card-hori-width: 200px;
+  --short-project-card-vert-width: 225px;
+  --font-size-project-card-title-vert: 24px;
+  --font-size-project-card-description-vert: 18px;
+  --space-project-card-title-description-vert: 2px;
   --project-title-font-size-hori: 20px;
-  --font-size-project-card-title-hori: 14px;
-  --font-size-project-card-description-hori: 6px;
-  --space-project-card-title-description-hori: 2px;
   /* Projects Long Card Vars */
   --long-project-card-width: 150dvh;
   --long-project-card-height: 75dvh;

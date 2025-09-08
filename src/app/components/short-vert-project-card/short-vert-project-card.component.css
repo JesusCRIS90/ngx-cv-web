@@ -1,5 +1,5 @@
 .short-vert-project-card {
-  width: 300px;
+  width: var(--short-project-card-vert-width);
   height: auto;
   overflow: hidden;
   cursor: pointer;
@@ -20,5 +20,12 @@
   .overlay-text{
     color: #ffffff;
     opacity: 100%;
+    h1{
+      font-size: var(--font-size-project-card-title-vert);
+    color: var(--primary-light-2);
+    }
+    p{
+      font-size: var(--font-size-project-card-description-vert);
+    }
   }
 }
