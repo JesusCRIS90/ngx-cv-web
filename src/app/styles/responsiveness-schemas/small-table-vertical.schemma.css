@@ -11,37 +11,37 @@
   --common-space-section: 25px;
 
   /* Projects Vars */
-  --short-project-card-vert-width: 220px;
-  --font-size-project-card-title-vert: 25px;
-  --font-size-project-card-description-vert: 18px;
+  --short-project-card-vert-width: 280px;
+  --font-size-project-card-title-vert: 30px;
+  --font-size-project-card-description-vert: 20px;
   --space-project-card-title-description-vert: 8px;
 
   /* Experience Vars */
-  --short-experience-card-width: 380px;
+  --short-experience-card-width: 500px;
   --short-experience-card-min-height: 80px;
-  --font-size-experience-card-role: 20px;
-  --font-size-experience-card-company: 18px;
-  --font-size-experience-card-timespan: 16px;
+  --font-size-experience-card-role: 25px;
+  --font-size-experience-card-company: 20px;
+  --font-size-experience-card-timespan: 18px;
   --font-size-experience-card-description: 16px;
 
   /* Projects Long Card Vars */
-  --long-project-card-width: 70dvh;
-  --long-project-card-height: 75dvh;
-  --long-project-card-img-width: 300px;
-  --long-project-card-video-width: 300px;
+  --long-project-card-width: 50dvh;
+  --long-project-card-height: 80dvh;
+  --long-project-card-img-width: 380px;
+  --long-project-card-video-width: 380px;
   --long-project-card-font-size-title: 25px;
   --long-project-card-font-size-description: 16px;
   --long-project-card-icon-size: 32px;
   --long-project-card-margins: 30px 5px 0px 5px;
 
   /* Experience Long Card Vars */
-  --long-experience-card-width: 70dvh;
-  --long-experience-card-height: 75dvh;
-  --long-experience-card-font-size-role: 24px;
-  --long-experience-card-font-size-company: 18px;
+  --long-experience-card-width: 50dvh;
+  --long-experience-card-height: 85dvh;
+  --long-experience-card-font-size-role: 25px;
+  --long-experience-card-font-size-company: 20px;
   --long-experience-card-font-size-timespan: 18px;
   --long-experience-card-font-size-description: 16px;
-  --long-experience-card-font-size-title-icons: 18px;
+  --long-experience-card-font-size-title-icons: 20px;
   --long-experience-card-icons-size: 30px;
   --long-experience-card-space-title-icons: 5px;
 

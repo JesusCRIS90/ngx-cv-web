@@ -16,7 +16,7 @@
   --font-size-project-card-description-hori: 14px;
   --space-project-card-title-description-hori: 5px;
   /* Projects Long Card Vars */
-  --long-project-card-width: 150dvh;
+  --long-project-card-width: 135dvh;
   --long-project-card-height: 75dvh;
   --long-project-card-img-width: 350px;
   --long-project-card-video-width: 400px;
@@ -34,7 +34,7 @@
   --font-size-experience-card-description: 16px;
 
   /* Experience Long Card Vars */
-  --long-experience-card-width: 150dvh;
+  --long-experience-card-width: 135dvh;
   --long-experience-card-height: 75dvh;
   --long-experience-card-font-size-role: 25px;
   --long-experience-card-font-size-company: 22px;
