@@ -45,7 +45,7 @@
         </div>
         <div class="project-card-links">
           @for (link of getProjectInfo().links; track $index) {
-          <bee-link-icon class="action-link" [refName]="link.icon" />
+          <bee-link-icon class="action-link" [refName]="link.icon" [link]="link.url" />
           }
         </div>
       </bee-pair-layout>

@@ -17,15 +17,20 @@ export class EmbedYoutubeVideoComponent implements OnInit {
   ngOnInit() {
 
     let url: string = '';
-    if( this.validateYTurl( this.source() ) ){
-      url = this.prepareUrl( this.source() );
-    }
 
+    // if( this.validateYTurl( this.source() ) ){
+    //   url = this.prepareUrl( this.source() );
+    // }
+
+    // url = this.source();
+    url = this.prepareUrl( this.source() );
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+
+    // console.log( "YT-URL:", this.safeUrl );
   }
 
   protected validateYTurl(url: string): boolean {
-    const pattern = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11}$/;
+    const pattern = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{32}$/;
     if (!pattern.test(url)) {
       return false;
     }
@@ -33,6 +38,6 @@ export class EmbedYoutubeVideoComponent implements OnInit {
   }
 
   protected prepareUrl( url: string ): string {
-    return this.source() + '?autoplay=1&mute=1'
+    return url + '?mute=0&autoplay=1'
   }
 }

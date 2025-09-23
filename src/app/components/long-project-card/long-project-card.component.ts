@@ -27,12 +27,6 @@ import { ImageFrameComponent } from '../../devComp/image-frame/image-frame.compo
 import { AppDataMapper } from '../../mappers/AppDataMapper';
 
 
-const horiUrls = [
-  "./assets/images/hori-test-1.jpg",
-  "./assets/images/hori-test-2.jpg",
-  "./assets/images/hori-test-3.jpg"
-]
-
 @Component({
   selector: 'long-project-card',
   imports: [
@@ -50,10 +44,8 @@ export class LongProjectCardComponent implements OnInit {
 
   projectInfo!: Project;
 
-  testUrls = horiUrls;
-
   ngOnInit(): void {
-    console.log("LongProjectCard", this.projectInfo);
+    // console.log("LongProjectCard", this.projectInfo);
   }
 
   getType(): ProjectMedia {
