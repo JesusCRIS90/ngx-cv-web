@@ -8,7 +8,6 @@ body {
   background-color: var(--bg-color);
 }
 
-
 .custom-no-modal {
   .bee-no-modal-container {
     background-color: #252525;
@@ -16,9 +15,9 @@ body {
   .bee-no-modal-close-button {
     color: #ffffff;
   }
-  .bee-no-modal-content{
+  .bee-no-modal-content {
     margin: 20px 50px 20px 50px;
-    margin: var(--long-project-card-margins ,20px 50px 20px 50px)
+    margin: var(--long-project-card-margins, 20px 50px 20px 50px);
   }
 }
 

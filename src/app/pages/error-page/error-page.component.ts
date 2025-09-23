@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-error-page',
   imports: [],
   templateUrl: './error-page.component.html',
+  styleUrls: ['./error-page.component.css']
 })
 export default class ErrorPageComponent { }

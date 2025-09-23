@@ -1,0 +1,15 @@
+.eror-icon-image {
+  width: 700px; /* desired width */
+  height: 700px; /* desired height */
+}
+
+.error-title{
+  font-size: 50px;
+  color: aliceblue;
+}
+
+.error-subtitle{
+  font-size: 35px;
+  color: aliceblue;
+  margin-bottom: 100px;
+}
