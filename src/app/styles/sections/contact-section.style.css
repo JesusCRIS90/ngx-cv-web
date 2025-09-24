@@ -12,4 +12,9 @@
     text-transform: uppercase;
     padding-top: 10px;
   }
+
+  .sec-under-building{
+    color: var(--white-1);
+    font-size: 30px;
+  }
 }
