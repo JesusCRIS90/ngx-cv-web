@@ -1,5 +1,6 @@
 .responsive-schema-big-smartphone-vertical {
   --common-titles-font-size: 20px;
+  --common-top-space: 15px;
 
   /* Home Vars */
   --home-sec-profile-img: 300px;

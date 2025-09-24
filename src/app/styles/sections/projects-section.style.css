@@ -1,5 +1,11 @@
 .projects-sec {
-  min-height: 100dvh;
+  /* min-height: 100dvh; */
+
+  margin-top: var(--common-top-space);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .projects-sec-hori-container {

@@ -1,5 +1,6 @@
 .responsive-schema-big-screen {
-  --common-titles-font-size: 35px;
+  --common-titles-font-size: 40px;
+  --common-top-space: 40px;
 
   /* Home Vars */
   --home-sec-profile-img: 500px;

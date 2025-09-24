@@ -1,6 +1,6 @@
 .sec-experience {
-  min-height: 100dvh;
-  /* margin-top: 50px; */
+  /* min-height: 100dvh; */
+  margin-top: var(--common-top-space);
 
   display: flex;
   flex-direction: column;

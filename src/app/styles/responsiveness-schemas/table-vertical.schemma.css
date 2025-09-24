@@ -1,5 +1,6 @@
 .responsive-schema-tablet-vertical {
   --common-titles-font-size: 35px;
+  --common-top-space: 25px;
 
   /* Home Vars */
   --home-sec-profile-img: 450px;

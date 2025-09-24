@@ -1,5 +1,6 @@
 .responsive-schema-ultra-wide-screen {
-  --common-titles-font-size: 35px;
+  --common-titles-font-size: 50px;
+  --common-top-space: 60px;
 
   /* Home Vars */
   --home-sec-profile-img: 950px;

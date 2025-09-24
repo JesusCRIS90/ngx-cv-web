@@ -1,5 +1,6 @@
 .responsive-schema-medium-screen {
   --common-titles-font-size: 35px;
+  --common-top-space: 30px;
 
   /* Home Vars */
   --home-sec-profile-img: 400px;

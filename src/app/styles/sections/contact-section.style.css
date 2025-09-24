@@ -1,6 +1,5 @@
 .sec-contact {
-  min-height: 100dvh;
-  /* margin-top: 50px; */
+  margin-top: var(--common-top-space);
 
   display: flex;
   flex-direction: column;

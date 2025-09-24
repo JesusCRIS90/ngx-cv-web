@@ -1,5 +1,6 @@
 .responsive-schema-small-screen {
-  --common-titles-font-size: 35px;
+  --common-titles-font-size: 25px;
+  --common-top-space: 25px;
 
   /* Home Vars */
   --home-sec-profile-img: 300px;
