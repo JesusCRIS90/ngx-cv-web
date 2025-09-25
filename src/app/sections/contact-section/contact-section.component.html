@@ -1,7 +1,7 @@
 <section class="sec-contact">
   <h1 class="title">Contact Me</h1>
 
-  <p class="sec-under-building">Section Under Building Process</p>
+  <p class="sec-under-building">Section «Under Building Process»</p>
 
   <img
     #gifElement
@@ -9,5 +9,24 @@
     src="assets/placeholder.jpg"
     alt="Demo GIF"
   />
-</section>
 
+  <bee-horizontal-layout class="contact-icons" [gap]="25">
+    <bee-link-icon
+      class="icon-link"
+      [link]="getData().url_linkedin"
+      [refName]="'bicon-social-linkedin'"
+    />
+    <bee-link-icon
+      class="icon-link"
+      [link]="getData().url_github"
+      [refName]="'bicon-tech-github'"
+    />
+    <bee-link-icon class="icon-link" [refName]="'bicon-common-pdf'" />
+    <bee-svg-icon
+      class="svg-icon-link"
+      DClickableAction
+      (actionClick)="copyEmailtToClipboard($event)"
+      [refName]="'bicon-common-email'"
+    />
+  </bee-horizontal-layout>
+</section>
