@@ -13,8 +13,34 @@
     padding-top: 10px;
   }
 
-  .sec-under-building{
+  .sec-under-building {
+    margin: 0;
+    padding: 0;
     color: var(--white-1);
     font-size: 30px;
+  }
+
+  .contact-icons {
+    margin-top: var(--space-contact-sec-icons);
+
+    .icon-link .svg-icon {
+      width: var(--icon-size-home-sec);
+      height: auto;
+      fill: var(--white-1);
+    }
+
+    .icon-link svg:hover {
+      fill: var(--primary-light-2);
+    }
+
+    .svg-icon-link svg {
+      width: var(--icon-size-home-sec);
+      height: auto;
+    }
+
+    .svg-icon-link svg:hover {
+      fill: var(--primary-light-2);
+      cursor: pointer;
+    }
   }
 }

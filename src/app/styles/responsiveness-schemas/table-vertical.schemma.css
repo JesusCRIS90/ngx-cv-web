@@ -46,6 +46,9 @@
   --long-experience-card-icons-size: 30px;
   --long-experience-card-space-title-icons: 5px;
 
+  /* Experience Long Card Vars */
+  --space-contact-sec-icons: -10px;
+
   /* Vert Nav Menu */
   --nav-menu-vert-container-size: 32px;
   --nav-menu-vert-icon-size: 24px;
