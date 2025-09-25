@@ -52,8 +52,8 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/ngx-cv-web-game/",
-              "deployUrl": "/ngx-cv-web-game/"
+              "baseHref": "/ngx-cv-web/",
+              "deployUrl": "/ngx-cv-web/"
             },
             "development": {
               "optimization": false,
