@@ -34,6 +34,10 @@ export class WhoIamComponent {
     return this.data();
   }
 
+  getLink(): string {
+    return this.data()!.url_downloadCV;
+  }
+
   protected async copyEmailtToClipboard(datEmited: void) {
     let message = 'Email Copied to Clipboard';
 

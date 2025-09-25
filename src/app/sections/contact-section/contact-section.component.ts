@@ -4,7 +4,6 @@ import {
   HorizontalLayoutComponent as FlexHori,
 } from '@beexy/ngx-layouts'
 import {
-  HighlightKeyWordsDirective as keywordDir,
   LinkIconComponent as LinkIcon,
   SVGIconComponent as SVGIcon
 } from '@beexy/ngx-components'
@@ -22,7 +21,7 @@ import { copyToClipboard } from '../../utils'
 
 @Component({
   selector: 'sec-contact',
-  imports: [FlexHori, LinkIcon, SVGIcon, ActionClickDir, keywordDir],
+  imports: [FlexHori, LinkIcon, SVGIcon, ActionClickDir],
   templateUrl: './contact-section.component.html',
 })
 export class ContactSectionComponent implements AfterViewInit {
@@ -53,6 +52,10 @@ export class ContactSectionComponent implements AfterViewInit {
 
   getGIF(): string {
     return "https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif"
+  }
+
+  getLink(): string {
+    return this.data()!.url_downloadCV;
   }
 
   protected async copyEmailtToClipboard(datEmited: void) {
