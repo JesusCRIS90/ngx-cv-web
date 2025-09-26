@@ -23,7 +23,7 @@
     "@beexy/ngx-layouts": "^1.0.14",
     "@beexy/ngx-modals": "^1.0.1",
     "@beexy/ngx-navigation": "^1.0.2",
-    "@beexy/ngx-popups": "^1.0.6",
+    "@beexy/ngx-popups": "^1.0.8",
     "@beexy/ngx-providers": "^0.0.10",
     "@beexy/tools": "^1.0.8",
     "marked": "^16.1.2",

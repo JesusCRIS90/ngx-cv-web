@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 import {
   PairLayoutComponent as PairLay,
@@ -38,14 +38,31 @@ import { AppDataMapper } from '../../mappers/AppDataMapper';
   templateUrl: './long-project-card.component.html',
   styleUrl: './long-project-card.component.css',
 })
-export class LongProjectCardComponent implements OnInit {
+export class LongProjectCardComponent implements OnInit, OnDestroy {
+
   PAIR_POLICY = PAIR_POLICY;
   POLICY = POLICY;
 
   projectInfo!: Project;
 
+ // Collect all tooltip directives inside this component
+  @ViewChildren(DBeeToolTip) tooltips!: QueryList<DBeeToolTip>;
+
   ngOnInit(): void {
     // console.log("LongProjectCard", this.projectInfo);
+  }
+
+  ngOnDestroy(): void {
+    // Ensure all tooltips are closed before component is destroyed
+    if (this.tooltips) {
+      this.tooltips.forEach(t => {
+        try {
+          t.closeTooltip();
+        } catch (e) {
+          console.warn('Error closing tooltip:', e);
+        }
+      });
+    }
   }
 
   getType(): ProjectMedia {
@@ -57,7 +74,7 @@ export class LongProjectCardComponent implements OnInit {
   }
 
   getImgUrls(): string[] {
-    return AppDataMapper.ImagesResponsiveness2HoriImgs( this.projectInfo.imageUrls );
+    return AppDataMapper.ImagesResponsiveness2HoriImgs(this.projectInfo.imageUrls);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 import {
   PairLayoutComponent as PairLay,
@@ -21,16 +21,32 @@ import { MarkdownViewerComponent as MDViewer } from '../../devComp/markdown-view
   templateUrl: './long-experience-card.component.html',
   styleUrl: './long-experience-card.component.css',
 })
-export class LongExperienceCardComponent implements OnInit {
+export class LongExperienceCardComponent implements OnInit, OnDestroy {
   PAIR_POLICY = PAIR_POLICY;
   POLICY = POLICY;
 
   experienceCard!: LongExperienceCard;
 
+  // Collect all tooltip directives inside this component
+  @ViewChildren(DBeeToolTip) tooltips!: QueryList<DBeeToolTip>;
+
   constructor() { }
 
   ngOnInit(): void {
     console.log("LongExperienceCard", this.experienceCard);
+  }
+
+  ngOnDestroy(): void {
+    // Ensure all tooltips are closed before component is destroyed
+    if (this.tooltips) {
+      this.tooltips.forEach(t => {
+        try {
+          t.closeTooltip();
+        } catch (e) {
+          console.warn('Error closing tooltip:', e);
+        }
+      });
+    }
   }
 
   getCard(): LongExperienceCard {
