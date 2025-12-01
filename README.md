@@ -26,3 +26,7 @@
 ### Other
 
 * [ ] Check utilities from all interfaces. Are all need it?
+
+
+
+    "@beexy/ngx-modals": "^1.0.1",
