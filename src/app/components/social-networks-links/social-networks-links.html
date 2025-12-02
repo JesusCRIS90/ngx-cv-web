@@ -1,0 +1,23 @@
+<bee-horizontal-layout class="contact-icons" [gap]="25">
+  <bee-link-icon
+    class="icon-link"
+    [link]="linkedin_url()"
+    [refName]="'bicon-social-linkedin'"
+  />
+  <bee-link-icon
+    class="icon-link"
+    [link]="github_url()"
+    [refName]="'bicon-tech-github'"
+  />
+  <bee-link-icon
+    class="icon-link"
+    [refName]="'bicon-common-pdf'"
+    [link]="pdf_url()"
+  />
+  <bee-svg-icon
+    class="svg-icon-link"
+    DClickableAction
+    (actionClick)="copyEmailtToClipboard($event)"
+    [refName]="'bicon-common-email'"
+  />
+</bee-horizontal-layout>
