@@ -1,32 +1,18 @@
 <section class="sec-contact">
   <h1 class="title">Contact Me</h1>
 
-  <p class="sec-under-building">Section «Under Building Process»</p>
-
-  <img
-    #gifElement
-    [attr.src]="gifLoaded ? getGIF() : null"
-    src="assets/placeholder.jpg"
-    alt="Demo GIF"
-  />
-
-  <bee-horizontal-layout class="contact-icons" [gap]="25">
-    <bee-link-icon
-      class="icon-link"
-      [link]="getData().url_linkedin"
-      [refName]="'bicon-social-linkedin'"
-    />
-    <bee-link-icon
-      class="icon-link"
-      [link]="getData().url_github"
-      [refName]="'bicon-tech-github'"
-    />
-    <bee-link-icon class="icon-link" [refName]="'bicon-common-pdf'" [link]="getLink()"/>
-    <bee-svg-icon
-      class="svg-icon-link"
-      DClickableAction
-      (actionClick)="copyEmailtToClipboard($event)"
-      [refName]="'bicon-common-email'"
-    />
-  </bee-horizontal-layout>
+  <bee-responsive-layout>
+    <ng-template #screenVertical>
+      <h1>Under Construction</h1>
+    </ng-template>
+    <ng-template #screenHorizontal>
+      <gif-lazy-load />
+      <social-networks-links
+        [linkedin_url]="getData().url_linkedin"
+        [github_url]="getData().url_github"
+        [pdf_url]="getData().url_downloadCV"
+        [email_url]="getData().url_email"
+      />
+    </ng-template>
+  </bee-responsive-layout>
 </section>
