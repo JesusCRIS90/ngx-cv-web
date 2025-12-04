@@ -15,12 +15,13 @@ import { AppCommonConfig, APP_COMMON_CONFIG_TOKEN } from '../../providers/config
 
 import { 
   SocialNetworksLinks,
-  GifLazyLoad as Gif
+  GifLazyLoad as Gif, 
+  ContactForm as CvContactForm
  } from '../../components'
 
 @Component({
   selector: 'sec-contact',
-  imports: [FlexHori, ResponsiveLayout, SocialNetworksLinks, Gif],
+  imports: [FlexHori, ResponsiveLayout, SocialNetworksLinks, Gif, CvContactForm],
   templateUrl: './contact-section.component.html',
 })
 export class ContactSectionComponent {

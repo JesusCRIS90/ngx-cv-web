@@ -6,13 +6,18 @@
       <h1>Under Construction</h1>
     </ng-template>
     <ng-template #screenHorizontal>
-      <gif-lazy-load />
-      <social-networks-links
-        [linkedin_url]="getData().url_linkedin"
-        [github_url]="getData().url_github"
-        [pdf_url]="getData().url_downloadCV"
-        [email_url]="getData().url_email"
-      />
+      <bee-horizontal-layout>
+        <div>
+          <gif-lazy-load />
+          <social-networks-links
+            [linkedin_url]="getData().url_linkedin"
+            [github_url]="getData().url_github"
+            [pdf_url]="getData().url_downloadCV"
+            [email_url]="getData().url_email"
+          />
+        </div>
+        <cv-contact-form />
+      </bee-horizontal-layout>
     </ng-template>
   </bee-responsive-layout>
 </section>

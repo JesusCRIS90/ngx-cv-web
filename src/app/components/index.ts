@@ -13,4 +13,5 @@ export * from './layout-hori-short-project-cards/layout-hori-short-project-cards
 export * from './layout-vert-short-project-cards/layout-vert-short-project-cards.component'
 
 export * from './social-networks-links/social-networks-links'
+export * from './contact-form/contact-form'
 export * from './gif-lazy-load/gif-lazy-load'
