@@ -9,9 +9,8 @@
         [class.invalid-data]="form.get('name')?.invalid && form.get('name')?.touched"
       />
       <div class="error-message">
-        @if( form.get('name')?.errors?.['friendlyMessage'] ){ 
-          {{form.get('name')?.errors?.['friendlyMessage'] }} 
-        }
+        @if( form.get('name')?.errors?.['friendlyMessage'] ){
+        {{form.get('name')?.errors?.['friendlyMessage'] }} }
       </div>
     </div>
 
@@ -24,9 +23,8 @@
         [class.invalid-data]="form.get('email')?.invalid && form.get('name')?.touched"
       />
       <div class="error-message">
-        @if( form.get('email')?.errors?.['friendlyMessage'] ){ 
-          {{ form.get('email')?.errors?.['friendlyMessage'] }}
-        }
+        @if( form.get('email')?.errors?.['friendlyMessage'] ){ {{
+        form.get('email')?.errors?.['friendlyMessage'] }} }
       </div>
     </div>
 
@@ -39,12 +37,19 @@
         rows="5"
       ></textarea>
       <div class="error-message">
-        @if( form.get('message')?.errors?.['friendlyMessage'] ){
-        {{ form.get('message')?.errors?.['friendlyMessage'] }}
-      }
+        @if( form.get('message')?.errors?.['friendlyMessage'] ){ {{
+        form.get('message')?.errors?.['friendlyMessage'] }} }
       </div>
     </div>
 
-    <button class="btn" type="submit">Send</button>
+    <app-hcaptcha
+      #captcha
+      (verified)="onCaptchaVerified($event)"
+      [siteKey]="gethCaptchaToken()"
+    />
+
+    <button class="btn" type="submit" [disabled]="isSending">
+      {{ isSending ? 'Sending...' : 'Send' }}
+    </button>
   </form>
 </div>

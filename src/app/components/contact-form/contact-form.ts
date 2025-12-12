@@ -1,55 +1,105 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
+
+import { environment } from '../../../environments/environment';
+
+import { ErrorMessageService, Web3FormSubmittingService } from '../../services'
+import { ContactFormData, ContactFormModel } from '../../interfaces';
+import { typedKeys } from '../../utils'
+
+import { HcaptchaComponent } from '../../components';
 
 @Component({
   selector: 'cv-contact-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HcaptchaComponent],
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.css',
 })
 export class ContactForm implements OnInit {
   private formBuilder = inject(FormBuilder);
 
+  @ViewChild('captcha', { static: true }) captchaContainer!: ElementRef<HcaptchaComponent>;
+
   form!: FormGroup;
+  captchaToken: string | null = null;
+  isSending = false;
 
   ngOnInit() {
     this.form = this.createForm();
   }
 
+  gethCaptchaToken(): string {
+    return environment.web3FormHCaptchaCommonKey;
+  }
+
   private createForm() {
-    return this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
+    return this.formBuilder.group<ContactFormModel>({
+      name: this.formBuilder.control('', {
+        validators: [Validators.required, Validators.minLength(2)],
+        nonNullable: true,
+      }),
+      email: this.formBuilder.control('', {
+        validators: [Validators.required, Validators.email],
+        nonNullable: true,
+      }),
+      message: this.formBuilder.control('', {
+        validators: [Validators.required, Validators.minLength(10)],
+        nonNullable: true,
+      }),
     });
   }
 
   submit() {
     const formControlNames = typedKeys(this.form.controls);
-    console.log(formControlNames);
 
     if (this.form.invalid) {
-      console.log('Invalid Data');
       this.form.markAllAsTouched();
 
       formControlNames.forEach((controlName) => {
         this.checkInput(String(controlName));
       });
-
       return;
     }
 
-    console.log('Form submitted:', this.form.value);
-    alert('Message sent!');
-    this.form.reset();
+    if (!this.captchaToken) {
+      alert('Please complete the captcha');
+      return;
+    }
+
+    this.sendFormData();
+  }
+
+  async sendFormData() {
+    this.isSending = true;
+
+    // 2. append to the request
+    const payload = {
+      ...this.form.value,
+      'h-captcha-response': this.captchaToken,
+    };
+
+    const formStatus = await Web3FormSubmittingService.Submit<ContactFormData>(
+      payload
+    );
+
+    this.isSending = false;
+
+    if (formStatus.ok) {
+      // Trigger Ok Animation
+      alert('Message sent!');
+    } else {
+      // Trigger Error Animation
+      alert('Something went wrong. Try again later.');
+    }
+
+    this.resetForm();
   }
 
   checkInput(formControlName: string) {
@@ -65,35 +115,14 @@ export class ContactForm implements OnInit {
       friendlyMessage: errorMessage,
     });
   }
-}
 
-function typedKeys<T extends object>(obj: T): Array<keyof T> {
-  return Object.keys(obj) as Array<keyof T>;
-}
+  onCaptchaVerified(token: string) {
+    this.captchaToken = token;
+  }
 
-export class ErrorMessageService {
-  static getMessage(errors: ValidationErrors): string {
-    if (!errors) return '';
-
-    if (errors['required']) {
-      return 'This field is required.';
-    }
-
-    if (errors['email']) {
-      return 'Enter a valid email address.';
-    }
-
-    if (errors['minlength']) {
-      const required = errors['minlength'].requiredLength;
-      return `Minimum length is ${required} characters.`;
-    }
-
-    if (errors['maxlength']) {
-      const required = errors['maxlength'].requiredLength;
-      return `Maximum length allowed is ${required} characters.`;
-    }
-
-    // fallback
-    return 'Invalid field.';
+  resetForm() {
+    this.form.reset();
+    this.captchaToken = '';
+    this.captchaContainer.nativeElement.reset();
   }
 }
