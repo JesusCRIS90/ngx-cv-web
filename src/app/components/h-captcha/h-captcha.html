@@ -1,0 +1,8 @@
+<div #captchaContainer></div>
+
+@if ( errorMessage() ) 
+{
+<div style="color: red; font-size: 0.8rem; margin-top: 6px;">
+  {{ errorMessage() }}
+</div>
+}

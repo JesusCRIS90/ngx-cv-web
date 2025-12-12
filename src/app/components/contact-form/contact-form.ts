@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -9,23 +9,24 @@ import {
 
 import { environment } from '../../../environments/environment';
 
-import { ErrorMessageService, Web3FormSubmittingService } from '../../services'
+import { ErrorMessageService, Web3FormSubmittingService } from '../../services';
 import { ContactFormData, ContactFormModel } from '../../interfaces';
-import { typedKeys } from '../../utils'
+import { typedKeys } from '../../utils';
 
-import { HcaptchaComponent } from '../../components';
+import { HCaptcha as HCaptchaComponent } from '../../components/h-captcha/h-captcha';
 
 @Component({
   selector: 'cv-contact-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HcaptchaComponent],
+  imports: [CommonModule, ReactiveFormsModule, HCaptchaComponent],
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.css',
 })
 export class ContactForm implements OnInit {
   private formBuilder = inject(FormBuilder);
 
-  @ViewChild('captcha', { static: true }) captchaContainer!: ElementRef<HcaptchaComponent>;
+  @ViewChild('captcha', { static: true })
+  captchaComponent!: HCaptchaComponent;
 
   form!: FormGroup;
   captchaToken: string | null = null;
@@ -69,7 +70,7 @@ export class ContactForm implements OnInit {
     }
 
     if (!this.captchaToken) {
-      alert('Please complete the captcha');
+      this.captchaComponent.setError('You must verify you are human.');
       return;
     }
 
@@ -123,6 +124,6 @@ export class ContactForm implements OnInit {
   resetForm() {
     this.form.reset();
     this.captchaToken = '';
-    this.captchaContainer.nativeElement.reset();
+    this.captchaComponent.reset();
   }
 }
