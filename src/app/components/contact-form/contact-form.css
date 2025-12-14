@@ -1,28 +1,33 @@
 .form-card {
-  width: 400px;
-  /* height: 100%; */
-  padding: 35px;
+  /* Static */
   background: #ffffff;
-  border-radius: 22px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  border-radius: 3px 15px 15px 3px;
+
+  /* Dynamic */
+  width: var(--contact-form-width);
+  padding: var(--contact-form-padding);
 }
 
 .form-group {
-  margin-bottom: 12px;
+  /* Static */
   align-self: stretch;
+  margin-bottom: 12px;
 }
 
 .input,
 .textarea {
+  /* Static */
   width: 100%;
   border: none;
+  outline: none;
   background: #f1f1f1;
   padding: 20px 0px 20px 10px;
   margin: 5px 0px 5px -5px;
   border-radius: 14px;
-  font-size: 15px;
-  outline: none;
   transition: background 0.2s ease;
+
+  /* Dynamic */
+  font-size: var(--contact-form-font-size-input);
 }
 
 .input:focus,
@@ -36,22 +41,30 @@
 
 .error-message {
   color: red;
-  font-size: 0.85rem;
-  margin-top: 4px;
+  /* margin-top: 4px; */
+
+  /* Dynamic */
+  font-size: var(--contact-form-font-size-error-message);
 }
 
 .btn {
   width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: 500;
-  background: linear-gradient(90deg, #913bff, #b05cff);
   border: none;
+  cursor: pointer;
+  font-weight: 500;
   color: white;
   border-radius: 20px;
-  cursor: pointer;
   transition: opacity 0.2s ease;
+  background: linear-gradient(
+    90deg,
+    var(--btn-gradient-start),
+    var(--btn-gradient-end)
+  );
+
+  /* Dynamic */
+  font-size: var(--contact-form-btn-font-size);
+  padding: var(--contact-form-btn-padding);
+  margin-top: var(--contact-form-btn-margin-top);
 }
 
 .btn:hover {

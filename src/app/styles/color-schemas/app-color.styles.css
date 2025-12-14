@@ -1,19 +1,24 @@
 @import "./violet-schema.style.css";
 
-
 /* This must be values */
 .color-schema-violet {
-  --primary-color: #7f22fe;     /* --violet-600 */
-  --primary-dark: #52129f;      /* --violet-850 */
-  --primary-light: #c8b3ff;     /* --violet-350 */
-  --primary-light-2: #a684ff;   /* --violet-400 */
+  --primary-color: #7f22fe; /* --violet-600 */
+  --primary-dark: #52129f; /* --violet-850 */
+  --primary-light: #c8b3ff; /* --violet-350 */
+  --primary-light-2: #a684ff; /* --violet-400 */
 
-  --primary-title: #f2effd;     /* --violet-100 */
+  --bg-gradient-start: #807efd;
+  --bg-gradient-end: #412eeb;
 
-  --white-1: #f5f3ff;           /* --violet-050 */
+  --btn-gradient-start: #913bff;
+  --btn-gradient-end: #b05cff;
+
+  --primary-title: #f2effd; /* --violet-100 */
+
+  --white-1: #f5f3ff; /* --violet-050 */
   --white-pure: #e7e7e7;
 
-  --bg-color: #292929;          /* --violet-050 */
+  --bg-color: #292929; /* --violet-050 */
   --bg-color-lighter: #333333;
   --bg-color-highlight: #969696;
 }

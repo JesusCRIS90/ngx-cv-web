@@ -6,7 +6,7 @@
       <h1>Under Construction</h1>
     </ng-template>
     <ng-template #screenHorizontal>
-      <bee-horizontal-layout>
+      <bee-horizontal-layout [gap]="20" class="contact-form-sec-group">
         <gif-lazy-load />
         <cv-contact-form (formState)="updatingContactFormState($event)" />
       </bee-horizontal-layout>

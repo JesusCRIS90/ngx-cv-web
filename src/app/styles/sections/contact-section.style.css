@@ -43,4 +43,13 @@
       cursor: pointer;
     }
   }
+
+  .contact-form-sec-group {
+    background: linear-gradient(90deg, 
+      var(--bg-gradient-start), 
+      var(--bg-gradient-end));
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 }
