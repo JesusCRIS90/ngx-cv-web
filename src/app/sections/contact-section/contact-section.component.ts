@@ -16,7 +16,8 @@ import { AppCommonConfig, APP_COMMON_CONFIG_TOKEN } from '../../providers/config
 import { 
   SocialNetworksLinks,
   GifLazyLoad as Gif, 
-  ContactForm as CvContactForm
+  ContactForm as CvContactForm,
+  ContactFormState
  } from '../../components'
 
 @Component({
@@ -35,5 +36,9 @@ export class ContactSectionComponent {
 
   protected getFactorVert2Hori(): number {
     return this.commonConfig.factorVert2Hori;
+  }
+
+  protected updatingContactFormState(state: ContactFormState): void {
+    console.log('Contact form state:', state);
   }
 }

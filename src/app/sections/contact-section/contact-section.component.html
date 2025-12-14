@@ -16,7 +16,7 @@
             [email_url]="getData().url_email"
           />
         </div>
-        <cv-contact-form />
+        <cv-contact-form (formState)="updatingContactFormState($event)"/>
       </bee-horizontal-layout>
     </ng-template>
   </bee-responsive-layout>

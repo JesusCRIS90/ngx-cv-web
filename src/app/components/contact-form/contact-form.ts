@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -15,6 +15,10 @@ import { typedKeys } from '../../utils';
 
 import { HCaptcha as HCaptchaComponent } from '../../components/h-captcha/h-captcha';
 
+export type ContactFormState = 'idle' | 'sending' | 'success' | 'error';
+
+const FEEDBACK_DELAY_MS = 2000;
+
 @Component({
   selector: 'cv-contact-form',
   standalone: true,
@@ -28,12 +32,15 @@ export class ContactForm implements OnInit {
   @ViewChild('captcha', { static: true })
   captchaComponent!: HCaptchaComponent;
 
+  formState = output<ContactFormState>();
+
   form!: FormGroup;
   captchaToken: string | null = null;
   isSending = false;
 
   ngOnInit() {
     this.form = this.createForm();
+    this.emitFormState('idle');
   }
 
   gethCaptchaToken(): string {
@@ -66,44 +73,50 @@ export class ContactForm implements OnInit {
       formControlNames.forEach((controlName) => {
         this.checkInput(String(controlName));
       });
+
+      this.emitFormState('error');
       return;
     }
 
     if (!this.captchaToken) {
       this.captchaComponent.setError('You must verify you are human.');
+      this.emitFormState('error');
       return;
     }
 
+    this.emitFormState('sending');
     this.sendFormData();
   }
 
-  async sendFormData() {
+  protected async sendFormData() {
     this.isSending = true;
 
-    // 2. append to the request
-    const payload = {
-      ...this.form.value,
-      'h-captcha-response': this.captchaToken,
-    };
+    try {
+      const payload = {
+        ...this.form.value,
+        'h-captcha-response': this.captchaToken,
+      };
 
-    const formStatus = await Web3FormSubmittingService.Submit<ContactFormData>(
-      payload
-    );
+      const formStatus =
+        await Web3FormSubmittingService.Submit<ContactFormData>(payload);
 
-    this.isSending = false;
-
-    if (formStatus.ok) {
-      // Trigger Ok Animation
-      alert('Message sent!');
-    } else {
-      // Trigger Error Animation
-      alert('Something went wrong. Try again later.');
+      if (formStatus.ok) {
+        // Trigger Ok Animation
+        this.emitFormState('success');
+      } else {
+        // Trigger Error Animation
+        this.emitFormState('error');
+      }
+    } catch (error) {
+      console.error('Form submit error', error);
+      this.emitFormState('error');
+    } finally {
+      this.isSending = false;
+      setTimeout(() => this.resetForm(), FEEDBACK_DELAY_MS);
     }
-
-    this.resetForm();
   }
 
-  checkInput(formControlName: string) {
+  protected checkInput(formControlName: string) {
     const formControl = this.form.get(formControlName);
 
     if (!formControl) return;
@@ -117,13 +130,18 @@ export class ContactForm implements OnInit {
     });
   }
 
-  onCaptchaVerified(token: string) {
+  protected onCaptchaVerified(token: string) {
     this.captchaToken = token;
   }
 
-  resetForm() {
+  protected resetForm() {
     this.form.reset();
-    this.captchaToken = '';
+    this.captchaToken = null;
     this.captchaComponent.reset();
+    this.emitFormState('idle');
+  }
+
+  protected emitFormState(state: ContactFormState) {
+    this.formState.emit(state);
   }
 }
