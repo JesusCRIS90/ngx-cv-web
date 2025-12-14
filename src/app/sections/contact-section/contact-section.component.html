@@ -4,13 +4,13 @@
   <bee-responsive-layout>
     <ng-template #screenVertical>
       <bee-vertical-layout class="contact-form-sec-group-vert">
-        <gif-lazy-load class="gif-feedback" />
+        <gif-lazy-load [inputMediaUrl]="mediaGifUrl()" class="gif-feedback" />
         <cv-contact-form (formState)="updatingContactFormState($event)" />
       </bee-vertical-layout>
     </ng-template>
     <ng-template #screenHorizontal>
       <bee-horizontal-layout [gap]="20" class="contact-form-sec-group">
-        <gif-lazy-load class="gif-feedback" />
+        <gif-lazy-load [inputMediaUrl]="mediaGifUrl()" class="gif-feedback" />
         <cv-contact-form (formState)="updatingContactFormState($event)" />
       </bee-horizontal-layout>
     </ng-template>
