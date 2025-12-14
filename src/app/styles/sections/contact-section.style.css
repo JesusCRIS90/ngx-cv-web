@@ -5,12 +5,14 @@
   flex-direction: column;
   align-items: center;
 
+  min-height: 100dvh;
+
   .title {
     color: var(--white-1);
     align-items: center;
     font-size: var(--common-titles-font-size);
     text-transform: uppercase;
-    padding-top: 10px;
+    padding-top: 50px;
   }
 
   .sec-under-building {
@@ -51,5 +53,19 @@
     border-radius: 15px;
     margin-top: 20px;
     margin-bottom: 10px;
+  }
+  
+  .contact-form-sec-group-vert {
+    background: linear-gradient(90deg, 
+      var(--bg-gradient-start), 
+      var(--bg-gradient-end));
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  } 
+
+  .gif-feedback img{
+    width: var(--contact-form-image-width);
+    height: auto;
   }
 }

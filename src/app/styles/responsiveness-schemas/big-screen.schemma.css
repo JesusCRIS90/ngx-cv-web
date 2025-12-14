@@ -54,6 +54,8 @@
   --nav-menu-hori-font-size: 16px;
 
   /* Contact Vars */
+  --contact-form-image-width: 450px;
+
   --contact-form-width: 400px;
   --contact-form-padding: 35px;
   --contact-form-font-size-input: 18px;
@@ -62,4 +64,5 @@
   --contact-form-btn-padding: 15px;
   --contact-form-btn-margin-top: 20px;
 
+  --contact-form-border-radius: 3px 15px 15px 3px;
 }

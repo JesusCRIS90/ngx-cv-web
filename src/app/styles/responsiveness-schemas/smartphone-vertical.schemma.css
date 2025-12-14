@@ -55,4 +55,17 @@
   --nav-menu-vert-container-size: 32px;
   --nav-menu-vert-icon-size: 24px;
   --nav-menu-vert-font-size: 16px;
+
+  /* Contact Vars */
+  --contact-form-image-width: 200px;
+
+  --contact-form-width: 260px;
+  --contact-form-padding: 35px;
+  --contact-form-font-size-input: 12px;
+  --contact-form-font-size-error-message: 0.85rem;
+  --contact-form-btn-font-size: 15px;
+  --contact-form-btn-padding: 15px;
+  --contact-form-btn-margin-top: 20px;
+
+  --contact-form-border-radius: 15px 15px 15px 15px;
 }
