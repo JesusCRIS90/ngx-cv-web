@@ -3,19 +3,22 @@
 
   <bee-responsive-layout>
     <ng-template #screenVertical>
-      <h1>Under Construction</h1>
+      <bee-vertical-layout class="contact-form-sec-group-vert">
+        <gif-lazy-load class="gif-feedback" />
+        <cv-contact-form (formState)="updatingContactFormState($event)" />
+      </bee-vertical-layout>
     </ng-template>
     <ng-template #screenHorizontal>
       <bee-horizontal-layout [gap]="20" class="contact-form-sec-group">
-        <gif-lazy-load />
+        <gif-lazy-load class="gif-feedback" />
         <cv-contact-form (formState)="updatingContactFormState($event)" />
       </bee-horizontal-layout>
-      <social-networks-links
-        [linkedin_url]="getData().url_linkedin"
-        [github_url]="getData().url_github"
-        [pdf_url]="getData().url_downloadCV"
-        [email_url]="getData().url_email"
-      />
     </ng-template>
   </bee-responsive-layout>
+  <social-networks-links
+    [linkedin_url]="getData().url_linkedin"
+    [github_url]="getData().url_github"
+    [pdf_url]="getData().url_downloadCV"
+    [email_url]="getData().url_email"
+  />
 </section>

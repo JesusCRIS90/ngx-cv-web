@@ -6,6 +6,7 @@ import {
 
 import {
   HorizontalLayoutComponent as FlexHori,
+  VerticalLayoutComponent as FlexVert,
   ResponsiveLayoutComponent as ResponsiveLayout,
 } from '@beexy/ngx-layouts';
 
@@ -22,7 +23,7 @@ import {
 
 @Component({
   selector: 'sec-contact',
-  imports: [FlexHori, ResponsiveLayout, SocialNetworksLinks, Gif, CvContactForm],
+  imports: [FlexHori, FlexVert, ResponsiveLayout, SocialNetworksLinks, Gif, CvContactForm],
   templateUrl: './contact-section.component.html',
 })
 export class ContactSectionComponent {
