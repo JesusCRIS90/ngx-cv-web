@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { VerticalLayoutComponent as VFlexLay } from '@beexy/ngx-layouts'
+
 import { environment } from '../../../environments/environment';
 
 import { ErrorMessageService, Web3FormSubmittingService } from '../../services';
@@ -22,7 +24,7 @@ const FEEDBACK_DELAY_MS = 2000;
 @Component({
   selector: 'cv-contact-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HCaptchaComponent],
+  imports: [CommonModule, ReactiveFormsModule, HCaptchaComponent, VFlexLay],
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.css',
 })

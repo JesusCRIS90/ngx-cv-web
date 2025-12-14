@@ -1,55 +1,57 @@
 <div class="form-card">
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form-group">
-      <input
-        type="text"
-        placeholder="Name"
-        formControlName="name"
-        class="input"
-        [class.invalid-data]="form.get('name')?.invalid && form.get('name')?.touched"
+    <bee-vertical-layout>
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Name"
+          formControlName="name"
+          class="input"
+          [class.invalid-data]="form.get('name')?.invalid && form.get('name')?.touched"
+        />
+        <div class="error-message">
+          @if( form.get('name')?.errors?.['friendlyMessage'] ){
+          {{form.get('name')?.errors?.['friendlyMessage'] }} }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          class="input"
+          [class.invalid-data]="form.get('email')?.invalid && form.get('name')?.touched"
+        />
+        <div class="error-message">
+          @if( form.get('email')?.errors?.['friendlyMessage'] ){ {{
+          form.get('email')?.errors?.['friendlyMessage'] }} }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea
+          placeholder="Message"
+          formControlName="message"
+          class="textarea"
+          [class.invalid-data]="form.get('message')?.invalid && form.get('name')?.touched"
+          rows="5"
+        ></textarea>
+        <div class="error-message">
+          @if( form.get('message')?.errors?.['friendlyMessage'] ){ {{
+          form.get('message')?.errors?.['friendlyMessage'] }} }
+        </div>
+      </div>
+
+      <h-captcha
+        #captcha
+        (verified)="onCaptchaVerified($event)"
+        [siteKey]="gethCaptchaToken()"
       />
-      <div class="error-message">
-        @if( form.get('name')?.errors?.['friendlyMessage'] ){
-        {{form.get('name')?.errors?.['friendlyMessage'] }} }
-      </div>
-    </div>
 
-    <div class="form-group">
-      <input
-        type="email"
-        placeholder="Email"
-        formControlName="email"
-        class="input"
-        [class.invalid-data]="form.get('email')?.invalid && form.get('name')?.touched"
-      />
-      <div class="error-message">
-        @if( form.get('email')?.errors?.['friendlyMessage'] ){ {{
-        form.get('email')?.errors?.['friendlyMessage'] }} }
-      </div>
-    </div>
-
-    <div class="form-group">
-      <textarea
-        placeholder="Message"
-        formControlName="message"
-        class="textarea"
-        [class.invalid-data]="form.get('message')?.invalid && form.get('name')?.touched"
-        rows="5"
-      ></textarea>
-      <div class="error-message">
-        @if( form.get('message')?.errors?.['friendlyMessage'] ){ {{
-        form.get('message')?.errors?.['friendlyMessage'] }} }
-      </div>
-    </div>
-
-    <h-captcha
-      #captcha
-      (verified)="onCaptchaVerified($event)"
-      [siteKey]="gethCaptchaToken()"
-    />
-
-    <button class="btn" type="submit" [disabled]="isSending">
-      {{ isSending ? 'Sending...' : 'Send' }}
-    </button>
+      <button class="btn" type="submit" [disabled]="isSending">
+        {{ isSending ? 'Sending...' : 'Send' }}
+      </button>
+    </bee-vertical-layout>
   </form>
 </div>

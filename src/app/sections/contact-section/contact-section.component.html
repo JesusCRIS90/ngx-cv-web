@@ -7,17 +7,15 @@
     </ng-template>
     <ng-template #screenHorizontal>
       <bee-horizontal-layout>
-        <div>
-          <gif-lazy-load />
-          <social-networks-links
-            [linkedin_url]="getData().url_linkedin"
-            [github_url]="getData().url_github"
-            [pdf_url]="getData().url_downloadCV"
-            [email_url]="getData().url_email"
-          />
-        </div>
-        <cv-contact-form (formState)="updatingContactFormState($event)"/>
+        <gif-lazy-load />
+        <cv-contact-form (formState)="updatingContactFormState($event)" />
       </bee-horizontal-layout>
+      <social-networks-links
+        [linkedin_url]="getData().url_linkedin"
+        [github_url]="getData().url_github"
+        [pdf_url]="getData().url_downloadCV"
+        [email_url]="getData().url_email"
+      />
     </ng-template>
   </bee-responsive-layout>
 </section>
