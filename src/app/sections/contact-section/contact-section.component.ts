@@ -61,7 +61,7 @@ export class ContactSectionComponent {
           'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
         );
         break;
-      case 'success':
+      case 'error':
         this.mediaGifUrl.set(
           'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
         );
