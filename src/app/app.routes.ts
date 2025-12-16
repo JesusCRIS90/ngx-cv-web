@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 /**
  * Default Routes Configuration. Modify as you want
-*/
+ */
 
 export const routes: Routes = [
   {
@@ -15,10 +15,16 @@ export const routes: Routes = [
   },
   {
     path: 'invalidScreenSize',
-    loadComponent: () => import('./pages/too-small-screen-page/too-small-screen-page.component'),
+    loadComponent: () =>
+      import('./pages/too-small-screen-page/too-small-screen-page.component'),
+  },
+  {
+    path: 'privacy',
+    loadComponent: () =>
+      import('./pages/privacy-page/privacy-page'),
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
