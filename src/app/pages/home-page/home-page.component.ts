@@ -17,6 +17,7 @@ import {
   HomeSectionComponent,
   ProjectsSectionComponent,
   SkillsSectionComponent,
+  FooterSection
 } from "../../sections"
 
 
@@ -31,6 +32,7 @@ import {
     SkillsSectionComponent,
     BeeSectionTrackerDirective,
     NavMenuComponent,
+    FooterSection,
   ],
   templateUrl: './home-page.component.html',
 })
