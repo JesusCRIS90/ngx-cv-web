@@ -36,7 +36,7 @@ export class HomeSectionComponent implements OnInit {
       this.router.navigate(['/error']);
     }
 
-    console.log(this.homeData());
+    // console.log(this.homeData());
   }
 
   getProfileUrl(): string {

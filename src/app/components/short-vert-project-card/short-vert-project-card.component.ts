@@ -42,7 +42,7 @@ export class ShortVertProjectCardComponent {
   }
 
   onClickAction() {
-    console.log('Clicked Project Card');
+    // console.log('Clicked Project Card');
     this.noModalService.open({
       component: LongProjectCard,
       data: {

@@ -26,7 +26,7 @@ export class SampleToastComponent implements OnInit, OnDestroy, BaseToastCompone
   }
 
   ngOnDestroy(): void {
-    console.log('Destroying SampleToastComponent');
+    // console.log('Destroying SampleToastComponent');
   }
 
   getToastUUID(): ToastUUID{

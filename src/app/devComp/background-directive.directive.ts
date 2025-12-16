@@ -47,7 +47,7 @@ export class BackgroundDirectiveDirective implements OnInit {
       }
     `;
 
-    console.log( style )
+    // console.log( style )
     document.head.appendChild(style);
   }
 }

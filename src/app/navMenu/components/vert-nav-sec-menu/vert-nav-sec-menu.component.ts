@@ -25,7 +25,7 @@ export class VertNavSecMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(`VERT-NAV - ${this.receivedActiveSecId()}`)
+    // console.log(`VERT-NAV - ${this.receivedActiveSecId()}`)
   }
 
   getNavItems(): NavItem[] {

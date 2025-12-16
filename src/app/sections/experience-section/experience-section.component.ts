@@ -73,7 +73,7 @@ export class ExperienceSectionComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   onClickExpCard(id: string) {
-    console.log(`Experience Card with id: ${id} Clicked`);
+    // console.log(`Experience Card with id: ${id} Clicked`);
     const cardData = this.getExperienceById(id);
 
     if (cardData === undefined) return;

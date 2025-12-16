@@ -5,7 +5,7 @@ const formsparkId = environment.formsparkId;
 
 export class FormsparkSubmittingService {
   private static get FORM_URL(): string {
-    console.log(`public-key${formsparkId}`);
+    // console.log(`public-key${formsparkId}`);
     return `https://submit-form.com/${formsparkId}`;
   }
 
@@ -17,7 +17,7 @@ export class FormsparkSubmittingService {
     data: T
   ): Promise<{ ok: boolean; response?: any }> {
     try {
-      console.log(`payload:`, data);
+      // console.log(`payload:`, data);
       const response = await fetch(this.FORM_URL, {
         method: 'POST',
         headers: {

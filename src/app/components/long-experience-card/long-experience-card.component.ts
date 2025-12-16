@@ -33,7 +33,7 @@ export class LongExperienceCardComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("LongExperienceCard", this.experienceCard);
+    // console.log("LongExperienceCard", this.experienceCard);
   }
 
   ngOnDestroy(): void {

@@ -49,7 +49,7 @@ export default class HomePageComponent implements AfterViewInit {
   private dataApp: AppData | null = null;
 
   constructor() {
-    console.log('[HOME-PAGE] - Showing Values Inside Storage:', this.storage);
+    // console.log('[HOME-PAGE] - Showing Values Inside Storage:', this.storage);
 
     const data = this.storage.getStorageDataFromKey<AppData>(this.commonConfig.dataKey);
 

@@ -14,7 +14,7 @@ export async function initializeSpriteSheet(): Promise<void> {
     console.error(`Failed to load sprite sheet: ${result.errorMsg}`);
     config.initialLoadingFail = true;
   } else {
-    console.log('Injected Sprite Sheet Correctly');
+    // console.log('Injected Sprite Sheet Correctly');
   }
 }
 

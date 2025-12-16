@@ -82,7 +82,7 @@ export class SkillsSectionComponent {
   constructor() {}
 
   protected showingSelected(selected: string[]) {
-    console.log(selected);
+    // console.log(selected);
     let tag = '';
     // let tag = 'all';
     if (selected.length !== 0) {

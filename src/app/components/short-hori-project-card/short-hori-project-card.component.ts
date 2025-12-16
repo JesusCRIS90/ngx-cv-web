@@ -41,7 +41,7 @@ export class ShortHoriProjectCardComponent {
   }
 
   onClickAction( id: string ) {
-    console.log(`Clicked Project Card with id:${id}`);
+    // console.log(`Clicked Project Card with id:${id}`);
     this.noModalService.open({
       component: LongProjectCard,
       data: {
