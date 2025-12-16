@@ -20,6 +20,7 @@ import { BeeScrollTrackerComponent } from '@beexy/ngx-navigation'
 import { BeeResponsiveSchemaService as ResponsiveService } from '@beexy/ngx-providers'
 
 import { APP_COMMON_CONFIG_TOKEN, AppCommonConfig } from './providers/config'
+import { TrackingService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   private resizeSubscription!: Subscription;
 
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
+  private trackingService = inject(TrackingService);
   private storage = inject(StoragesManager);
 
   constructor(
@@ -60,7 +62,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.checkInvalidScreenSize()
+    this.checkInvalidScreenSize();
+    this.trackingService.trackVisitor();
   }
 
   private configWindowResize() {
