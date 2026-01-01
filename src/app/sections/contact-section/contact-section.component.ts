@@ -58,17 +58,17 @@ export class ContactSectionComponent {
         break;
       case 'sending':
         this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
+          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/SVGs/contact-form/sending.svg'
         );
         break;
       case 'error':
         this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
+          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/SVGs/contact-form/error.svg'
         );
         break;
       case 'success':
         this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
+          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/SVGs/contact-form/success.svg'
         );
         break;
     }

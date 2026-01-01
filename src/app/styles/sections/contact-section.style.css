@@ -64,8 +64,16 @@
     margin-bottom: 10px;
   } 
 
-  .gif-feedback img{
+  .gif-feedback{
+
+    display: flex;
+    justify-content: center;
+    
     width: var(--contact-form-image-width);
     height: auto;
+    
+    /* img{
+      scale: 60%;
+    } */
   }
 }
