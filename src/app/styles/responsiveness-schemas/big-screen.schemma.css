@@ -55,6 +55,7 @@
 
   /* Contact Vars */
   --contact-form-image-width: 450px;
+  --contact-form-feedback-image-scale: 90%;
 
   --contact-form-width: 400px;
   --contact-form-padding: 35px;

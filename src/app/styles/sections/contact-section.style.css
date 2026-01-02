@@ -72,8 +72,8 @@
     width: var(--contact-form-image-width);
     height: auto;
     
-    /* img{
-      scale: 60%;
-    } */
+    img{
+      scale: var(--contact-form-feedback-image-scale);
+    }
   }
 }
