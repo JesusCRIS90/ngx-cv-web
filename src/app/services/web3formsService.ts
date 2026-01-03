@@ -27,7 +27,7 @@ export class Web3FormSubmittingService {
         ...data
       }
 
-      console.log(`payload:`, payload);
+      // console.log(`payload:`, payload);
 
       const response = await fetch(this.FORM_URL, {
         method: 'POST',

@@ -105,3 +105,10 @@ export interface ImageResponsiveVersions {
   vert: string,
 }
 
+export interface FormStateFeedback {
+  idle: string,
+  sending: string,
+  success: string,
+  error: string,
+}
+

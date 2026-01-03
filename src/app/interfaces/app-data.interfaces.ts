@@ -4,7 +4,8 @@ import {
   Skill,
   SkillChip,
   TextWithKeyWords,
-  ImageResponsiveVersions
+  ImageResponsiveVersions,
+  FormStateFeedback
 } from './app.interfaces'
 
 export interface AppData {
@@ -41,7 +42,9 @@ export interface AppDataSkills{
   chips: SkillChip[]
 }
 
-export interface AppDataContact{}
+export interface AppDataContact{
+  formStateFeedback: FormStateFeedback,
+}
 
 
 

@@ -6,7 +6,11 @@ import {
   ResponsiveLayoutComponent as ResponsiveLayout,
 } from '@beexy/ngx-layouts';
 
-import { AppDataHome } from '../../interfaces';
+import {
+  AppDataHome,
+  AppDataContact,
+  FormStateFeedback,
+} from '../../interfaces';
 
 import {
   AppCommonConfig,
@@ -33,14 +37,15 @@ import {
   templateUrl: './contact-section.component.html',
 })
 export class ContactSectionComponent {
-  data = input.required<AppDataHome | undefined>();
+  homeData = input.required<AppDataHome | undefined>();
+  contactFormData = input.required<FormStateFeedback | undefined>();
 
   private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
 
   mediaGifUrl = signal<string>('');
 
-  getData(): AppDataHome {
-    return this.data()!;
+  getHomeData(): AppDataHome {
+    return this.homeData()!;
   }
 
   protected getFactorVert2Hori(): number {
@@ -48,28 +53,18 @@ export class ContactSectionComponent {
   }
 
   protected updatingContactFormState(state: ContactFormState): void {
-    console.log('Contact form state:', state);
-
     switch (state) {
       case 'idle':
-        this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
-        );
+        this.mediaGifUrl.set(this.contactFormData()?.idle || '');
         break;
       case 'sending':
-        this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
-        );
+        this.mediaGifUrl.set(this.contactFormData()?.sending || '');
         break;
       case 'error':
-        this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
-        );
+        this.mediaGifUrl.set(this.contactFormData()?.error || '');
         break;
       case 'success':
-        this.mediaGifUrl.set(
-          'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/jriz-cv/gifs/Building1.gif'
-        );
+        this.mediaGifUrl.set(this.contactFormData()?.success || '');
         break;
     }
   }

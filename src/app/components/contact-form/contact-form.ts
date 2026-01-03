@@ -19,7 +19,7 @@ import { HCaptcha as HCaptchaComponent } from '../../components/h-captcha/h-capt
 
 export type ContactFormState = 'idle' | 'sending' | 'success' | 'error';
 
-const FEEDBACK_DELAY_MS = 2000;
+const FEEDBACK_DELAY_MS = 5000;
 
 @Component({
   selector: 'cv-contact-form',

@@ -15,7 +15,8 @@ import {
   TimeLineCard,
   LongExperienceCard,
   ShortProjectCard,
-  LongProjectCard
+  LongProjectCard,
+  FormStateFeedback
 } from '../interfaces'
 
 
@@ -221,11 +222,18 @@ export class AppDataMapper {
   }
 
   private static normalizeContactData(jsonData: unknown): AppDataContact {
-    const data: AppDataContact = {}
+    // const data: AppDataContact = {}
 
-    // TODO: Here the respective adaptation
+    const dataObj = typeof jsonData === 'object' && jsonData !== null ? jsonData as any : {};
 
-    return data;
+    const formStateFeedback: FormStateFeedback = {
+      idle: AppDataMapper.isString(dataObj?.SContact?.formStateFeedback?.idle) ? dataObj.SContact.formStateFeedback.idle : '',
+      sending: AppDataMapper.isString(dataObj?.SContact?.formStateFeedback?.sending) ? dataObj.SContact.formStateFeedback.sending : '',
+      success: AppDataMapper.isString(dataObj?.SContact?.formStateFeedback?.success) ? dataObj.SContact.formStateFeedback.success : '',
+      error: AppDataMapper.isString(dataObj?.SContact?.formStateFeedback?.error) ? dataObj.SContact.formStateFeedback.error : ''
+    };
+
+    return {formStateFeedback};
   }
 
   private static isObjectType(input: any): boolean {
