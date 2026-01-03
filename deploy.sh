@@ -53,6 +53,13 @@ git add -A
 git commit -m 'deploy' > /dev/null
 print_success "Git commit done"
 
+# Push to gh-pages branch - Only one of the following push commands should be uncommented
 print_step "Pushing to GitHub gh-pages branch"
-git push -f https://github.com/${GITHUB_USER}/${REPO_NAME}.git main:gh-pages
+
+# Using Username/Token authentication - uncomment the line below if needed
+# git push -f https://github.com/${GITHUB_USER}/${REPO_NAME}.git main:gh-pages
+
+# Using SSH authentication - uncomment the line below if needed
+git push -f git@github.com:${GITHUB_USER}/${REPO_NAME}.git main:gh-pages
+
 print_success "Deployment complete!"
