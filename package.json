@@ -26,6 +26,7 @@
     "@beexy/ngx-popups": "^1.0.1",
     "@beexy/ngx-providers": "^0.0.11",
     "@beexy/tools": "^1.0.1",
+    "@supabase/supabase-js": "^2.89.0",
     "marked": "^16.1.2",
     "rxjs": "7.8.1",
     "tslib": "^2.3.0",
