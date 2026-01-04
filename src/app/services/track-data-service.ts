@@ -1,44 +1,98 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+
 import { VisitorInfo } from '../interfaces';
 
-const GEO_API = 'https://ipapi.co/json/'; // Example (replace in prod)
-const BACKEND_API = 'https://your-api.com/track';
+import { createClient } from '@supabase/supabase-js';
+
+const GEO_API = 'https://ipapi.co/json/';
+
+const SUPABASE_URL = 'https://rtpkqbswvbcjicsjgwfs.supabase.co';
+const SUPABASE_PUBLIC_KEY = 'sb_publishable_tGSQlXKU7TQJvWDUuz0nvw_7POwoHT2';
+
+// const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY);
+
+const RESPONSIVE_PREFIX = 'responsive-schema-';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TrackingService {
+  private supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  });
+
   constructor(private http: HttpClient) {}
 
   async trackVisitor(): Promise<void> {
+    console.log('Tracking visitor...');
+
+    let data: VisitorInfo;
+
     try {
-      const geoData: any = await fetch(GEO_API).then((res) => res.json());
-
-      const visitorInfo: VisitorInfo = {
-        city: geoData.city || 'Unknown',
-        country: geoData.country_name || 'Unknown',
-        region: geoData.region || 'Unknown',
-        timestamp: this.getTimestamp(),
-        browser: this.getBrowser(),
-        deviceType: this.getDeviceType(),
-        navigatorResolution: this.getNvigatorResolution(),
-        language: this.getLanguage(),
-        platform: this.getPlatform(),
-      };
-
-      this.sendToBackend(visitorInfo);
+      const geoData = await firstValueFrom(this.http.get(GEO_API));
+      data = this.getValidVisitorInfo(geoData);
     } catch (error) {
-      console.error('Tracking failed', error);
+      console.error('Geo API failed', error);
+      data = this.getInvalidVisitorInfo(error);
+    }
+
+    await this.sendToBackend(data);
+  }
+
+  private async sendToBackend(data: VisitorInfo): Promise<void> {
+    try {
+      const { error } = await this.supabase.from('cv_metrics').insert(data);
+
+      if (error) {
+        console.error('Supabase insert failed', error);
+      }
+    } catch (err) {
+      console.error('Unexpected backend error', err);
     }
   }
 
-  private sendToBackend(data: VisitorInfo): void {
-    console.log('Sending visitor info to backend:', data);
+  private getValidVisitorInfo(geoData: any): VisitorInfo {
+    return {
+      city: geoData.city || 'Unknown',
+      country: geoData.country_name || 'Unknown',
+      region: geoData.region || 'Unknown',
+      timestamp: this.getTimestamp(),
+      browser: this.getBrowser(),
+      deviceType: this.getDeviceType(),
+      clientResolution: this.getResponsiveSchema() || 'Unknown',
+      language: this.getLanguage(),
+      platform: this.getPlatform(),
+      wasError: false,
+      errorMessage: '',
+      pageURL: window?.location?.href ?? 'Unknown',
+    };
+  }
 
-    // this.http.post(this.BACKEND_API, data).subscribe({
-    //   error: err => console.error('Backend error', err)
-    // });
+  private getInvalidVisitorInfo(error: any): VisitorInfo {
+    const message =
+      typeof error === 'string'
+        ? error
+        : error?.message ?? error?.statusText ?? 'Unknown error';
+
+    return {
+      city: 'Unknown',
+      country: 'Unknown',
+      region: 'Unknown',
+      timestamp: this.getTimestamp(),
+      browser: this.getBrowser(),
+      deviceType: this.getDeviceType(),
+      clientResolution: this.getResponsiveSchema() || 'Unknown',
+      language: this.getLanguage(),
+      platform: this.getPlatform(),
+      wasError: true,
+      errorMessage: message,
+      pageURL: window?.location?.href ?? 'Unknown',
+    };
   }
 
   private getTimestamp(): string {
@@ -56,12 +110,8 @@ export class TrackingService {
     return `${year}-${month}-${day} ${hour}:${minute}`;
   }
 
-  private getNvigatorResolution(): string {
-    return `${window.innerWidth}x${window.innerHeight}`;
-  }
-
   private getBrowser(): string {
-    console.log(navigator, window);
+    if (typeof navigator === 'undefined') return 'Unknown';
 
     const ua = navigator.userAgent;
     if (ua.includes('Chrome')) return 'Chrome';
@@ -78,17 +128,32 @@ export class TrackingService {
     return 'Desktop';
   }
 
-  // private getDeviceModel(): string | null {
-  //   const ua = navigator.userAgent;
-  //   const match = ua.match(/\((.*?)\)/);
-  //   return match ? match[1] : null;
-  // }
-
   private getLanguage(): string {
     return navigator.language;
   }
 
   private getPlatform(): string {
     return navigator.platform || 'Unknown';
+  }
+
+  private getResponsiveSchema(doc: Document = document): string | null {
+    const body = doc.body;
+    if (!body) {
+      return null;
+    }
+
+    // find the class that starts with "responsive-schema-"
+    const responsiveClass = Array.from(body.classList).find((c) =>
+      c.startsWith(RESPONSIVE_PREFIX)
+    );
+
+    if (!responsiveClass) {
+      return null;
+    }
+
+    // extract the "defined-schema" part
+    const definedPart = responsiveClass.slice(RESPONSIVE_PREFIX.length);
+
+    return definedPart || null;
   }
 }

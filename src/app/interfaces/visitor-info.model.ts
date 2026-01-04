@@ -6,6 +6,9 @@ export interface VisitorInfo {
   browser: string;
   language: string;
   deviceType: 'Mobile' | 'Tablet' | 'Desktop';
-  navigatorResolution: string;
+  clientResolution: string;
   platform: string;
+  wasError: boolean;
+  errorMessage: string;
+  pageURL: string;
 }
