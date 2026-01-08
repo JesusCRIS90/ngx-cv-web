@@ -4,14 +4,8 @@ import { firstValueFrom } from 'rxjs';
 
 import { VisitorInfo } from '../interfaces';
 
-import { createClient } from '@supabase/supabase-js';
-
 const GEO_API = 'https://ipapi.co/json/';
-
-const SUPABASE_URL = 'https://rtpkqbswvbcjicsjgwfs.supabase.co';
-const SUPABASE_PUBLIC_KEY = 'sb_publishable_tGSQlXKU7TQJvWDUuz0nvw_7POwoHT2';
-
-// const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY);
+const SUPABASE_EDGE_FUNCTION = 'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics';
 
 const RESPONSIVE_PREFIX = 'responsive-schema-';
 
@@ -19,17 +13,11 @@ const RESPONSIVE_PREFIX = 'responsive-schema-';
   providedIn: 'root',
 })
 export class TrackingService {
-  private supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-    },
-  });
 
   constructor(private http: HttpClient) {}
 
   async trackVisitor(): Promise<void> {
-    console.log('Tracking visitor...');
+    // console.log('Tracking visitor...');
 
     let data: VisitorInfo;
 
@@ -44,12 +32,22 @@ export class TrackingService {
     await this.sendToBackend(data);
   }
 
-  private async sendToBackend(data: VisitorInfo): Promise<void> {
+  private async sendToBackend(data2Send: VisitorInfo): Promise<void> {
     try {
-      const { error } = await this.supabase.from('cv_metrics').insert(data);
 
-      if (error) {
-        console.error('Supabase insert failed', error);
+      const response = await fetch( SUPABASE_EDGE_FUNCTION,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data2Send),
+        }
+      );
+
+      if (!response.ok) {
+        const text = await response.text();
+        console.error('Backend insert failed:', response.status, text);
       }
     } catch (err) {
       console.error('Unexpected backend error', err);
