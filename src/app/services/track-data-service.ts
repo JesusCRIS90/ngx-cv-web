@@ -4,7 +4,7 @@ import { firstValueFrom } from 'rxjs';
 
 import { VisitorInfo } from '../interfaces';
 
-const GEO_API = 'https://ipapi.co/json/';
+const GEO_API = 'https://ipwho.is/';
 const SUPABASE_EDGE_FUNCTION = 'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics';
 
 const RESPONSIVE_PREFIX = 'responsive-schema-';
@@ -33,6 +33,7 @@ export class TrackingService {
   }
 
   private async sendToBackend(data2Send: VisitorInfo): Promise<void> {
+    // console.log('Sending visitor data to backend...', data2Send);
     try {
 
       const response = await fetch( SUPABASE_EDGE_FUNCTION,
@@ -56,9 +57,9 @@ export class TrackingService {
 
   private getValidVisitorInfo(geoData: any): VisitorInfo {
     return {
-      city: geoData.city || 'Unknown',
-      country: geoData.country_name || 'Unknown',
-      region: geoData.region || 'Unknown',
+      city: this.getCity(geoData),
+      country: this.getCountry(geoData),
+      region: this.getRegion(geoData),
       timestamp: this.getTimestamp(),
       browser: this.getBrowser(),
       deviceType: this.getDeviceType(),
@@ -154,4 +155,16 @@ export class TrackingService {
 
     return definedPart || null;
   }
+
+  private getCity(geoData: any): string {
+    return geoData.city || 'Unknown';
+  }
+
+  private getCountry(geoData: any): string {
+    return geoData.country || 'Unknown';
+  }
+
+  private getRegion(geoData: any): string {
+    return geoData.region || 'Unknown';
+  } 
 }
