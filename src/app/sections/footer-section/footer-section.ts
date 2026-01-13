@@ -9,4 +9,11 @@ import { RouterLink } from "@angular/router";
   templateUrl: './footer-section.html',
  styleUrls: ['./footer-section.css']
 })
-export class FooterSection {}
+export class FooterSection {
+  
+  
+  testArticlePageNavigation(): string {
+    return 'angular-signals-introduccion';
+  }
+
+}

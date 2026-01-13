@@ -20,8 +20,15 @@ export const routes: Routes = [
   },
   {
     path: 'privacy',
-    loadComponent: () =>
-      import('./pages/privacy-page/privacy-page'),
+    loadComponent: () => import('./pages/privacy-page/privacy-page'),
+  },
+  {
+    path: 'blog',
+    loadComponent: () => import('./pages/blog-list-page/blog-list-page'),
+  },
+  {
+    path: 'blog/:slug',
+    loadComponent: () => import('./pages/article-page/article-page'),
   },
   {
     path: '**',
