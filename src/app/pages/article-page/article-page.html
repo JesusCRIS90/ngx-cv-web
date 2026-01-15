@@ -1,6 +1,16 @@
+@if ( article() ) {
 <section>
-  <h1>Article</h1>
-  <p>Enjoy the Article</p>
-  <p>Article Slug: {{ slug }}</p>
-</section>
+  <h2>{{ article()?.['title'] ?? 'Untitled article' }}</h2>
 
+  <p>Article Slug: {{ slug }}</p>
+
+  <hr />
+
+  <h3>Raw Article Payload</h3>
+  <pre>{{ article() | json }}</pre>
+</section>
+} @else {
+<section>
+  <p>Loading article...</p>
+</section>
+}
