@@ -3,6 +3,8 @@
 @import "./app/styles/nav-menu/nav-menu.styles.css";
 @import "./app//styles//sections/sections.styles.css";
 
+@import 'highlight.js/styles/monokai.css';
+
 /* Change the BG Color */
 body {
   background-color: var(--bg-color);

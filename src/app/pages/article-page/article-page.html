@@ -6,6 +6,17 @@
 
   <hr />
 
+  <div class="article-container">
+    <bee-markdown-viewer
+      [markdownPath]="markdownPath('en')"
+      (headingsChange)="onHeadingsChange($event)"
+    />
+
+    <bee-markdown-navigator [headings]="headingsDocs()" [maxDepth]="3" />
+  </div>
+
+  <hr />
+
   <h3>Raw Article Payload</h3>
   <pre>{{ article() | json }}</pre>
 </section>

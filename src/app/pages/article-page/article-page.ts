@@ -3,9 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { BlogArticlesService } from '../../services';
 import { JsonPipe } from '@angular/common';
 
+import {
+  MarkdownViewerComponent as MarkdownViewer,
+  MarkdownNavigatorComponent as MarkdownNavigator,
+  MarkdownHeading,
+} from '@beexy/ngx-components';
+
+type ArticleLanguage = 'en' | 'es';
+
 @Component({
   selector: 'app-article-page',
-  imports: [JsonPipe],
+  imports: [JsonPipe, MarkdownViewer, MarkdownNavigator],
   templateUrl: './article-page.html',
   styleUrls: ['./article-page.css'],
 })
@@ -14,8 +22,15 @@ export default class ArticlePageComponent implements OnInit {
   
   // Store the whole article object
   article = signal<Record<string, any> | null>(null);
+  headingsDocs = signal<MarkdownHeading[]>([]);
 
   private blogService = inject(BlogArticlesService);
+
+
+  onHeadingsChange(headings: MarkdownHeading[]): void {
+    console.log('Headings changed:', headings);
+    this.headingsDocs.set(headings);
+  }
 
   constructor(private route: ActivatedRoute) {
     this.slug = this.route.snapshot.paramMap.get('slug');
@@ -31,5 +46,10 @@ export default class ArticlePageComponent implements OnInit {
     this.article.set(data ?? null);
 
     console.log('Article Data:', this.article());
+  }
+
+  protected markdownPath( lang: ArticleLanguage = 'en' ): string {
+    const langKey = lang === 'en' ? 'markdown_en_url' : 'markdown_es_url';
+    return this.article()?.[langKey] ?? '';
   }
 }
