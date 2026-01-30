@@ -17,3 +17,5 @@ export * from './contact-form/contact-form'
 export * from './gif-lazy-load/gif-lazy-load'
 
 export * from './h-captcha/h-captcha'
+
+export * from './header-article/header-article'
