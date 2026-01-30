@@ -6,6 +6,13 @@ export interface ArticleHeader {
   tags: string[];
 }
 
+export interface ArticleCard {
+  title: string;
+  coverImageUrl: string;
+  description: string;
+  slug: string;
+}
+
 export interface Article {
   id: string;
   slug: string;
