@@ -2,10 +2,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
 
 import { BlogArticlesService, BlogSearchFilters } from '../../services';
+import { ArticleCardComponent } from '../../components'
+import { ArticleCard } from '../../interfaces';
+import { AppInterfacesAdapter } from '../../mappers'
 
 @Component({
   selector: 'app-blog-list-page',
-  imports: [RouterLink],
+  imports: [RouterLink, ArticleCardComponent],
   templateUrl: './blog-list-page.html',
   styleUrls: ['./blog-list-page.css'],
 })
@@ -27,6 +30,10 @@ export default class BlogListPageComponent implements OnInit {
 
   getArticlesNames(): string[] {
     return this.articles().map(article => article.title);
+  }
+
+  protected GetArticleCard( articleComplete: any ): ArticleCard {
+    return AppInterfacesAdapter.articleToArticleCard(articleComplete);
   }
 
 }
