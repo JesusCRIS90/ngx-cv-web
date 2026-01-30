@@ -1,4 +1,45 @@
-.article-container{
+.article-container {
   display: flex;
   flex-direction: row;
+
+  align-items: flex-start;
+  gap: 20px;
+
+  margin-top: 30px;
+
+  bee-markdown-viewer {
+    flex: 1;
+  }
+
+  .article {
+    .bee-markdown-body {
+      width: 85%;
+    }
+  }
+
+  .md-navigator {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    overflow-y: auto;
+
+    min-width: 250px;
+    max-width: 320px;
+
+    button {
+      margin: 30px 50px 0px 50px;
+      padding: 10px 15px;
+      background-color: var(--primary-color);
+      color: var(--button-text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  }
 }

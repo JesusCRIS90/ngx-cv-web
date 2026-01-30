@@ -1,24 +1,26 @@
 @if ( article() ) {
 <section>
-  <h2>{{ article()?.['title'] ?? 'Untitled article' }}</h2>
-
-  <p>Article Slug: {{ slug }}</p>
-
-  <hr />
+  <header-article [articleHeader]="articleHeader" />
 
   <div class="article-container">
     <bee-markdown-viewer
+      class="article"
       [markdownPath]="markdownPath('en')"
       (headingsChange)="onHeadingsChange($event)"
     />
+    <div class="md-navigator">
+      <bee-markdown-navigator
+        [headings]="headingsDocs()"
+        [maxDepth]="3"
+      />
 
-    <bee-markdown-navigator [headings]="headingsDocs()" [maxDepth]="3" />
+      <button (click)="backToArticlesList()">Back to Articles</button>
+    </div>
   </div>
 
-  <hr />
+  <!-- <hr /> -->
 
-  <h3>Raw Article Payload</h3>
-  <pre>{{ article() | json }}</pre>
+  <!-- <pre>{{ article() | json }}</pre> -->
 </section>
 } @else {
 <section>
