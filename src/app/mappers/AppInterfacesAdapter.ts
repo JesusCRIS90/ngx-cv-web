@@ -14,7 +14,7 @@ export class AppInterfacesAdapter {
 
     static articleToArticleCard(article: Partial<Article>): ArticleCard {
     
-    console.log('Mapping article to Article Card:', article);
+    // console.log('Mapping article to Article Card:', article);
 
     return {
       title: article.title ?? 'Untitled article',

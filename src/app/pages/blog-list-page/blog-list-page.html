@@ -1,7 +1,20 @@
 <section>
   <h1>Blog List</h1>
-  <p>Welcome to the blog list page. Here you'll find a collection of blog posts.</p>
-  @for (article of articles(); track $index) {
-    <article-card [articleCardData]="GetArticleCard(article)"/>
-  }
+  <p>
+    Welcome to the blog list page. Here you'll find a collection of blog posts.
+  </p>
+  <!-- <bee-horizontal-layout [gap]="50">
+    <bee-search-bar
+      [placeholder]="'Search blog articles...'"
+      (searchOutput)="onSearchChange($event)"
+    />
+    <button (click)="onClickSidebar()">Filters</button>
+  </bee-horizontal-layout> -->
+  <div>
+    <bee-vertical-layout [gap]="5">
+      @for (article of articles(); track $index) {
+      <article-card [articleCardData]="GetArticleCard(article)" />
+      }
+    </bee-vertical-layout>
+  </div>
 </section>

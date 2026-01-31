@@ -1,39 +1,81 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
+
+import { BeeSearchBarComponent as BeeSearchBar } from '@beexy/ngx-components';
+import { 
+  HorizontalLayoutComponent as HoriLay,
+  VerticalLayoutComponent as FlexVertLay
+} from '@beexy/ngx-layouts';
+import { SideBarPopupService } from '@beexy/ngx-popups';
 
 import { BlogArticlesService, BlogSearchFilters } from '../../services';
-import { ArticleCardComponent } from '../../components'
+import {
+  ArticleCardComponent,
+  ArticlesFilteringComponent as ArticlesFilter
+} from '../../components';
 import { ArticleCard } from '../../interfaces';
-import { AppInterfacesAdapter } from '../../mappers'
+import { AppInterfacesAdapter } from '../../mappers';
+import { BeeVerticalCarouselComponent } from "@beexy/ngx-navigation";
 
 @Component({
   selector: 'app-blog-list-page',
-  imports: [RouterLink, ArticleCardComponent],
+  imports: [
+    RouterLink,
+    ArticleCardComponent,
+    BeeSearchBar,
+    HoriLay,
+    FlexVertLay,
+    ArticlesFilter,
+    BeeVerticalCarouselComponent
+],
   templateUrl: './blog-list-page.html',
   styleUrls: ['./blog-list-page.css'],
+  standalone: true,
 })
 export default class BlogListPageComponent implements OnInit {
   articles = signal<any[]>([]);
 
   private blogService = inject(BlogArticlesService);
+  private sidebarPopupService = inject(SideBarPopupService);
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.onSearch({});
   }
 
   async onSearch(filters: BlogSearchFilters) {
-    const { data } = await this.blogService.search(filters);
+    this.blogService.setFilters(filters);
+    const { data } = await this.blogService.search();
     this.articles.set(data ?? []);
 
     console.log('Search results:', this.articles());
   }
 
-  getArticlesNames(): string[] {
-    return this.articles().map(article => article.title);
+  onSearchChange(searchTerm: string) {
+    const filters: BlogSearchFilters = {
+      keywords: this.GetKeywordsList(searchTerm),
+    };
+    console.log('Search term changed:', filters);
+    // this.onSearch(filters);
   }
 
-  protected GetArticleCard( articleComplete: any ): ArticleCard {
+  protected onClickSidebar(): void {
+    this.sidebarPopupService.open({
+      component: ArticlesFilter,
+      position: 'right',
+      data: {},
+    });
+  }
+
+  getArticlesNames(): string[] {
+    return this.articles().map((article) => article.title);
+  }
+
+  protected GetArticleCard(articleComplete: any): ArticleCard {
+    // console.log('Executing GetArticleCard Method');
     return AppInterfacesAdapter.articleToArticleCard(articleComplete);
   }
 
+  protected GetKeywordsList(keywordsLine: string): string[] {
+    return keywordsLine.split(/[,\s]+/).filter(Boolean);
+  }
 }
