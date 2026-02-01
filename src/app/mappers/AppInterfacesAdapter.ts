@@ -3,7 +3,8 @@ import { Article, ArticleHeader, ArticleCard } from '../interfaces';
 export class AppInterfacesAdapter {
   static articleToHeader(article: Partial<Article>): ArticleHeader {
     return {
-      title: article.title ?? 'Untitled article',
+      title_en: article.title_en ?? 'Untitled article',
+      title_es: article.title_es ?? 'Untitled article',
       coverImageUrl:
         article.cover_image_url ?? 'https://cdn.tusitio.com/covers/default.png',
       readingTime: article.reading_time ?? 0,
@@ -17,7 +18,8 @@ export class AppInterfacesAdapter {
     // console.log('Mapping article to Article Card:', article);
 
     return {
-      title: article.title ?? 'Untitled article',
+      title_en: article.title_en ?? 'Untitled article',
+      title_es: article.title_es ?? 'Untitled article',
       coverImageUrl:
         article.cover_image_url ?? 'https://cdn.tusitio.com/covers/default.png',
       description: article.description ?? 'No description available.',

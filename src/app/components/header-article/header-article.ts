@@ -25,10 +25,17 @@ export class HeaderArticle {
   PAIR_DISTRIBUTION = PAIR_DISTRIBUTION;
 
   articleHeader = input.required<ArticleHeader>();
+  articleLanguage = input<'en' | 'es'>('en');
 
   get readingTimeText(): string {
     const minutes = this.articleHeader().readingTime;
     return `${minutes} min`;
+  }
+
+  protected get title(): string {
+    return this.articleLanguage() === 'es' 
+      ? this.articleHeader().title_es 
+      : this.articleHeader().title_en;
   }
 
 }

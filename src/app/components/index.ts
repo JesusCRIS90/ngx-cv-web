@@ -20,3 +20,4 @@ export * from './h-captcha/h-captcha'
 
 export * from './header-article/header-article'
 export * from './article-card/article-card'
+export * from './articles-filtering/articles-filtering'

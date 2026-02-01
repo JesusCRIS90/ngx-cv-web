@@ -1,18 +1,23 @@
 @if ( article() ) {
 <section>
-  <header-article [articleHeader]="articleHeader" />
+  <header-article
+    [articleLanguage]="language()"
+    [articleHeader]="articleHeader"
+  />
 
   <div class="article-container">
-    <bee-markdown-viewer
-      class="article"
-      [markdownPath]="markdownPath('en')"
-      (headingsChange)="onHeadingsChange($event)"
-    />
-    <div class="md-navigator">
-      <bee-markdown-navigator
-        [headings]="headingsDocs()"
-        [maxDepth]="3"
+    <div class="md-viewer-container">
+      <button (click)="onClickChangeLanguage()">
+        {{ currentLanguageLabel }}
+      </button>
+      <bee-markdown-viewer
+        class="article"
+        [markdownPath]="markdownPath()"
+        (headingsChange)="onHeadingsChange($event)"
       />
+    </div>
+    <div class="md-navigator">
+      <bee-markdown-navigator [headings]="headingsDocs()" [maxDepth]="3" />
 
       <button (click)="backToArticlesList()">Back to Articles</button>
     </div>

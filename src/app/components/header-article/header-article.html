@@ -1,5 +1,5 @@
 <p>{{ articleHeader().coverImageUrl }}</p>
-<h1>{{ articleHeader().title }}</h1>
+<h1>{{ title }}</h1>
 <bee-pair-layout [pairDistribution]="PAIR_DISTRIBUTION.OPPOSITE">
   <bee-horizontal-layout [gap]="10">
     @for (tag of articleHeader().tags; track $index) {

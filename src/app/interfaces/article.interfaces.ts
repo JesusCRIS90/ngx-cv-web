@@ -1,5 +1,6 @@
 export interface ArticleHeader {
-  title: string;
+  title_en: string;
+  title_es: string;
   coverImageUrl: string;
   readingTime: number;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
@@ -7,7 +8,8 @@ export interface ArticleHeader {
 }
 
 export interface ArticleCard {
-  title: string;
+  title_en: string;
+  title_es: string;
   coverImageUrl: string;
   description: string;
   slug: string;
@@ -16,7 +18,8 @@ export interface ArticleCard {
 export interface Article {
   id: string;
   slug: string;
-  title: string;
+  title_en: string;
+  title_es: string;
   description: string;
   seoTitle: string;
   seoDescription: string;
