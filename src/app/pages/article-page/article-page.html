@@ -6,26 +6,52 @@
   />
 
   <div class="article-container">
-    <div class="md-viewer-container">
-      <button (click)="onClickChangeLanguage()">
-        {{ currentLanguageLabel }}
-      </button>
+    <bee-relative-layout>
+      <bee-floating-layout
+        [anchorPoint]="ANCHOR_POLICY_POSITION.TOP_RIGHT"
+        [posX]="100"
+        [posY]="0"
+      >
+        <button
+          class="btn-language-change btn-article-style"
+          (click)="onClickChangeLanguage()"
+        >
+          {{ currentLanguageLabel }}
+        </button>
+      </bee-floating-layout>
       <bee-markdown-viewer
         class="article"
         [markdownPath]="markdownPath()"
         (headingsChange)="onHeadingsChange($event)"
       />
-    </div>
-    <div class="md-navigator">
+    </bee-relative-layout>
+    <div class="md-navigator" [class.md-nav-activate]="isVerticalScreen()">
       <bee-markdown-navigator [headings]="headingsDocs()" [maxDepth]="3" />
 
-      <button (click)="backToArticlesList()">Back to Articles</button>
+      <button class="btn-article-style" (click)="backToArticlesList()">
+        Back to Articles
+      </button>
     </div>
   </div>
 
-  <!-- <hr /> -->
+  <button
+    class="btn-article-style"
+    (click)="backToArticlesList()"
+    [class.btn-vertical-activate]="!isVerticalScreen()"
+  >
+    Back to Articles
+  </button>
 
-  <!-- <pre>{{ article() | json }}</pre> -->
+  <!-- This code is exclusive to get the Orientation of the Screen -->
+  <bee-responsive-layout
+    [TriggerFactorVert2Hori]="getFactorVert2Hori()"
+    (orientationChange)="triggerOrientation($event)"
+  >
+    <ng-template #screenVertical></ng-template>
+    <ng-template #screenHorizontal></ng-template>
+  </bee-responsive-layout>
+  <!-- ----------------------------------------------------------- -->
+
 </section>
 } @else {
 <section>

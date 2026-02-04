@@ -5,6 +5,7 @@
   align-items: flex-start;
   gap: 20px;
 
+  margin: 0px clamp(150px, 15vw, 500px);
   margin-top: 30px;
 
   bee-markdown-viewer {
@@ -13,8 +14,12 @@
 
   .article {
     .bee-markdown-body {
-      width: 85%;
+      margin-top: 10px;
     }
+  }
+
+  .btn-language-change {
+    width: max-content;
   }
 
   .md-navigator {
@@ -30,16 +35,24 @@
 
     min-width: 250px;
     max-width: 320px;
-
-    button {
-      margin: 30px 50px 0px 50px;
-      padding: 10px 15px;
-      background-color: var(--primary-color);
-      color: var(--button-text-color);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
   }
+
+  .md-nav-activate {
+    display: none;
+  }
+}
+
+.btn-vertical-activate {
+  display: none;
+}
+
+.btn-article-style {
+  margin: 30px 50px 0px 50px;
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
 }

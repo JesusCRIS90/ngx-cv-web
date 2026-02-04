@@ -7,11 +7,16 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JsonPipe } from '@angular/common';
 
 import { BlogArticlesService } from '../../services';
 
-import { POLICY_POSITION as ANCHOR_POLICY_POSITION } from '@beexy/ngx-layouts';
+import {
+  POLICY_POSITION as ANCHOR_POLICY_POSITION,
+  RelativeLayoutComponent as RelLay,
+  FloatingLayoutComponent as FloatLay,
+  ResponsiveLayoutComponent as ResponseLay,
+  ScreenOrientation
+} from '@beexy/ngx-layouts';
 
 import {
   MarkdownViewerComponent as MarkdownViewer,
@@ -22,12 +27,23 @@ import {
 import { HeaderArticle } from '../../components';
 import { ArticleHeader } from '../../interfaces';
 import { AppInterfacesAdapter } from '../../mappers';
+import {
+  APP_COMMON_CONFIG_TOKEN,
+  AppCommonConfig,
+} from '../../providers/config';
 
 type ArticleLanguage = 'en' | 'es';
 
 @Component({
   selector: 'app-article-page',
-  imports: [JsonPipe, MarkdownViewer, MarkdownNavigator, HeaderArticle],
+  imports: [
+    MarkdownViewer,
+    MarkdownNavigator,
+    HeaderArticle,
+    RelLay,
+    FloatLay,
+    ResponseLay,
+  ],
   standalone: true,
   templateUrl: './article-page.html',
   styleUrls: ['./article-page.css'],
@@ -37,6 +53,7 @@ export default class ArticlePageComponent implements OnInit {
   ANCHOR_POLICY_POSITION = ANCHOR_POLICY_POSITION;
 
   slug: string | null = null;
+  orientation: ScreenOrientation = 'landscape';
 
   // Store the whole article object
   article = signal<Record<string, any> | null>(null);
@@ -60,13 +77,13 @@ export default class ArticlePageComponent implements OnInit {
   });
 
   private blogService = inject(BlogArticlesService);
+  private commonConfig: AppCommonConfig = inject(APP_COMMON_CONFIG_TOKEN);
 
   constructor(
     private route: ActivatedRoute,
     private readonly router: Router,
   ) {
     this.slug = this.route.snapshot.paramMap.get('slug');
-    // console.log('Article slug:', this.slug);
   }
 
   ngOnInit(): void {
@@ -74,21 +91,13 @@ export default class ArticlePageComponent implements OnInit {
   }
 
   onHeadingsChange(headings: MarkdownHeading[]): void {
-    // console.log('Headings changed:', headings);
     this.headingsDocs.set(headings);
   }
 
   async onSlugSeach(slug: string) {
     const { data } = await this.blogService.getBySlug(slug);
     this.article.set(data ?? null);
-
-    // console.log('Article Data:', this.article());
   }
-
-  // protected markdownPath(lang: ArticleLanguage = 'en'): string {
-  //   const langKey = lang === 'en' ? 'markdown_en_url' : 'markdown_es_url';
-  //   return this.article()?.[langKey] ?? '';
-  // }
 
   protected get articleHeader(): ArticleHeader {
     let articleData = this.article();
@@ -114,5 +123,17 @@ export default class ArticlePageComponent implements OnInit {
 
   get currentLanguageLabel(): string {
     return this.language() === 'en' ? 'Change to Spanish' : 'Cambiar a Inglés';
+  }
+
+  protected getFactorVert2Hori(): number {
+    return this.commonConfig.factorVert2Hori;
+  }
+
+  protected triggerOrientation(orientation: ScreenOrientation): void{
+    this.orientation = orientation;
+  }
+
+  protected isVerticalScreen(): boolean {
+    return this.orientation === 'portrait';
   }
 }
