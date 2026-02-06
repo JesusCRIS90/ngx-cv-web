@@ -11,7 +11,7 @@
     <button (click)="onClickSidebar()">Filters</button>
   </bee-horizontal-layout> -->
   <div>
-    <bee-vertical-layout [gap]="5">
+    <bee-vertical-layout [gap]="10">
       @for (article of articles(); track $index) {
       <article-card [articleCardData]="GetArticleCard(article)" />
       }
