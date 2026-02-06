@@ -91,6 +91,7 @@ export default class ArticlePageComponent implements OnInit {
   }
 
   onHeadingsChange(headings: MarkdownHeading[]): void {
+    console.log('Received headings from MarkdownViewer:', headings);
     this.headingsDocs.set(headings);
   }
 
