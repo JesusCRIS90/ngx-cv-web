@@ -1,3 +1,13 @@
+body {
+  background-color: var(--bg-color-2);
+}
+app-article-page {
+  font-family:
+    system-ui,
+    "Segoe UI",
+    sans-serif;
+}
+
 .article-container {
   display: flex;
   flex-direction: row;
@@ -111,12 +121,6 @@
     overflow-y: auto;
     width: clamp(250px, 50vw, 600px);
 
-    /* background-color: linear-gradient(
-        135deg,
-        var(--btn-gradient-start) 0%,
-        var(--btn-gradient-end) 100%
-      ); */
-
     .bee-markdown-navigator li {
       transition:
         background 0.25s ease,
@@ -134,13 +138,6 @@
     }
 
     a {
-      font-family:
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      /* color: #e5e7eb; */
       line-height: 1.75;
       font-size: 1.15rem;
       color: #f9fafb;
@@ -164,10 +161,8 @@
   background: linear-gradient(
     to bottom,
     var(--primary-color),
-    var(--primary-dark)
-    70%
+    var(--primary-dark) 70%
   );
-  /* background-color: aqua; */
   color: var(--white-2);
   font-weight: 600;
   font-size: 1.1rem;
@@ -175,7 +170,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
 
 .btn-article-style:hover {
   background: linear-gradient(

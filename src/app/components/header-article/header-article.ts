@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 
 import { 
   PairLayoutComponent as PairLay,
@@ -18,7 +18,8 @@ import { ArticleHeader } from '../../interfaces';
   selector: 'header-article',
   imports: [PairLay, HorizontalLay, Chip],
   templateUrl: './header-article.html',
-  styleUrl: './header-article.css'
+  styleUrl: './header-article.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeaderArticle {
 

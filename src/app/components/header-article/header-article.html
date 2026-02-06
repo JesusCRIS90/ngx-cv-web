@@ -1,13 +1,13 @@
 <p>{{ articleHeader().coverImageUrl }}</p>
-<h1>{{ title }}</h1>
+<h1 class="main-title">{{ title }}</h1>
 <bee-pair-layout [pairDistribution]="PAIR_DISTRIBUTION.OPPOSITE">
-  <bee-horizontal-layout [gap]="10">
+  <bee-horizontal-layout class="left-chips-container" [gap]="10">
     @for (tag of articleHeader().tags; track $index) {
-    <bee-chip [label]="tag" />
+    <bee-chip class="topic-chip" [label]="tag" />
     }
   </bee-horizontal-layout>
-  <bee-horizontal-layout [gap]="10">
-    <bee-chip [label]="readingTimeText" />
-    <bee-chip [label]="articleHeader().difficulty" />
+  <bee-horizontal-layout class="right-chips-container" [gap]="10">
+    <bee-chip class="reading-time" [label]="readingTimeText" />
+    <bee-chip class="level" [label]="articleHeader().difficulty" />
   </bee-horizontal-layout>
 </bee-pair-layout>
