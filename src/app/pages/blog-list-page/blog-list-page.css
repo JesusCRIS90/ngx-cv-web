@@ -1,6 +1,54 @@
 app-blog-list-page {
-  font-family:
-    system-ui,
-    "Segoe UI",
-    sans-serif;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}
+
+.hero-blog {
+  /* Image */
+  /* background-image: url("https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/blog/blog-test-img1.png"); */
+  background-size: cover; /* Makes image cover entire area */
+  background-position: center; /* Keeps image centered */
+  background-repeat: no-repeat;
+
+  /* Size */
+  min-height: 35vh; /* Adjust height as needed */
+  width: 100%;
+
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Optional overlay effect */
+  position: relative;
+
+  margin-bottom: 3rem;
+
+  .title {
+    color: var(--bg-color-lighter);
+    font-size: 4.5rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1; /* Ensure title is above the overlay */
+    margin: 0;
+  }
+
+  .slogan {
+    color: var(--bg-color-lighter);
+    font-size: 1.5rem;
+    text-align: center;
+    z-index: 1; /* Ensure slogan is above the overlay */
+    margin: 1rem 0 0 0.2rem;
+  }
+}
+
+.hero-blog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+
+.article-list-container{
+  margin-bottom: 3rem;
 }

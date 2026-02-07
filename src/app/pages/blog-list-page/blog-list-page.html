@@ -1,16 +1,13 @@
 <section>
-  <h1>Blog List</h1>
-  <p>
-    Welcome to the blog list page. Here you'll find a collection of blog posts.
-  </p>
-  <!-- <bee-horizontal-layout [gap]="50">
-    <bee-search-bar
-      [placeholder]="'Search blog articles...'"
-      (searchOutput)="onSearchChange($event)"
-    />
-    <button (click)="onClickSidebar()">Filters</button>
-  </bee-horizontal-layout> -->
-  <div>
+  <header 
+    [style]="getHeroBlogImageUrl()"
+  class="hero-blog">
+    <div class="hero-content">
+      <h1 class="title">My Blog Title</h1>
+      <p class="slogan">Thoughts, stories, and ideas</p>
+    </div>
+  </header>
+  <div class="article-list-container">
     <bee-vertical-layout [gap]="10">
       @for (article of articles(); track $index) {
       <article-card [articleCardData]="GetArticleCard(article)" />

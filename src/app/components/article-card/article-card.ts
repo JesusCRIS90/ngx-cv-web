@@ -9,6 +9,7 @@ import {
 
 import { ArticleCard } from '../../interfaces'
 
+const CARD_TEST_IMAGE = 'https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/blog/test-card-image-3.png'
 
 @Component({
   selector: 'article-card',
@@ -20,4 +21,9 @@ import { ArticleCard } from '../../interfaces'
 export class ArticleCardComponent {
   policyPos = policyPos;
   articleCardData = input.required<ArticleCard>();
+
+  get articleCardImage() {
+    // TODO: Remove this when the backend is ready to send the image URL
+    return CARD_TEST_IMAGE;
+  }
 }

@@ -1,5 +1,6 @@
 body {
   background-color: var(--bg-color-2);
+  margin: 10px;
 }
 app-article-page {
   font-family:

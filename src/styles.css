@@ -8,6 +8,7 @@
 /* Change the BG Color */
 body {
   background-color: var(--bg-color);
+  margin: 0;
 }
 
 .custom-no-modal {

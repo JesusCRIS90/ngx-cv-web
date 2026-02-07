@@ -13,6 +13,7 @@ import {
 
 import { ArticleHeader } from '../../interfaces';
 
+// https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/blog/blog-test-img1.png
 
 @Component({
   selector: 'header-article',

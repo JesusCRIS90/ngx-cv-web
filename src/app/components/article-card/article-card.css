@@ -1,6 +1,7 @@
 .card-article {
   width: clamp(250px, 80vw, 800px);
-  height: 120px;
+  min-height: 120px;
+  overflow: hidden;
   align-content: center;
 
   background: linear-gradient(
@@ -9,9 +10,9 @@
     var(--bg-color) 125%
   );
 
-  border: 2px solid var(--primary-light-2);
+  border: 2px solid var(--primary-color);
   border-radius: 8px;
-  padding: 5px;
+  /* padding: 10px; */
 
   a {
     display: block;
@@ -21,8 +22,15 @@
 
   img {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
   }
   .content {
     justify-self: start;
@@ -40,4 +48,9 @@
       margin: 5px 0 0 5px;
     }
   }
+}
+
+.card-article:hover {
+  border-color: var(--primary-light-2);
+  zoom: 1.005;
 }
