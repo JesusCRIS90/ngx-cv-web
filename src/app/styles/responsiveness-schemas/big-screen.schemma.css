@@ -66,4 +66,13 @@
   --contact-form-btn-margin-top: 20px;
 
   --contact-form-border-radius: 3px 15px 15px 3px;
+
+  /* Blog Page */
+  --blog-card-tittle-font-size: 32px;
+  --blog-card-description-font-size: 20px;
+  --blog-card-min-height: 150px;
+  --blog-card-width-viewport-percentage: 80vw;
+
+  --blog-header-title-font-size: 4.5rem;
+  --blog-header-slogan-font-size: 1.5rem;
 }

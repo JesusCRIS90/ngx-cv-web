@@ -1,6 +1,6 @@
 <article class="card-article">
   <a [routerLink]="['/blog', articleCardData().slug]">
-    <bee-grid-1d-layout [inputGridDistribution]="'30% auto'" [gap]="10">
+    <bee-grid-1d-layout class="container" [inputGridDistribution]="'30% auto'" [gap]="10">
       <img [src]="articleCardImage" alt="Image" />
       <div class="content">
         <h2 class="title">{{ articleCardData().title_en }}</h2>
