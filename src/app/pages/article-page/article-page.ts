@@ -15,7 +15,8 @@ import {
   RelativeLayoutComponent as RelLay,
   FloatingLayoutComponent as FloatLay,
   ResponsiveLayoutComponent as ResponseLay,
-  ScreenOrientation
+  ScreenOrientation,
+  VerticalLayoutComponent as VFlex,
 } from '@beexy/ngx-layouts';
 
 import {
@@ -43,6 +44,7 @@ type ArticleLanguage = 'en' | 'es';
     RelLay,
     FloatLay,
     ResponseLay,
+    VFlex
   ],
   standalone: true,
   templateUrl: './article-page.html',
@@ -53,12 +55,13 @@ export default class ArticlePageComponent implements OnInit {
   ANCHOR_POLICY_POSITION = ANCHOR_POLICY_POSITION;
 
   slug: string | null = null;
-  orientation: ScreenOrientation = 'landscape';
+  
 
   // Store the whole article object
   article = signal<Record<string, any> | null>(null);
   headingsDocs = signal<MarkdownHeading[]>([]);
   language = signal<'en' | 'es'>('en');
+  orientation = signal<ScreenOrientation>('landscape');
 
   markdownPath = computed(() => {
     const article = this.article();
@@ -131,10 +134,10 @@ export default class ArticlePageComponent implements OnInit {
   }
 
   protected triggerOrientation(orientation: ScreenOrientation): void{
-    this.orientation = orientation;
+    this.orientation.set(orientation);
   }
 
   protected isVerticalScreen(): boolean {
-    return this.orientation === 'portrait';
+    return this.orientation() === 'portrait';
   }
 }

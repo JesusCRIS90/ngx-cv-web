@@ -16,8 +16,8 @@ app-article-page {
   align-items: flex-start;
   gap: 20px;
 
-  margin: 0px clamp(150px, 15vw, 500px);
-  margin-top: 30px;
+  margin: var(--article-page-main-content-margin);
+  margin-top: 0px;
 
   bee-markdown-viewer {
     .bee-markdown-body {
@@ -29,7 +29,7 @@ app-article-page {
         sans-serif;
       color: #e5e7eb;
       line-height: 1.75;
-      font-size: 1.125rem;
+      font-size: var(--article-page-md-viewer-font-size);
     }
 
     /* Headings */
@@ -170,6 +170,7 @@ app-article-page {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  align-self: flex-end;
 }
 
 .btn-article-style:hover {

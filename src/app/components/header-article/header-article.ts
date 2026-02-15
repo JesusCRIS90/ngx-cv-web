@@ -1,15 +1,14 @@
 import { Component, input, ViewEncapsulation } from '@angular/core';
 
-import { 
+import {
   PairLayoutComponent as PairLay,
   PAIR_DISTRIBUTION,
-  HorizontalLayoutComponent as HorizontalLay
-} from '@beexy/ngx-layouts'
+  HorizontalLayoutComponent as HFlex,
+  VerticalLayoutComponent as VFlex,
+  ResponsiveLayoutComponent as ResponseLay,
+} from '@beexy/ngx-layouts';
 
-import {
-  BeeChipComponent as Chip
-} from '@beexy/ngx-components'
-
+import { BeeChipComponent as Chip } from '@beexy/ngx-components';
 
 import { ArticleHeader } from '../../interfaces';
 
@@ -17,13 +16,12 @@ import { ArticleHeader } from '../../interfaces';
 
 @Component({
   selector: 'header-article',
-  imports: [PairLay, HorizontalLay, Chip],
+  imports: [PairLay, HFlex, VFlex, ResponseLay, Chip],
   templateUrl: './header-article.html',
   styleUrl: './header-article.css',
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderArticle {
-
   PAIR_DISTRIBUTION = PAIR_DISTRIBUTION;
 
   articleHeader = input.required<ArticleHeader>();
@@ -35,9 +33,8 @@ export class HeaderArticle {
   }
 
   protected get title(): string {
-    return this.articleLanguage() === 'es' 
-      ? this.articleHeader().title_es 
+    return this.articleLanguage() === 'es'
+      ? this.articleHeader().title_es
       : this.articleHeader().title_en;
   }
-
 }

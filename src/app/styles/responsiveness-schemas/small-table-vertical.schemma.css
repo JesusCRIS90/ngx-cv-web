@@ -78,4 +78,11 @@
   --blog-header-slogan-font-size: 2.1rem;
 
   /* Article Page */
+  --article-page-chips-font-size: 28px;
+  --article-page-chips-padding: 6px 12px;
+  --article-page-chips-margin: 2px 8px;
+  --article-page-header-image: 30px;
+
+  --article-page-main-content-margin: 0;
+  --article-page-md-viewer-font-size: 0.7rem;
 }

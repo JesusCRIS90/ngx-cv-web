@@ -6,25 +6,19 @@
   />
 
   <div class="article-container">
-    <bee-relative-layout>
-      <bee-floating-layout
-        [anchorPoint]="ANCHOR_POLICY_POSITION.TOP_RIGHT"
-        [posX]="100"
-        [posY]="0"
-      >
+    <bee-vertical-layout>
         <button
           class="btn-language-change btn-article-style"
           (click)="onClickChangeLanguage()"
         >
           {{ currentLanguageLabel }}
         </button>
-      </bee-floating-layout>
       <bee-markdown-viewer
         class="article"
         [markdownPath]="markdownPath()"
         (headingsChange)="onHeadingsChange($event)"
       />
-    </bee-relative-layout>
+    </bee-vertical-layout>
     <div class="md-navigator" [class.md-nav-activate]="isVerticalScreen()">
       <bee-markdown-navigator [headings]="headingsDocs()" [maxDepth]="3" />
 
