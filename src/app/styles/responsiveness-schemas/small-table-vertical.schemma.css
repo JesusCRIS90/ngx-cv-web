@@ -78,11 +78,32 @@
   --blog-header-slogan-font-size: 2.1rem;
 
   /* Article Page */
-  --article-page-chips-font-size: 28px;
+  --article-page-chips-font-size: 22px;
   --article-page-chips-padding: 6px 12px;
   --article-page-chips-margin: 2px 8px;
-  --article-page-header-image: 30px;
+  --article-page-header-image-margin: 15px;
 
   --article-page-main-content-margin: 0;
   --article-page-md-viewer-font-size: 0.7rem;
+
+  --article-page-md-viewer-h1-font-size: 38px;
+  --article-page-md-viewer-h2-font-size: 32px;
+  --article-page-md-viewer-h3-font-size: 28px;
+  --article-page-md-viewer-h4-font-size: 24px;
+  --article-page-md-viewer-h5-font-size: 20px;
+
+  
+  --article-page-md-viewer-p-font-size: 24px;
+  --article-page-md-viewer-code-block-font-size: 18px;
+  --article-page-md-viewer-p-margin-left: 5px;
+  /* Properties Exclusive for Code Block */
+  --article-page-md-viewer-code-block-white-space: pre-wrap;
+  --article-page-md-viewer-code-block-overflow-x: hidden;
+  --article-page-md-viewer-code-block-word-break: break-word;
+  
+  /* Buttons */
+  --article-page-btn-font-size: 24px;
+  --article-page-cl-btn-margins: 30px 5px 0px 0px;
+  --article-page-return-btn-margins: 15px 0px 30px 30px;
+  --article-page-md-viewer-margin-top: 0px;
 }

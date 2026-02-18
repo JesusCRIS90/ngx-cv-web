@@ -83,8 +83,29 @@
   --article-page-chips-font-size: 16px;
   --article-page-chips-padding: 4px 6px;
   --article-page-chips-margin: 0px 6px;
-  --article-page-header-image: 15px;
+  --article-page-header-image-margin: 15px;
 
   --article-page-main-content-margin: 0;
   --article-page-md-viewer-font-size: 0.7rem;
+
+  --article-page-md-viewer-h1-font-size: 28px;
+  --article-page-md-viewer-h2-font-size: 24px;
+  --article-page-md-viewer-h3-font-size: 20px;
+  --article-page-md-viewer-h4-font-size: 18px;
+  --article-page-md-viewer-h5-font-size: 16px;
+
+  
+  --article-page-md-viewer-p-font-size: 15px;
+  --article-page-md-viewer-code-block-font-size: 13px;
+  --article-page-md-viewer-p-margin-left: 5px;
+  /* Properties Exclusive for Code Block */
+  --article-page-md-viewer-code-block-white-space: pre-wrap;
+  --article-page-md-viewer-code-block-overflow-x: hidden;
+  --article-page-md-viewer-code-block-word-break: break-word;
+  
+  /* Buttons */
+  --article-page-btn-font-size: 16px;
+  --article-page-cl-btn-margins: 30px 5px 0px 0px;
+  --article-page-return-btn-margins: 10px 0px 20px 20px;
+  --article-page-md-viewer-margin-top: 0px;
 }

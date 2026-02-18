@@ -3,10 +3,7 @@ body {
   margin: 10px;
 }
 app-article-page {
-  font-family:
-    system-ui,
-    "Segoe UI",
-    sans-serif;
+  font-family: system-ui, "Segoe UI", sans-serif;
 }
 
 .article-container {
@@ -17,7 +14,6 @@ app-article-page {
   gap: 20px;
 
   margin: var(--article-page-main-content-margin);
-  margin-top: 0px;
 
   bee-markdown-viewer {
     .bee-markdown-body {
@@ -34,24 +30,24 @@ app-article-page {
 
     /* Headings */
     .bee-markdown-body h1 {
-      font-size: 2.8rem;
-      margin: 20px 0 0;
+      font-size: var(--article-page-md-viewer-h1-font-size);
+      /* margin: 20px 0 0; */
     }
 
     .bee-markdown-body h2 {
-      font-size: 1.9rem;
-      margin: 35px 0 20px;
+      font-size: var(--article-page-md-viewer-h2-font-size);
+      /* margin: 35px 0 20px; */
     }
 
     .bee-markdown-body h3 {
-      font-size: 1.5rem;
+      font-size: var(--article-page-md-viewer-h3-font-size);
     }
     .bee-markdown-body h4 {
-      font-size: 1.25rem;
+      font-size: var(--article-page-md-viewer-h4-font-size);
     }
     .bee-markdown-body h5,
     .bee-markdown-body h6 {
-      font-size: 1.1rem;
+      font-size: var(--article-page-md-viewer-h5-font-size);
     }
 
     .bee-markdown-body h1,
@@ -67,21 +63,24 @@ app-article-page {
 
     /* Paragraphs & inline text */
     .bee-markdown-body :where(p, span, strong, em, a):not(code *) {
-      margin: 10px 0 15px;
+      margin: 0px 0px 0px 0px;
     }
 
     .bee-markdown-body p {
-      margin-left: 10px;
+      margin-left: var(--article-page-md-viewer-p-margin-left);
+      font-size: var(--article-page-md-viewer-p-font-size);
     }
 
     /* Lists */
     .bee-markdown-body :where(ul, ol) {
-      margin: 0.75em 0;
-      padding-left: 2.5rem;
+      margin: 0.15em 0;
+      padding-left: 2.2rem;
+      font-size: var(--article-page-md-viewer-p-font-size);
     }
 
     .bee-markdown-body li {
-      margin: 0.25em 0;
+      margin: 0.15em 0;
+      font-size: var(--article-page-md-viewer-p-font-size);
     }
 
     /* Inline code */
@@ -90,24 +89,30 @@ app-article-page {
       border-radius: 4px;
       background: var(--primary-dark);
       color: #fcf8ec;
-      font-size: 0.9em;
     }
 
     /* Code blocks */
     .bee-markdown-body pre {
-      margin: 0;
-      overflow-x: auto;
+      white-space: var(--article-page-md-viewer-code-block-white-space);
+      word-break: var(--article-page-md-viewer-code-block-word-break);
+      overflow-x: var(--article-page-md-viewer-code-block-overflow-x);
+    }
+
+    .bee-markdown-body pre code {
+      font-size: var(--article-page-md-viewer-code-block-font-size);
+      white-space: inherit;
     }
   }
 
   .article {
     .bee-markdown-body {
-      margin-top: 10px;
+      margin-top: var(--article-page-md-viewer-margin-top);
     }
   }
 
   .btn-language-change {
     width: max-content;
+    margin: var(--article-page-cl-btn-margins);
   }
 
   .md-navigator {
@@ -140,7 +145,7 @@ app-article-page {
 
     a {
       line-height: 1.75;
-      font-size: 1.15rem;
+      font-size: var(--article-page-md-navigator-font-size);
       color: #f9fafb;
       font-weight: 600;
     }
@@ -156,7 +161,7 @@ app-article-page {
 }
 
 .btn-article-style {
-  margin: 30px 50px 0px 50px;
+  margin: var(--article-page-return-btn-margins);
   padding: 10px 15px;
   transition: background 0.25s ease;
   background: linear-gradient(
@@ -166,9 +171,9 @@ app-article-page {
   );
   color: var(--white-2);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: var(--article-page-btn-font-size);
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   align-self: flex-end;
 }
@@ -179,4 +184,8 @@ app-article-page {
     var(--primary-color),
     var(--primary-light) 150%
   );
+}
+
+.btn-return {
+  margin: var(--article-page-return-btn-margins);
 }

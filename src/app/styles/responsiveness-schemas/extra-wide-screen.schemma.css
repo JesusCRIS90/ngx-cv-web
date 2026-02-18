@@ -77,11 +77,36 @@
   --blog-header-slogan-font-size: 1.5rem;
 
   /* Article Page */
-  --article-page-chips-font-size: 18px;
-  --article-page-chips-padding: 4px 8px;
+  --article-page-chips-font-size: 20px;
+  --article-page-chips-padding: 4px 12px;
   --article-page-chips-margin: 0px 4px;
-  --article-page-header-image: 15px;
+  --article-page-header-image-margin: 15px;
 
-  --article-page-main-content-margin: 0px clamp(150px, 15vw, 500px);
+  --article-page-main-content-margin: 30px clamp(150px, 15vw, 800px);
   --article-page-md-viewer-font-size: 1.125rem;
+
+  --article-page-md-viewer-h1-font-size: 40px;
+  --article-page-md-viewer-h2-font-size: 35px;
+  --article-page-md-viewer-h3-font-size: 30px;
+  --article-page-md-viewer-h4-font-size: 25px;
+  --article-page-md-viewer-h5-font-size: 20px;
+
+  --article-page-change-language-btn-font-size: 20px;
+
+  --article-page-md-viewer-p-font-size: 20px;
+  --article-page-md-viewer-code-block-font-size: 16px;
+  --article-page-md-viewer-p-margin-left: 5px;
+  /* Properties Exclusive for Code Block */
+  --article-page-md-viewer-code-block-white-space: pre;
+  --article-page-md-viewer-code-block-overflow-x: auto;
+  --article-page-md-viewer-code-block-word-break: normal;
+
+  /* Buttons */
+  --article-page-btn-font-size: 20px;
+  --article-page-cl-btn-margins: 30px 5px 0px 0px;
+  --article-page-return-btn-margins: 10px 0px 20px 20px;
+  --article-page-md-viewer-margin-top: 0px;
+
+  /* MD-Navigator */
+  --article-page-md-navigator-font-size: 18px;
 }
