@@ -2,10 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
-import { VisitorInfo } from '../interfaces';
+import { VisitorInfo, VisitorInfoClient } from '../interfaces';
 
 const GEO_API = 'https://ipwho.is/';
-const SUPABASE_EDGE_FUNCTION = 'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics';
+
+const SUPABASE_EDGE_FUNCTION =
+  'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics';
+
+const SUPABASE_EDGE_FUNCTION_GEO_LOCATION =
+  'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics-v2';
 
 const RESPONSIVE_PREFIX = 'responsive-schema-';
 
@@ -13,7 +18,6 @@ const RESPONSIVE_PREFIX = 'responsive-schema-';
   providedIn: 'root',
 })
 export class TrackingService {
-
   constructor(private http: HttpClient) {}
 
   async trackVisitor(): Promise<void> {
@@ -29,30 +33,62 @@ export class TrackingService {
       data = this.getInvalidVisitorInfo(error);
     }
 
-    await this.sendToBackend(data);
+    console.log('Visitor data collected:', data);
+    // await this.sendToBackend(data, SUPABASE_EDGE_FUNCTION);
   }
 
-  private async sendToBackend(data2Send: VisitorInfo): Promise<void> {
+  async trackClient(): Promise<void> {
+    // console.log('Tracking visitor...');
+
+    const clientData: VisitorInfoClient = this.getClientData();
+
+    console.log('Visitor data collected:', clientData);
+
+    const success = await this.sendToBackend(
+    clientData, SUPABASE_EDGE_FUNCTION_GEO_LOCATION);
+    if (!success) {
+      console.error('Failed to send client data to backend');
+    }
+  }
+
+  private async sendToBackend(
+    data2Send: VisitorInfo | VisitorInfoClient,
+    edgeFunctionURL: string = SUPABASE_EDGE_FUNCTION,
+  ): Promise<boolean> {
     // console.log('Sending visitor data to backend...', data2Send);
     try {
-
-      const response = await fetch( SUPABASE_EDGE_FUNCTION,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data2Send),
-        }
-      );
+      const response = await fetch(edgeFunctionURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data2Send),
+      });
 
       if (!response.ok) {
         const text = await response.text();
-        console.error('Backend insert failed:', response.status, text);
+        console.error('Backend error:', response.status, text);
+        return false;
       }
+      return true;
     } catch (err) {
       console.error('Unexpected backend error', err);
+      return false;
     }
+  }
+
+  private getClientData(): VisitorInfoClient {
+    return {
+      timestamp: this.getTimestamp(),
+      browser: this.getBrowser(),
+      deviceType: this.getDeviceType(),
+      clientResolution: this.getResponsiveSchema() || 'Not Available',
+      language: this.getLanguage(),
+      platform: this.getPlatform(),
+      wasError: false,
+      errorMessage: '',
+      pageURL: window?.location?.href ?? 'Unknown',
+    };
   }
 
   private getValidVisitorInfo(geoData: any): VisitorInfo {
@@ -63,7 +99,7 @@ export class TrackingService {
       timestamp: this.getTimestamp(),
       browser: this.getBrowser(),
       deviceType: this.getDeviceType(),
-      clientResolution: this.getResponsiveSchema() || 'Unknown',
+      clientResolution: this.getResponsiveSchema() || 'Not Available',
       language: this.getLanguage(),
       platform: this.getPlatform(),
       wasError: false,
@@ -76,7 +112,7 @@ export class TrackingService {
     const message =
       typeof error === 'string'
         ? error
-        : error?.message ?? error?.statusText ?? 'Unknown error';
+        : (error?.message ?? error?.statusText ?? 'Unknown error');
 
     return {
       city: 'Unknown',
@@ -110,14 +146,14 @@ export class TrackingService {
   }
 
   private getBrowser(): string {
-    if (typeof navigator === 'undefined') return 'Unknown';
+    if (typeof navigator === 'undefined') return 'Not Available';
 
     const ua = navigator.userAgent;
     if (ua.includes('Chrome')) return 'Chrome';
     if (ua.includes('Brave')) return 'Brave';
     if (ua.includes('Firefox')) return 'Firefox';
     if (ua.includes('Safari')) return 'Safari';
-    return 'Unknown';
+    return 'Not Available';
   }
 
   private getDeviceType(): 'Mobile' | 'Tablet' | 'Desktop' {
@@ -132,7 +168,7 @@ export class TrackingService {
   }
 
   private getPlatform(): string {
-    return navigator.platform || 'Unknown';
+    return navigator.platform || 'Not Available';
   }
 
   private getResponsiveSchema(doc: Document = document): string | null {
@@ -143,7 +179,7 @@ export class TrackingService {
 
     // find the class that starts with "responsive-schema-"
     const responsiveClass = Array.from(body.classList).find((c) =>
-      c.startsWith(RESPONSIVE_PREFIX)
+      c.startsWith(RESPONSIVE_PREFIX),
     );
 
     if (!responsiveClass) {
@@ -166,5 +202,5 @@ export class TrackingService {
 
   private getRegion(geoData: any): string {
     return geoData.region || 'Unknown';
-  } 
+  }
 }

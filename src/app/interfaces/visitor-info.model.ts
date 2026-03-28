@@ -1,3 +1,5 @@
+type ServerOnlyFields = 'city' | 'country' | 'region';
+
 export interface VisitorInfo {
   city: string;
   region: string;
@@ -12,3 +14,5 @@ export interface VisitorInfo {
   errorMessage: string;
   pageURL: string;
 }
+
+export type VisitorInfoClient = Omit<VisitorInfo, ServerOnlyFields>;
