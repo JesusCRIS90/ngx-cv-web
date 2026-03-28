@@ -63,7 +63,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     this.checkInvalidScreenSize();
-    await this.trackingService.trackVisitor();
+    // Uncomment to enable visitor tracking
+    // await this.trackingService.trackVisitor();
+    await this.trackingService.trackClient();
   }
 
   private configWindowResize() {
