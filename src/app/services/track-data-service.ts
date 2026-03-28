@@ -33,7 +33,7 @@ export class TrackingService {
       data = this.getInvalidVisitorInfo(error);
     }
 
-    console.log('Visitor data collected:', data);
+    // console.log('Visitor data collected:', data);
     // await this.sendToBackend(data, SUPABASE_EDGE_FUNCTION);
   }
 
@@ -42,7 +42,7 @@ export class TrackingService {
 
     const clientData: VisitorInfoClient = this.getClientData();
 
-    console.log('Visitor data collected:', clientData);
+    // console.log('Visitor data collected:', clientData);
 
     const success = await this.sendToBackend(
     clientData, SUPABASE_EDGE_FUNCTION_GEO_LOCATION);
