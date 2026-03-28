@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
+import { environment } from '../../environments/environment';
+
 import { VisitorInfo, VisitorInfoClient } from '../interfaces';
 
-const GEO_API = 'https://ipwho.is/';
-
-const SUPABASE_EDGE_FUNCTION =
-  'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics';
 
 const SUPABASE_EDGE_FUNCTION_GEO_LOCATION =
-  'https://rtpkqbswvbcjicsjgwfs.supabase.co/functions/v1/collect-metrics-v2';
+  `${environment.supabaseUrl}${environment.functionsPath}/collect-metrics-v2`;
+
+const SUPABASE_EDGE_FUNCTION =
+  `${environment.supabaseUrl}${environment.functionsPath}/collect-metrics`;
+
+const GEO_API = 'https://ipwho.is/';
 
 const RESPONSIVE_PREFIX = 'responsive-schema-';
 
