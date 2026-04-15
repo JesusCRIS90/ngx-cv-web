@@ -37,4 +37,8 @@ export class HeaderArticle {
       ? this.articleHeader().title_es
       : this.articleHeader().title_en;
   }
+
+  protected get heroHeaderUrl(): string {
+    return this.articleHeader().heroHeaderUrl;
+  }
 }

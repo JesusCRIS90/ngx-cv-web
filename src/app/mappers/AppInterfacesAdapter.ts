@@ -5,8 +5,8 @@ export class AppInterfacesAdapter {
     return {
       title_en: article.title_en ?? 'Untitled article',
       title_es: article.title_es ?? 'Untitled article',
-      coverImageUrl:
-        article.cover_image_url ?? 'https://cdn.tusitio.com/covers/default.png',
+      heroHeaderUrl:
+        article.hero_header_image_url ?? 'https://cdn.tusitio.com/covers/default.png',
       readingTime: article.reading_time ?? 0,
       difficulty: article.difficulty ?? 'intermediate',
       tags: article.tags ?? [],
@@ -20,8 +20,8 @@ export class AppInterfacesAdapter {
     return {
       title_en: article.title_en ?? 'Untitled article',
       title_es: article.title_es ?? 'Untitled article',
-      coverImageUrl:
-        article.cover_image_url ?? 'https://cdn.tusitio.com/covers/default.png',
+      cardImageUrl:
+        article.card_image_url ?? 'https://cdn.tusitio.com/covers/default.png',
       description: article.description ?? 'No description available.',
       slug: article.slug ?? 'no-article',
     };

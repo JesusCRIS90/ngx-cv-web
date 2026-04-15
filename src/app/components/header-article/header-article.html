@@ -1,7 +1,8 @@
 <!-- <p>{{ articleHeader().coverImageUrl }}</p> -->
+  <!-- src="https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/blog/blog-test-img1.png" -->
 <img
   class="article-header-img"
-  src="https://raw.githubusercontent.com/JesusCRIS90/jc-risquez-cdn/main/blog/blog-test-img1.png"
+  [src]="heroHeaderUrl"
   alt="Cover Image"
 />
 <!-- <h1 class="main-title">{{ title }}</h1> -->
@@ -23,7 +24,7 @@
     <bee-pair-layout [pairDistribution]="PAIR_DISTRIBUTION.OPPOSITE">
       <bee-horizontal-layout class="left-chips-container" [gap]="10">
         @for (tag of articleHeader().tags; track $index) {
-          <bee-chip class="topic-chip" [label]="tag" />
+        <bee-chip class="topic-chip" [label]="tag" />
         }
       </bee-horizontal-layout>
       <bee-horizontal-layout class="right-chips-container" [gap]="10">

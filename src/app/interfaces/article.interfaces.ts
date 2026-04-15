@@ -1,7 +1,7 @@
 export interface ArticleHeader {
   title_en: string;
   title_es: string;
-  coverImageUrl: string;
+  heroHeaderUrl: string;
   readingTime: number;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   tags: string[];
@@ -10,7 +10,7 @@ export interface ArticleHeader {
 export interface ArticleCard {
   title_en: string;
   title_es: string;
-  coverImageUrl: string;
+  cardImageUrl: string;
   description: string;
   slug: string;
 }
@@ -25,8 +25,8 @@ export interface Article {
   seoDescription: string;
   markdownEsUrl: string;
   markdownEnUrl: string;
-  cover_image_url: string;
-  canonicalUrl: string;
+  hero_header_image_url: string;
+  card_image_url: string;
   linkedinPostUrl: string;
   reading_time: number;
   publishedAt: string; // ISO date string

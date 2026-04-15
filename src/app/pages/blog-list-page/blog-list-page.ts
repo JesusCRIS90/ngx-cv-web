@@ -50,14 +50,14 @@ export default class BlogListPageComponent implements OnInit {
     const { data } = await this.blogService.search();
     this.articles.set(data ?? []);
 
-    console.log('Search results:', this.articles());
+    // console.log('Search results:', this.articles());
   }
 
   onSearchChange(searchTerm: string) {
     const filters: BlogSearchFilters = {
       keywords: this.GetKeywordsList(searchTerm),
     };
-    console.log('Search term changed:', filters);
+    // console.log('Search term changed:', filters);
     // this.onSearch(filters);
   }
 

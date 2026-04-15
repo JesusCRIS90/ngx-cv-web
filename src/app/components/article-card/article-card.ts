@@ -23,7 +23,6 @@ export class ArticleCardComponent {
   articleCardData = input.required<ArticleCard>();
 
   get articleCardImage() {
-    // TODO: Remove this when the backend is ready to send the image URL
-    return CARD_TEST_IMAGE;
+    return this.articleCardData().cardImageUrl || CARD_TEST_IMAGE;
   }
 }

@@ -75,7 +75,7 @@ export default class ArticlePageComponent implements OnInit {
         ? (article['markdown_en_url'] ?? '')
         : (article['markdown_es_url'] ?? '');
 
-    console.log('Markdown URL:', url_markdown);
+    // console.log('Markdown URL:', url_markdown);
     return url_markdown;
   });
 
@@ -94,7 +94,7 @@ export default class ArticlePageComponent implements OnInit {
   }
 
   onHeadingsChange(headings: MarkdownHeading[]): void {
-    console.log('Received headings from MarkdownViewer:', headings);
+    // console.log('Received headings from MarkdownViewer:', headings);
     this.headingsDocs.set(headings);
   }
 
